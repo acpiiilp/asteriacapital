@@ -118,7 +118,7 @@ ul { list-style: none; }
 .bl-card__title { font-family: var(--serif); font-size: 1.5rem; font-weight: 400; color: var(--navy); margin-bottom: 16px; line-height: 1.2; }
 .bl-card__desc { font-size: 14px; color: var(--muted); line-height: 1.7; flex: 1; margin-bottom: 28px; }
 .bl-card__link { font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); display: flex; align-items: center; gap: 8px; }
-.bl-card__link::after { content: 'rightarrow'; font-size: 14px; }
+.bl-card__link::after { content: '\2192'; font-size: 14px; }
 .bl-card__icon { width: 40px; height: 2px; background: var(--gold); margin-bottom: 24px; }
 
 /* Stats bar */

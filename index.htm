@@ -3,287 +3,210 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Asteria Capital</title>
-  <meta name="description" content="Three business lines: CFO as a Service, Private Funds, and Real Estate Development." />
+  <title>Asteria Capital | Asteria Capital</title>
+  <meta name="description" content="Operator-led platform. CFO as a Service, Private Funds, and Real Estate Development in Mexico City." />
   <meta name="robots" content="index,follow" />
-  <link rel="canonical" href="https://asteriacapital.org/" />
-  <meta property="og:title" content="Asteria Capital" />
-  <meta property="og:description" content="CFO as a Service. Private Funds. Real Estate Development." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://asteriacapital.org/" />
-  <meta name="theme-color" content="#0a1628" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="assets/css/site.css" />
   <script defer src="assets/js/site.js"></script>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
     <div class="container">
-      <div class="nav">
-        <a class="brand" href="#top" aria-label="Asteria Capital home">
-          <img src="assets/img/logo-mark.svg" class="brand__mark" alt="" width="28" height="28" />
-          <span>ASTERIA CAPITAL</span>
+      <div class="nav-inner">
+        <a class="logo-wrap" href="index.htm" aria-label="Asteria Capital home">
+          <div class="logo-mark" aria-hidden="true"></div>
+          <div class="logo-text">
+            <span class="logo-text__name">Asteria</span>
+            <span class="logo-text__sub">Capital</span>
+          </div>
         </a>
-        <button class="nav__toggle" data-nav-toggle aria-expanded="false" aria-controls="nav-panel">Menu</button>
-        <nav class="nav__links" aria-label="Primary navigation">
-          <a href="#cfoaas">CFO as a Service</a>
-          <a href="#funds">Private Funds</a>
-          <a href="#realestate">Real Estate</a>
-          <a href="#about">About</a>
-          <a class="btn btn--primary" href="#contact">Get in touch</a>
+        <button class="nav__toggle" data-nav-toggle aria-expanded="false">Menu</button>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="index.htm">Overview</a>
+          <a href="cfoaas.htm">CFO as a Service</a>
+          <a href="funds.htm">Private Funds</a>
+          <a href="realestate.htm">Real Estate</a>
         </nav>
-      </div>
-      <div class="nav__panel" id="nav-panel" data-nav-panel>
-        <a href="#cfoaas">CFO as a Service</a>
-        <a href="#funds">Private Funds</a>
-        <a href="#realestate">Real Estate</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-        <div class="panel-row">
-          <a class="btn btn--primary" href="#contact">Get in touch</a>
-        </div>
+        <a class="nav-cta" href="index.htm#contact">Get in touch</a>
       </div>
     </div>
+    <div class="nav__panel" data-nav-panel>
+      <a href="index.htm">Overview</a>
+      <a href="cfoaas.htm">CFO as a Service</a>
+      <a href="funds.htm">Private Funds</a>
+      <a href="realestate.htm">Real Estate</a>
+      <a href="index.htm#contact">Get in touch</a>
+    </div>
   </header>
-  <main id="main">
-    <section class="hero" id="top" aria-label="Hero">
-      <picture>
-        <source srcset="assets/img/hero.webp" type="image/webp">
-        <img class="hero__bg" src="assets/img/hero.jpg" alt="" fetchpriority="high">
-      </picture>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <img class="hero__img" src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1600&q=80&auto=format&fit=crop" alt="" loading="eager">
       <div class="hero__overlay"></div>
       <div class="container">
-        <div class="hero__inner">
-          <p class="kicker">Mexico City &nbsp;&middot;&nbsp; Cross-border execution</p>
-          <h1>Capital, talent, and real assets.<br>Three platforms. One operating standard.</h1>
-          <p class="hero__sub">Asteria Capital is an operator-led holding platform. We run a fractional CFO practice, manage private investment funds, and develop residential real estate in Mexico City.</p>
-          <div class="hero__cta">
-            <a class="btn btn--gold" href="#cfoaas">CFO as a Service</a>
-            <a class="btn btn--gold" href="#funds">Private Funds</a>
-            <a class="btn btn--gold" href="#realestate">Real Estate</a>
+        <div class="hero__content">
+          <p class="eyebrow hero__eyebrow">Mexico City</p>
+          <div class="hero__rule"></div>
+          <h1 class="display hero__headline">Capital, expertise,<br>and real assets.</h1>
+          <p class="hero__lead">Asteria Capital is an operator-led platform with three distinct business lines — each built around disciplined underwriting, clear accountability, and durable value creation.</p>
+          <div class="btn-row">
+            <a class="btn btn--gold" href="#lines">Our Businesses</a>
+            <a class="btn btn--outline-light" href="#contact">Get in touch</a>
           </div>
         </div>
       </div>
     </section>
-    <section class="lines-strip">
+
+    <!-- THREE BUSINESS LINES -->
+    <section id="lines" style="background:var(--bone);padding:0;">
       <div class="container">
-        <div class="lines-grid">
-          <a class="line-card reveal" href="#cfoaas">
-            <div class="line-card__num">01</div>
-            <h2 class="line-card__title">CFO as a Service</h2>
-            <p class="line-card__desc">Fractional CFO coverage for growing companies. US GAAP, financial modeling, board reporting, and CPA coordination. Bilingual nearshore team. Single monthly invoice.</p>
-            <span class="line-card__cta">Learn more &rarr;</span>
+        <div style="padding:64px 0 32px;">
+          <p class="eyebrow reveal">Three Business Lines</p>
+          <h2 class="headline reveal" style="margin-top:12px;color:var(--navy);max-width:28ch;">One platform. Three distinct engines.</h2>
+        </div>
+      </div>
+      <div class="container" style="padding-bottom:80px;">
+        <div class="bl-grid reveal">
+          <a class="bl-card" href="cfoaas.htm">
+            <div class="bl-card__icon"></div>
+            <div class="bl-card__num">01 &mdash; CFO as a Service</div>
+            <h3 class="bl-card__title">Fractional CFO<br>for Growing Companies</h3>
+            <p class="bl-card__desc">Institutional-grade financial oversight without a full-time hire. US GAAP accounting, financial modeling, board reporting, and CPA coordination — delivered as a managed monthly service.</p>
+            <span class="bl-card__link">Explore CFOaaS</span>
           </a>
-          <a class="line-card reveal" href="#funds">
-            <div class="line-card__num">02</div>
-            <h2 class="line-card__title">Private Funds</h2>
-            <p class="line-card__desc">Asteria Mercados Privados &mdash; a $50M target fund investing in pre-IPO and private market opportunities with better liquidity than traditional PE. Diligence-led, operator-managed.</p>
-            <span class="line-card__cta">Learn more &rarr;</span>
+          <a class="bl-card" href="funds.htm">
+            <div class="bl-card__icon"></div>
+            <div class="bl-card__num">02 &mdash; Private Funds</div>
+            <h3 class="bl-card__title">Asteria Mercados<br>Privados</h3>
+            <p class="bl-card__desc">Pre-IPO and private market access with more liquidity than conventional private equity. Diligence-led, operator-managed. Fund III targeting $50M USD.</p>
+            <span class="bl-card__link">Explore Funds</span>
           </a>
-          <a class="line-card reveal" href="#realestate">
-            <div class="line-card__num">03</div>
-            <h2 class="line-card__title">Real Estate Development</h2>
-            <p class="line-card__desc">Taller Inmobiliario develops curated residential projects in Mexico City highest-appreciation neighborhoods. Value-add, operator-friendly, conservative underwriting.</p>
-            <span class="line-card__cta">Learn more &rarr;</span>
+          <a class="bl-card" href="realestate.htm">
+            <div class="bl-card__icon"></div>
+            <div class="bl-card__num">03 &mdash; Real Estate</div>
+            <h3 class="bl-card__title">Taller Inmobiliario<br>Development</h3>
+            <p class="bl-card__desc">Curated residential developments in Mexico City's highest-appreciation neighborhoods. Conservative underwriting, value-add assets, and operational simplicity.</p>
+            <span class="bl-card__link">Explore Real Estate</span>
           </a>
         </div>
       </div>
     </section>
-    <section class="section" id="cfoaas">
+
+    <!-- STATS BAR -->
+    <section style="padding:0;background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
       <div class="container">
-        <div class="section-split reveal">
-          <div class="section-split__text">
-            <p class="kicker kicker--dark">Business Line 01</p>
-            <h2>CFO as a Service</h2>
-            <p class="section__lead">A full fractional CFO function delivered as a managed service &mdash; without the cost or commitment of a full-time hire.</p>
-            <p class="body-text">We source, screen, onboard, and manage the talent. You get one accountable operator, one invoice, and real-time collaboration in U.S. working hours from our Mexico City team.</p>
-            <p class="body-text">Average CFO salary in the U.S. runs $142K&ndash;$263K per year. Our model delivers institutional-grade financial oversight at a fraction of that cost.</p>
-            <div class="cta-row">
-              <a class="btn btn--primary" href="mailto:salo@asteriacapital.org?subject=Agency%20Pricing">Get pricing</a>
-              <a class="btn" href="mailto:salo@asteriacapital.org?subject=Agency%20Hiring">Send a job spec</a>
+        <div class="stats-bar reveal">
+          <div class="stat-cell">
+            <div class="stat-cell__num">$50M</div>
+            <div class="stat-cell__label">Fund III Target</div>
+          </div>
+          <div class="stat-cell">
+            <div class="stat-cell__num">+73%</div>
+            <div class="stat-cell__label">Fund I Return</div>
+          </div>
+          <div class="stat-cell">
+            <div class="stat-cell__num">2</div>
+            <div class="stat-cell__label">Active RE Projects</div>
+          </div>
+          <div class="stat-cell">
+            <div class="stat-cell__num">2021</div>
+            <div class="stat-cell__label">Founded</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="about-grid reveal">
+          <div>
+            <p class="eyebrow">About Asteria Capital</p>
+            <h2 class="headline" style="margin-top:12px;color:var(--navy);margin-bottom:24px;">Operator-led.<br>Discipline-first.</h2>
+            <p class="lead" style="margin-bottom:20px;">We build durable value through three interconnected business lines, each governed by the same operating principles: clear criteria, clear accountability, and conservative underwriting.</p>
+            <p class="body">Asteria Capital is headquartered in Mexico City. We work in real time with U.S.-based clients and partners, operating with institutional discipline at every level of the platform.</p>
+            <div class="btn-row">
+              <a class="btn btn--navy" href="index.htm#contact">Work with us</a>
             </div>
           </div>
-          <div class="section-split__cards">
-            <div class="feature-card">
-              <h3>What is included</h3>
-              <ul class="feature-list">
-                <li>Financial Accounting (US GAAP)</li>
-                <li>Three-statement financial modeling</li>
-                <li>Monthly &amp; quarterly board-ready reports</li>
-                <li>Unlimited calls to resolve questions</li>
-                <li>CPA &amp; audit firm coordination</li>
-                <li>Project-related financial modeling</li>
-              </ul>
+          <div class="principle-list">
+            <div class="principle">
+              <div class="principle__title">Discipline</div>
+              <p class="principle__body">Clear criteria, clear incentives, clear reporting. Every decision traces back to underwriting — not narrative.</p>
             </div>
-            <div class="feature-card">
-              <h3>How it works</h3>
-              <div class="pills">
-                <span class="pill">Monthly retainer</span>
-                <span class="pill">Weekly reporting</span>
-                <span class="pill">SLA-backed</span>
-                <span class="pill">Bilingual</span>
-                <span class="pill">US time-zone aligned</span>
-                <span class="pill">Single invoice</span>
-              </div>
-              <p class="smallprint" style="margin-top:14px;">Common roles: Financial Analyst, Back-Office Manager, Ops Analyst, Investor Relations, and more.</p>
+            <div class="principle">
+              <div class="principle__title">Operator Leverage</div>
+              <p class="principle__body">Playbooks and systems convert good judgment into repeatable execution across teams and assets.</p>
+            </div>
+            <div class="principle">
+              <div class="principle__title">Conservative Underwriting</div>
+              <p class="principle__body">We filter for reality, not optimism. Every engagement — whether a fund, a building, or a CFO mandate — starts with downside analysis.</p>
+            </div>
+            <div class="principle">
+              <div class="principle__title">Accountability</div>
+              <p class="principle__body">Single point of accountability on every engagement. No ambiguity in who owns what.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <section class="section section--navy" id="funds">
-      <div class="container">
-        <div class="section-split section-split--rev reveal">
-          <div class="section-split__cards">
-            <div class="feature-card feature-card--dark">
-              <h3>Fund III Highlights</h3>
-              <div class="stat-row">
-                <div class="mini-stat"><strong>$50M USD</strong><span>Target fund size</span></div>
-                <div class="mini-stat"><strong>Pre-IPO</strong><span>Primary focus</span></div>
-                <div class="mini-stat"><strong>50%</strong><span>Market access vs. public</span></div>
-              </div>
-            </div>
-            <div class="feature-card feature-card--dark">
-              <h3>Track Record</h3>
-              <div class="track-item">
-                <div class="track-item__label">Fondo I &mdash; AirDAO <span class="track-badge track-badge--high">High risk</span></div>
-                <div class="track-item__return">+73.2%</div>
-                <div class="track-item__period">Nov 2021 &ndash; Apr 2023</div>
-              </div>
-              <div class="track-divider"></div>
-              <div class="track-item">
-                <div class="track-item__label">Fondo II &mdash; Opportunistic <span class="track-badge track-badge--high">High risk</span></div>
-                <div class="track-item__return">+41.78%</div>
-                <div class="track-item__period">Jan 2022 &ndash; Jan 2024</div>
-              </div>
-              <p class="smallprint" style="margin-top:12px;">Unaudited. Past performance does not guarantee future results. Not investment advice.</p>
-            </div>
-          </div>
-          <div class="section-split__text">
-            <p class="kicker kicker--light">Business Line 02</p>
-            <h2 class="text--light">Private Funds</h2>
-            <p class="section__lead text--light-muted">Asteria Mercados Privados gives accredited investors access to private market opportunities with more liquidity and lower minimums than conventional private equity.</p>
-            <p class="body-text text--light-muted">Public markets are increasingly overvalued. Private markets offer uncorrelated return potential &mdash; and are becoming indistinguishable from public ones. We give investors privileged access, institutional diligence, and an operator perspective.</p>
-            <div class="cta-row">
-              <a class="btn btn--gold" href="mailto:salo@asteriacapital.org?subject=Private%20investments%20Context">Request fund details</a>
-            </div>
-            <p class="smallprint text--light-muted" style="margin-top:16px;">Informational only. Not investment advice. Nothing here is an offer or solicitation.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="section" id="realestate">
-      <div class="container">
-        <div class="section-split reveal">
-          <div class="section-split__text">
-            <p class="kicker kicker--dark">Business Line 03</p>
-            <h2>Real Estate Development</h2>
-            <p class="section__lead">Taller Inmobiliario &mdash; our real estate development arm &mdash; builds curated residential projects in Mexico City highest-demand neighborhoods.</p>
-            <p class="body-text">We focus on pre-sale (preventa) opportunities in Benito Ju&aacute;rez and Iztacalco &mdash; two of the city fastest-appreciating delegations. Every project is selected for value-add potential, quality of life, and operational simplicity.</p>
-            <div class="cta-row">
-              <a class="btn btn--primary" href="https://tallerinmobiliario.mx" target="_blank" rel="noopener">Visit Taller Inmobiliario</a>
-              <a class="btn" href="mailto:salo@asteriacapital.org?subject=Real%20assets%20Deal">Share a deal</a>
-            </div>
-          </div>
-          <div class="section-split__cards">
-            <div class="feature-card">
-              <h3>Active Projects</h3>
-              <div class="project-item">
-                <div class="project-item__name">Breta&ntilde;a 92</div>
-                <div class="project-item__location">Zacahuitzco, Benito Ju&aacute;rez, CDMX</div>
-                <div class="pills" style="margin-top:8px;">
-                  <span class="pill">Roof Garden</span>
-                  <span class="pill">2&ndash;3 Bedrooms</span>
-                  <span class="pill">Gym</span>
-                </div>
-                <div class="project-item__price">From $2,999,999 MXN</div>
-              </div>
-              <div class="project-divider"></div>
-              <div class="project-item">
-                <div class="project-item__name">Oasis Churubusco</div>
-                <div class="project-item__location">Granjas M&eacute;xico, Iztacalco, CDMX</div>
-                <div class="pills" style="margin-top:8px;">
-                  <span class="pill">Pool</span>
-                  <span class="pill">Coworking</span>
-                  <span class="pill">Pet Friendly</span>
-                  <span class="pill">Cinema</span>
-                </div>
-                <div class="project-item__price">From $2,150,828 MXN</div>
-              </div>
-            </div>
-            <div class="feature-card">
-              <h3>Our criteria</h3>
-              <div class="pills">
-                <span class="pill">Conservative underwriting</span>
-                <span class="pill">High-appreciation zones</span>
-                <span class="pill">Value-add potential</span>
-                <span class="pill">Operational simplicity</span>
-                <span class="pill">CDMX focus</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="section section--light-alt" id="about">
-      <div class="container">
-        <div class="about-block reveal">
-          <div class="about-block__text">
-            <p class="kicker kicker--dark">About</p>
-            <h2>One platform. Three engines. One operating standard.</h2>
-            <p class="section__lead">Asteria Capital is headquartered in Mexico City and operates with U.S.-grade discipline across three interconnected business lines.</p>
-            <p class="body-text">We work like operators: define the target, instrument the system, ship weekly. Strategy is the output of execution &mdash; not the other way around. Each business line benefits from shared process, sourcing infrastructure, and the same underwriting discipline.</p>
-          </div>
-          <div class="about-block__pillars">
-            <div class="pillar"><h3>Discipline</h3><p>Clear criteria, clear incentives, clear reporting. No ambiguity in who owns what.</p></div>
-            <div class="pillar"><h3>Operator leverage</h3><p>Playbooks and systems turn good people into repeatable execution across teams and assets.</p></div>
-            <div class="pillar"><h3>Cross-border edge</h3><p>Mexico City-based teams. U.S.-grade output. Same-day collaboration, not overnight handoffs.</p></div>
-          </div>
-        </div>
-      </div>
-    </section>
+
+    <!-- CONTACT -->
     <section class="section section--navy" id="contact">
       <div class="container">
-        <div class="contact-block reveal">
+        <div class="contact-grid reveal">
           <div>
-            <p class="kicker kicker--light">Contact</p>
-            <h2 class="text--light">Work with Asteria</h2>
-            <p class="section__lead text--light-muted">Email is the fastest path to the right team. Include a subject line so we route you correctly.</p>
+            <p class="eyebrow">Contact</p>
+            <h2 class="headline text--light" style="margin-top:12px;margin-bottom:0;">Work with Asteria.</h2>
+            <hr class="rule-gold" style="margin:24px 0;">
+            <p style="font-size:15px;color:rgba(255,255,255,.6);max-width:52ch;font-weight:300;line-height:1.7;margin-bottom:0;">Email is the fastest path to the right team. Use the subject lines below to ensure prompt routing.</p>
             <div class="contact-routes">
-              <div class="contact-route">
-                <div class="contact-route__label">CFO as a Service</div>
-                <a href="mailto:salo@asteriacapital.org?subject=Agency%20Pricing" class="contact-route__link">Agency &mdash; Pricing or Agency &mdash; Hiring</a>
+              <div class="contact-row">
+                <span class="contact-row__label">CFO as a Service</span>
+                <span class="contact-row__val"><a href="mailto:salo@asteriacapital.org?subject=CFO%20Service%20%E2%80%94%20Inquiry">Agency &mdash; Pricing &nbsp;/&nbsp; Agency &mdash; Hiring</a></span>
               </div>
-              <div class="contact-route">
-                <div class="contact-route__label">Private Funds</div>
-                <a href="mailto:salo@asteriacapital.org?subject=Private%20investments%20Context" class="contact-route__link">Private investments &mdash; Context</a>
+              <div class="contact-row">
+                <span class="contact-row__label">Private Funds</span>
+                <span class="contact-row__val"><a href="mailto:salo@asteriacapital.org?subject=Private%20Funds%20%E2%80%94%20Context">Private investments &mdash; Context</a></span>
               </div>
-              <div class="contact-route">
-                <div class="contact-route__label">Real Estate</div>
-                <a href="mailto:salo@asteriacapital.org?subject=Real%20assets%20Deal" class="contact-route__link">Real assets &mdash; Deal</a>
+              <div class="contact-row">
+                <span class="contact-row__label">Real Estate</span>
+                <span class="contact-row__val"><a href="mailto:salo@asteriacapital.org?subject=Real%20Estate%20%E2%80%94%20Deal">Real assets &mdash; Deal</a></span>
               </div>
             </div>
           </div>
-          <div class="contact-card">
-            <div class="contact-card__logo">ASTERIA<br><span>CAPITAL</span></div>
-            <p style="color:rgba(255,255,255,.8);margin:0;"><strong>Mexico City</strong></p>
-            <a class="btn btn--gold" href="mailto:salo@asteriacapital.org" style="margin-top:10px;width:fit-content;">salo@asteriacapital.org</a>
-            <p class="smallprint text--light-muted" style="margin-top:16px;">Writing &amp; analysis: <a href="https://substack.com/@funnynomics" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">Funnynomics on Substack</a></p>
+          <div class="contact-aside reveal">
+            <div class="contact-aside__logo">Asteria</div>
+            <div class="contact-aside__sub">Capital</div>
+            <p class="body" style="color:rgba(255,255,255,.55);margin-bottom:24px;font-size:14px;">Mexico City, Mexico</p>
+            <a class="btn btn--gold" href="mailto:salo@asteriacapital.org">salo@asteriacapital.org</a>
+            <hr class="divider--light" style="margin:28px 0;">
+            <p class="caption" style="color:rgba(255,255,255,.35);">Writing &amp; analysis: <a href="https://substack.com/@funnynomics" target="_blank" rel="noopener" style="color:rgba(255,255,255,.35);text-decoration:underline;">Funnynomics on Substack</a></p>
           </div>
         </div>
       </div>
     </section>
+
   </main>
+
   <footer class="footer">
-    <div class="container footer__inner">
-      <div class="footer__brand">&copy; <span data-year></span> Asteria Capital &nbsp;&middot;&nbsp; Mexico City</div>
-      <div class="footer__links">
-        <a href="#cfoaas">CFO as a Service</a>
-        <a href="#funds">Private Funds</a>
-        <a href="#realestate">Real Estate</a>
-        <a href="#contact">Contact</a>
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__copy">&copy; <span data-year></span> Asteria Capital &nbsp;&middot;&nbsp; Mexico City</div>
+        </div>
+        <div class="footer__links">
+          <a href="cfoaas.htm">CFO as a Service</a>
+          <a href="funds.htm">Private Funds</a>
+          <a href="realestate.htm">Real Estate</a>
+          <a href="index.htm#contact">Contact</a>
+        </div>
       </div>
-      <p class="smallprint footer__disc">Informational only. Nothing on this site constitutes an offer or solicitation.</p>
+      <p class="footer__disc" style="margin-top:16px;">Informational only. Nothing on this site constitutes an offer or solicitation. Investment details are shared only in appropriate contexts.</p>
     </div>
   </footer>
 </body>

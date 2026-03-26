@@ -584,7 +584,7 @@ let lastCalc=null;
 async function doSearch(q){
   if(!q||q.length<4){closeSug();return;}if(q===lastQ)return;lastQ=q;
   showMsg('<span class="spinner"></span>Buscando…');
-  try{const p=new URLSearchParams({q,access_token:MB,country:'MX',language:'es',limit:6,proximity:CTR.join(','),types:'address,place,neighborhood,locality,poi',bbox:BBOX.join(',')});
+  try{const p=new URLSearchParams({q,access_token:MB,country:'MX',language:'es',limit:6,proximity:CTR.join(','),types:'address,place,neighborhood,locality',bbox:BBOX.join(',')});
   const r=await fetch('https://api.mapbox.com/search/geocode/v6/forward?'+p);
   if(!r.ok){const errData=await r.json().catch(()=>({}));log('API error:',r.status,errData);if(r.status===401||r.status===403){showMsg('Error de autenticación con el servicio de mapas. Contacta a soporte.');}else if(r.status===429){showMsg('Demasiadas consultas. Espera unos segundos e intenta de nuevo.');}else{showMsg('Error al buscar ('+r.status+'). Intenta de nuevo.');}return;}
   const d=await r.json();res=d.features||[];renderSug(res);}

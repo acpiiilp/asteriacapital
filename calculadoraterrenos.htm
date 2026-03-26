@@ -270,16 +270,40 @@ body{background:var(--bone);color:var(--ink);font-family:var(--sans);font-size:1
 .site-footer-links{display:flex;justify-content:center;gap:24px;margin-bottom:12px;flex-wrap:wrap}
 .site-footer-links a{color:rgba(250,250,250,.6);font-size:12px;text-transform:uppercase;letter-spacing:.06em;font-weight:500}
 </style>
+<link rel="stylesheet" href="assets/css/site.css" />
+<script defer src="assets/js/site.js"></script>
 </head>
 <body>
-<nav class="site-nav" aria-label="Navegación principal">
-  <a href="https://asteriacapital.org" class="site-nav-brand">Asteria Capital</a>
-  <div class="site-nav-links">
-    <a href="https://asteriacapital.org">Inicio</a>
-    <a href="https://asteriacapital.org/calculadoraterrenos.htm" aria-current="page">Calculadora</a>
-    <a href="https://asteriacapital.org/#contacto">Contacto</a>
+<header class="site-header">
+<div class="container">
+  <div class="nav-inner">
+    <a class="logo-wrap" href="index.htm" aria-label="Asteria Capital home">
+      <div class="logo-mark" aria-hidden="true"></div>
+      <div class="logo-text">
+        <span class="logo-text__name">Asteria</span>
+        <span class="logo-text__sub">Capital</span>
+      </div>
+    </a>
+    <button class="nav__toggle" data-nav-toggle aria-expanded="false">Menu</button>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="index.htm">Overview</a>
+      <a href="cfoaas.htm">CFOaaS</a>
+      <a href="funds.htm">Private Funds</a>
+      <a href="realestate.htm">Real Estate</a>
+    </nav>
+    <a class="nav-cta" href="index.htm#contact">Get in touch</a>
   </div>
-</nav>
+</div>
+<div class="nav__panel" data-nav-panel>
+  <a href="index.htm">Overview</a>
+  <a href="cfoaas.htm">CFOaaS</a>
+  <a href="funds.htm">Private Funds</a>
+  <a href="realestate.htm">Real Estate</a>
+  <a href="calculadoraterrenos.htm">Calculadora</a>
+  <a href="index.htm#contact">Get in touch</a>
+</div>
+</header>
+
 <div class="page-wrap">
 <div class="card">
   <p class="eyebrow">Asteria Capital · Valuación</p>
@@ -507,17 +531,22 @@ body{background:var(--bone);color:var(--ink);font-family:var(--sans);font-size:1
 
 </div><!-- /page-wrap -->
 
-<footer class="site-footer">
-  <div class="site-footer-inner">
-    <div class="site-footer-links">
-      <a href="https://asteriacapital.org">Inicio</a>
-      <a href="https://asteriacapital.org/calculadoraterrenos.htm">Calculadora de Terrenos</a>
-      <a href="https://asteriacapital.org/#contacto">Contacto</a>
+<footer class="footer">
+<div class="container">
+  <div class="footer__inner">
+    <div><div class="footer__copy">&copy; <span data-year></span> Asteria Capital &nbsp;&middot;&nbsp; Mexico City</div></div>
+    <div class="footer__links">
+      <a href="cfoaas.htm">CFOaaS</a>
+      <a href="funds.htm">Private Funds</a>
+      <a href="realestate.htm">Real Estate</a>
+      <a href="calculadoraterrenos.htm">Calculadora</a>
+      <a href="index.htm#contact">Contact</a>
     </div>
-    <p>&copy; 2026 <a href="https://asteriacapital.org">Asteria Capital</a> · Taller Inmobiliario · Ciudad de México</p>
-    <p style="margin-top:6px">Esta herramienta es indicativa y no constituye un avalúo certificado.</p>
   </div>
+  <p class="footer__disc" style="margin-top:16px;">Informational only. Nothing on this site constitutes an offer or solicitation. Investment details are shared only in appropriate contexts.</p>
+</div>
 </footer>
+
 
 <script>
 const DEBUG=new URLSearchParams(location.search).has('debug');

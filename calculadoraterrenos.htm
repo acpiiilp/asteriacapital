@@ -85,7 +85,7 @@
       "name": "¿Cuál es la diferencia entre valor JV y valor en efectivo?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "El valor en efectivo aplica un descuento por el tiempo de desarrollo del proyecto (usando una tasa del 8% anual), reflejando que el propietario recibe el pago inmediatamente. El valor JV es mayor pero se materializa a lo largo del proyecto (3 a 10 años según el tamaño)."
+        "text": "El valor en efectivo aplica un descuento por el tiempo de desarrollo del proyecto, reflejando que el propietario recibe el pago inmediatamente. El valor JV es mayor pero se materializa a lo largo del proyecto (3 a 10 años según el tamaño)."
       }
     },
     {
@@ -526,7 +526,7 @@ body{background:var(--bone);color:var(--ink);font-family:var(--sans);font-size:1
   
   <div class="faq-item">
     <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">¿Cuál es la diferencia entre valor JV y valor en efectivo?</div>
-    <div class="faq-a">El valor en efectivo aplica un descuento por el tiempo de desarrollo del proyecto (usando una tasa del 8% anual), reflejando que el propietario recibe el pago inmediatamente. El valor JV es mayor pero se materializa a lo largo del proyecto, que puede durar de 3 a 10 años según el tamaño.</div>
+    <div class="faq-a">El valor en efectivo aplica un descuento por el tiempo de desarrollo del proyecto, reflejando que el propietario recibe el pago inmediatamente. El valor JV es mayor pero se materializa a lo largo del proyecto, que puede durar de 3 a 10 años según el tamaño.</div>
   </div>
   
   <div class="faq-item">
@@ -640,7 +640,7 @@ function doCalc(){const{lat,zr,surface:x,buildable:Sb,units,uso}=st;if(!lat||!Sb
   const Pm=zr.pm,A=Sb/units,phiA=phi(A),psiA=psiN(x),gammaH=gamma(uso);
   const TES=Sb*0.88*Pm*phiA*1.04;
   const jvLo=0.18*TES*psiA*gammaH,jvMid=0.21*TES*psiA*gammaH,jvHi=0.24*TES*psiA*gammaH;
-  const t=T(Sb),cashMid=jvMid/Math.pow(1.095,t),cashLo=jvLo/Math.pow(1.095,t),cashHi=jvHi/Math.pow(1.08,t);
+  const t=T(Sb),cashMid=jvMid/Math.pow(1.12,t),cashLo=jvLo/Math.pow(1.12,t),cashHi=jvHi/Math.pow(1.12,t);
   return{Pm,A,phiA,psiA,gammaH,TES,jvLo,jvMid,jvHi,cashMid,cashLo,cashHi,t,Sb,x};}
 
 const MXN=n=>new Intl.NumberFormat('es-MX',{style:'currency',currency:'MXN',maximumFractionDigits:0}).format(n);

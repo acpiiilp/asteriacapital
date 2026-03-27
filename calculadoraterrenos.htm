@@ -278,6 +278,12 @@ body{background:var(--bone);color:var(--ink);font-family:var(--sans);font-size:1
 .site-footer a:hover{text-decoration:underline}
 .site-footer-links{display:flex;justify-content:center;gap:24px;margin-bottom:12px;flex-wrap:wrap}
 .site-footer-links a{color:rgba(250,250,250,.6);font-size:12px;text-transform:uppercase;letter-spacing:.06em;font-weight:500}
+
+/* Contact CTA Box */
+.contact-cta-box{background:linear-gradient(135deg,rgba(201,168,76,.15),rgba(201,168,76,.05));border:1.5px solid var(--gold);border-radius:12px;padding:24px 28px;text-align:center;margin-top:24px;}
+.contact-cta-text{color:var(--text);font-size:15px;margin:0 0 16px;line-height:1.5;}
+.contact-cta-btn{display:inline-block;background:var(--gold);color:#1a1a1a;font-weight:700;font-size:14px;padding:12px 28px;border-radius:8px;text-decoration:none;transition:opacity .2s;}
+.contact-cta-btn:hover{opacity:.85;}
 </style>
 <link rel="stylesheet" href="assets/css/site.css" />
 <script defer src="assets/js/site.js"></script>
@@ -413,7 +419,7 @@ body{background:var(--bone);color:var(--ink);font-family:var(--sans);font-size:1
 
       <div class="interval-cols">
         <div class="interval-col">
-          <div class="interval-col-lbl">Mínimo (λ=18%)</div>
+          <div class="interval-col-lbl">Mínimo</div>
           <div class="interval-col-num" id="iv-lo">—</div>
         </div>
         <div class="interval-divider"></div>
@@ -423,7 +429,7 @@ body{background:var(--bone);color:var(--ink);font-family:var(--sans);font-size:1
         </div>
         <div class="interval-divider"></div>
         <div class="interval-col">
-          <div class="interval-col-lbl">Máximo (λ=24%)</div>
+          <div class="interval-col-lbl">Máximo</div>
           <div class="interval-col-num" id="iv-hi">—</div>
         </div>
       </div>
@@ -440,7 +446,7 @@ body{background:var(--bone);color:var(--ink);font-family:var(--sans);font-size:1
         </div>
       </div>
 
-      <div class="lambda-note">Rango basado en tasa de participación JV <span>λ ∈ [18%, 24%]</span> · Precio base: <span id="iv-pm">—</span> / m²</div>
+      <div class="lambda-note" style="display:none">Rango basado en tasa de participación JV <span>λ ∈ [18%, 24%]</span> · Precio base: <span id="iv-pm">—</span> / m²</div>
     </div>
 
     <!-- Cash + partial -->
@@ -450,8 +456,8 @@ body{background:var(--bone);color:var(--ink);font-family:var(--sans);font-size:1
         <div class="val-card-num" id="vc-cash">—</div>
         <div class="val-card-sub" id="vc-cash-sub">Descuento por plazo de desarrollo</div>
       </div>
-      <div class="val-card">
-        <div class="val-card-lbl">TES · Ventas esperadas totales</div>
+      <div class="val-card" style="display:none">
+        <div class="val-card-lbl" data-hide="true">TES · Ventas esperadas totales</div>
         <div class="val-card-num" id="vc-tes">—</div>
         <div class="val-card-sub" id="vc-tes-sub">Base de valuación</div>
       </div>
@@ -469,17 +475,17 @@ body{background:var(--bone);color:var(--ink);font-family:var(--sans);font-size:1
     <div class="breakdown">
       <div class="bd-sec"><span class="bd-sec-lbl">Inputs</span></div>
       <div class="bd-row"><span class="bd-lbl">Zona detectada</span><span class="bd-val" id="bd-zone">—</span></div>
-      <div class="bd-row"><span class="bd-lbl">Precio geométrico / m² (P_m)</span><span class="bd-val" id="bd-pm">—</span></div>
+      <div class="bd-row"><span class="bd-lbl">Precio de mercado / m²</span><span class="bd-val" id="bd-pm">—</span></div>
       <div class="bd-row"><span class="bd-lbl">Superficie terreno (x)</span><span class="bd-val" id="bd-x">—</span></div>
-      <div class="bd-row"><span class="bd-lbl">M² construibles (S_b)</span><span class="bd-val" id="bd-sb">—</span></div>
-      <div class="bd-row"><span class="bd-lbl">Tamaño prom. depto (A = S_b / viviendas)</span><span class="bd-val" id="bd-a">—</span></div>
+      <div class="bd-row"><span class="bd-lbl">M² construibles</span><span class="bd-val" id="bd-sb">—</span></div>
+      <div class="bd-row"><span class="bd-lbl">Tamaño promedio de departamento</span><span class="bd-val" id="bd-a">—</span></div>
       <div class="bd-row"><span class="bd-lbl">Uso de suelo</span><span class="bd-val" id="bd-uso">—</span></div>
-      <div class="bd-sec" style="margin-top:1px"><span class="bd-sec-lbl">Cálculo</span></div>
-      <div class="bd-row"><span class="bd-lbl">Ponderador depto φ(A) = 1.5 − 0.12·ln(A)</span><span class="bd-val" id="bd-phi">—</span></div>
-      <div class="bd-row"><span class="bd-lbl">Ponderador terreno ψ_norm(x)</span><span class="bd-val" id="bd-psi">—</span></div>
-      <div class="bd-row"><span class="bd-lbl">Factor zonificación γ(H)</span><span class="bd-val" id="bd-gamma">—</span></div>
-      <div class="bd-row"><span class="bd-lbl">TES = S_b × 0.88 × P_m × φ(A) × 1.04</span><span class="bd-val" id="bd-tes">—</span></div>
-      <div class="bd-row"><span class="bd-lbl">Plazo de desarrollo T(S_b)</span><span class="bd-val" id="bd-t">—</span></div>
+      <div class="bd-sec" style="display:none;margin-top:1px"><span class="bd-sec-lbl">Cálculo</span></div>
+      <div class="bd-row" style="display:none"><span class="bd-lbl">Ponderador depto</span><span class="bd-val" id="bd-phi">—</span></div>
+      <div class="bd-row" style="display:none"><span class="bd-lbl">Ponderador terreno</span><span class="bd-val" id="bd-psi">—</span></div>
+      <div class="bd-row" style="display:none"><span class="bd-lbl">Factor zonificación</span><span class="bd-val" id="bd-gamma">—</span></div>
+      <div class="bd-row" style="display:none"><span class="bd-lbl">Ventas esperadas totales</span><span class="bd-val" id="bd-tes">—</span></div>
+      <div class="bd-row" style="display:none"><span class="bd-lbl">Plazo de desarrollo</span><span class="bd-val" id="bd-t">—</span></div>
     </div>
 
     <!-- Disclaimer -->
@@ -491,6 +497,12 @@ body{background:var(--bone);color:var(--ink);font-family:var(--sans);font-size:1
       <p class="disclaimer-box-text">
         Esta herramienta genera una <strong>estimación estadística indicativa</strong> con fines de referencia. No constituye un avalúo formal, opinión de valor ni certificado de ningún tipo. Asteria Capital <strong>no es perito valuador certificado</strong> ni actúa como tal en este cálculo. Los valores por zona son promedios de mercado y pueden variar significativamente según las condiciones específicas del predio, estado legal, servidumbres, afectaciones normativas, y condiciones de mercado vigentes. Para transacciones formales, Asteria Capital recomienda contratar un avalúo comercial certificado emitido por un perito valuador con cédula profesional vigente. Modelo v1.0.
       </p>
+    </div>
+
+    <!-- Contact CTA -->
+    <div class="contact-cta-box">
+      <p class="contact-cta-text">¿Quisieras una valuación personalizada gratuita? <strong>¡Contáctanos!</strong></p>
+      <a class="contact-cta-btn" href="https://asteriacapital.org/contacto" target="_blank" rel="noopener">Solicitar valuación gratuita →</a>
     </div>
 
   </div>
@@ -656,7 +668,7 @@ function renderResults(c){
   document.getElementById('vc-cash').textContent=MXN(c.cashMid);
   document.getElementById('vc-cash-sub').textContent='Descuento anual 8% · '+c.t+' años';
   document.getElementById('vc-tes').textContent=MXN(c.TES);
-  document.getElementById('vc-tes-sub').textContent='S_b × 0.88 × P_m × φ(A) × 1.04';
+  document.getElementById('vc-tes-sub').textContent='Base de valuación';
 
   // Breakdown
   document.getElementById('bd-zone').textContent=st.zr.zone.name+(st.zr.src==='muni'?' ⌁':'');
@@ -678,6 +690,32 @@ function renderResults(c){
   results.scrollIntoView({behavior:'smooth',block:'start'});
   log('result:',{jvMid:c.jvMid,jvLo:c.jvLo,jvHi:c.jvHi,cash:c.cashMid,t:c.t,phi:c.phiA,psi:c.psiA});}
 
+
+// Send lead data to email for market research
+function sendLeadEmail(calc) {
+  try {
+    const formData = new FormData();
+    formData.append('_subject', 'Nueva consulta de valuación – Calculadora Asteria Capital');
+    formData.append('_captcha', 'false');
+    formData.append('_template', 'table');
+    formData.append('Dirección', st.address || 'No especificada');
+    formData.append('Zona', st.zr ? st.zr.zone.name : 'No detectada');
+    formData.append('Municipio', st.muni || 'No disponible');
+    formData.append('Coordenadas', (st.lat ? st.lat.toFixed(6) : '—') + ', ' + (st.lng ? st.lng.toFixed(6) : '—'));
+    formData.append('Superficie_terreno_m2', st.surface ? String(st.surface) : '—');
+    formData.append('M2_construibles', st.buildable ? String(st.buildable) : '—');
+    formData.append('Unidades_habitacionales', st.units ? String(st.units) : '—');
+    formData.append('Uso_de_suelo', st.uso || '—');
+    formData.append('Valor_JV_estimado_MXN', calc.jvMid ? Math.round(calc.jvMid).toLocaleString('es-MX') : '—');
+    formData.append('Valor_efectivo_estimado_MXN', calc.cashMid ? Math.round(calc.cashMid).toLocaleString('es-MX') : '—');
+    formData.append('Fecha_hora', new Date().toLocaleString('es-MX'));
+    fetch('https://formsubmit.co/asteriacapitalpartners@gmail.com', {
+      method: 'POST',
+      body: formData
+    }).catch(() => {});
+  } catch(e) {}
+}
+
 // DOM refs
 const aIn=document.getElementById('address-input'),sugEl=document.getElementById('suggestions'),locCard=document.getElementById('loc-card'),locName=document.getElementById('loc-name'),zoneBadge=document.getElementById('loc-zone-badge'),cLat=document.getElementById('c-lat'),cLng=document.getElementById('c-lng'),locClear=document.getElementById('loc-clear'),inpS=document.getElementById('inp-surface'),inpB=document.getElementById('inp-buildable'),inpU=document.getElementById('inp-units'),inpUso=document.getElementById('inp-uso'),helpBtn=document.getElementById('help-btn'),seduvi=document.getElementById('seduvi-panel'),cta=document.getElementById('cta'),results=document.getElementById('results'),slider=document.getElementById('alpha-slider'),alphaDisp=document.getElementById('alpha-display'),partial=document.getElementById('res-partial');
 
@@ -685,13 +723,13 @@ aIn.addEventListener('input',()=>{st.lat=st.lng=st.address=st.muni=st.zr=null;lo
 aIn.addEventListener('keydown',e=>{const items=sugEl.querySelectorAll('.s-item');if(!items.length||!sugEl.classList.contains('open'))return;if(e.key==='ArrowDown'){e.preventDefault();aidx=Math.min(aidx+1,items.length-1);}else if(e.key==='ArrowUp'){e.preventDefault();aidx=Math.max(aidx-1,0);}else if(e.key==='Enter'&&aidx>=0){e.preventDefault();pick(aidx);return;}else if(e.key==='Escape'){closeSug();return;}items.forEach((el,i)=>el.classList.toggle('active',i===aidx));if(aidx>=0)items[aidx].scrollIntoView({block:'nearest'});});
 document.addEventListener('click',e=>{if(!e.target.closest('.addr-wrap'))closeSug();});
 locClear.addEventListener('click',()=>{st.lat=st.lng=st.address=st.muni=st.zr=null;aIn.value='';locCard.classList.remove('on');results.classList.remove('on');updateCTA();});
-inpS.addEventListener('input',()=>{const v=parseFloat(inpS.value);st.surface=v>0?v:null;updateCTA();});
-inpB.addEventListener('input',()=>{const v=parseFloat(inpB.value);st.buildable=v>0?v:null;updateCTA();});
-inpU.addEventListener('input',()=>{const v=parseInt(inpU.value);st.units=v>0?v:null;updateCTA();});
+inpS.addEventListener('input',()=>{if(parseFloat(inpS.value)<0||inpS.value==='-'){inpS.value='';}const v=parseFloat(inpS.value);st.surface=v>0?v:null;updateCTA();});
+inpB.addEventListener('input',()=>{if(parseFloat(inpB.value)<0||inpB.value==='-'){inpB.value='';}const v=parseFloat(inpB.value);st.buildable=v>0?v:null;updateCTA();});
+inpU.addEventListener('input',()=>{if(parseInt(inpU.value)<0||inpU.value==='-'){inpU.value='';}const v=parseInt(inpU.value);st.units=v>0?v:null;updateCTA();});
 inpUso.addEventListener('change',()=>{st.uso=inpUso.value||null;updateCTA();});
 helpBtn.addEventListener('click',()=>{const h=seduvi.hasAttribute('hidden');h?seduvi.removeAttribute('hidden'):seduvi.setAttribute('hidden','');helpBtn.style.background=h?'var(--gold-pale)':'';});
 slider.addEventListener('input',()=>{const a=slider.value/100;alphaDisp.textContent=slider.value+'%';if(lastCalc)upPartial(a,lastCalc);});
-cta.addEventListener('click',()=>{const c=doCalc();if(!c)return;lastCalc=c;renderResults(c);});
+cta.addEventListener('click',()=>{const c=doCalc();if(!c)return;lastCalc=c;renderResults(c);sendLeadEmail(c);});
 log('Calculadora v1.1 | Zonas:',ZONES.length,'| ?debug=1 para log en página');
 </script>
 </body>

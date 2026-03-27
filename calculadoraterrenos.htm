@@ -579,7 +579,7 @@ const dbg=document.getElementById('debug');
 if(DEBUG)dbg.style.display='block';
 function log(...a){const s=a.map(x=>typeof x==='object'?JSON.stringify(x,null,2):String(x)).join(' ');console.log('[Asteria]',...a);if(DEBUG){dbg.textContent+='['+new Date().toLocaleTimeString('es-MX')+'] '+s+'\n';dbg.scrollTop=9999;}}
 
-const API_URL='https://calculadora-api.vercel.app/api/calculate';
+const API_URL='https://calculadora-api-six.vercel.app/api/calculate';
 
 
 const MB='pk.eyJ1IjoiYWNwaWlpIiwiYSI6ImNtbjZxb2J6cTA4OG8yc3ByaGxuMjRyZWYifQ.ZCTSLjhAeApeD64Fsb5j6g';

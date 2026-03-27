@@ -640,7 +640,7 @@ function doCalc(){const{lat,zr,surface:x,buildable:Sb,units,uso}=st;if(!lat||!Sb
   const Pm=zr.pm,A=Sb/units,phiA=phi(A),psiA=psiN(x),gammaH=gamma(uso);
   const TES=Sb*0.88*Pm*phiA*1.04;
   const jvLo=0.18*TES*psiA*gammaH,jvMid=0.21*TES*psiA*gammaH,jvHi=0.24*TES*psiA*gammaH;
-  const t=T(Sb),cashMid=jvMid/Math.pow(1.08,t),cashLo=jvLo/Math.pow(1.08,t),cashHi=jvHi/Math.pow(1.08,t);
+  const t=T(Sb),cashMid=jvMid/Math.pow(1.08,t),cashLo=jvLo/Math.pow(1.095,t),cashHi=jvHi/Math.pow(1.08,t);
   return{Pm,A,phiA,psiA,gammaH,TES,jvLo,jvMid,jvHi,cashMid,cashLo,cashHi,t,Sb,x};}
 
 const MXN=n=>new Intl.NumberFormat('es-MX',{style:'currency',currency:'MXN',maximumFractionDigits:0}).format(n);

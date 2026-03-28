@@ -679,31 +679,30 @@ function renderResults(c){
   log('result:',{jvMid:c.jvMid,jvLo:c.jvLo,jvHi:c.jvHi,cash:c.cashMid,t:c.t,phi:c.phiA,psi:c.psiA});}
 
 
-// Send lead data to email for market research
-function sendLeadEmail(calc) {
-  try {
-    const formData = new FormData();
-    formData.append('_subject', 'Nueva consulta de valuación – Calculadora Asteria Capital');
-    formData.append('_captcha', 'false');
-    formData.append('_template', 'table');
-    formData.append('Dirección', st.address || 'No especificada');
-    formData.append('Zona', st.zr ? st.zr.zone.name : 'No detectada');
-    formData.append('Municipio', st.muni || 'No disponible');
-    formData.append('Coordenadas', (st.lat ? st.lat.toFixed(6) : '—') + ', ' + (st.lng ? st.lng.toFixed(6) : '—'));
-    formData.append('Superficie_terreno_m2', st.surface ? String(st.surface) : '—');
-    formData.append('M2_construibles', st.buildable ? String(st.buildable) : '—');
-    formData.append('Unidades_habitacionales', st.units ? String(st.units) : '—');
-    formData.append('Uso_de_suelo', st.uso || '—');
-    formData.append('Valor_JV_estimado_MXN', calc.jvMid ? Math.round(calc.jvMid).toLocaleString('es-MX') : '—');
-    formData.append('Valor_efectivo_estimado_MXN', calc.cashMid ? Math.round(calc.cashMid).toLocaleString('es-MX') : '—');
-    formData.append('Fecha_hora', new Date().toLocaleString('es-MX'));
-    fetch('https://formsubmit.co/asteriacapitalpartners@gmail.com', {
-      method: 'POST',
-      body: formData
-    }).catch(() => {});
-  } catch(e) {}
-}
-
+// Send lead data to Google Sheets
+  function sendLeadEmail(calc) {
+      try {
+            const data = {
+                    fecha: new Date().toLocaleString('es-MX'),
+                    direccion: st.address || 'No especificada',
+                    zona: st.zr ? st.zr.zone.name : 'No detectada',
+                    municipio: st.muni || 'No disponible',
+                    coordenadas: (st.lat ? st.lat.toFixed(6) : '-') + ', ' + (st.lng ? st.lng.toFixed(6) : '-'),
+                    superficie: st.surface ? String(st.surface) : '-',
+                    m2_construibles: st.buildable ? String(st.buildable) : '-',
+                    unidades: st.units,
+                    uso_de_suelo: st.uso || '-',
+                    valor_jv: calc.jvMid ? Math.round(calc.jvMid) : '-',
+                    valor_efectivo: calc.cashMid ? Math.round(calc.cashMid) : '-'
+            };
+            // Replace with your Apps Script deployment URL
+            const scriptUrl = 'https://script.google.com/macros/d/1O-OeY-t0gs1gSi3yujqffRtVHa8oCJpa5GWtrKiAIJUsndAIIdbSN81W/usercopy/oauthcallback';
+            fetch(scriptUrl, {
+                    method: 'POST',
+                    body: JSON.stringify(data)
+            }).catch(() => {});
+      } catch(e) {}
+  }
 // DOM refs
 const aIn=document.getElementById('address-input'),sugEl=document.getElementById('suggestions'),locCard=document.getElementById('loc-card'),locName=document.getElementById('loc-name'),zoneBadge=document.getElementById('loc-zone-badge'),cLat=document.getElementById('c-lat'),cLng=document.getElementById('c-lng'),locClear=document.getElementById('loc-clear'),inpS=document.getElementById('inp-surface'),inpB=document.getElementById('inp-buildable'),inpU=document.getElementById('inp-units'),inpUso=document.getElementById('inp-uso'),helpBtn=document.getElementById('help-btn'),seduvi=document.getElementById('seduvi-panel'),cta=document.getElementById('cta'),results=document.getElementById('results'),slider=document.getElementById('alpha-slider'),alphaDisp=document.getElementById('alpha-display'),partial=document.getElementById('res-partial');
 

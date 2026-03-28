@@ -114,13 +114,13 @@ body{background:var(--bone);color:var(--ink);font-family:var(--sans);font-size:1
 .site-nav-links a{color:rgba(250,250,250,.7);font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;transition:color var(--t)}
 .site-nav-links a:hover{color:var(--gold)}
 .site-nav-links a[aria-current="page"]{color:var(--gold);border-bottom:1px solid var(--gold)}
-.page-wrap{flex:1;width:100%;display:flex;flex-direction:column;align-items:center;padding:40px 24px 0}
-.card{background:var(--bone-light);border:1px solid var(--line);border-top:3px solid var(--gold);width:100%;max-width:var(--max);padding:48px 52px 52px}
-@media(max-width:600px){.card{padding:32px 24px 40px}}
+.page-wrap{flex:1;width:100%;display:flex;flex-direction:column;align-items:center;padding:24px 24px 0}
+.card{background:var(--bone-light);border:1px solid var(--line);border-top:3px solid var(--gold);width:100%;max-width:var(--max);padding:32px 40px 40px}
+@media(max-width:600px){.card{padding:20px 20px 28px}}
 .eyebrow{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
 .title{font-family:var(--serif);font-size:clamp(24px,4vw,32px);font-weight:500;color:var(--navy);line-height:1.25;margin-bottom:10px}
-.subtitle{font-size:14px;color:var(--muted);margin-bottom:40px;line-height:1.6}
-.field{margin-bottom:28px}
+.subtitle{font-size:14px;color:var(--muted);margin-bottom:24px;line-height:1.6}
+.field{margin-bottom:20px}
 .label-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
 .label{display:block;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy-mid)}
 .label-row .label{margin-bottom:0}
@@ -420,12 +420,12 @@ body{background:var(--bone);color:var(--ink);font-family:var(--sans);font-size:1
         </div>
         <div class="interval-divider"></div>
         <div class="interval-col mid">
-          <div class="interval-col-lbl">Valor Estimado en Aportación al 100% '(Valor JV)'</div>
+          <div class="interval-col-lbl" style="text-align:center">Valor Estimado en Aportación al 100%</div>
           <div class="interval-col-num" id="iv-mid">—</div>
         </div>
         <div class="interval-divider"></div>
         <div class="interval-col">
-          <div class="interval-col-lbl">Máximo</div>
+          <div class="interval-col-lbl"></div>
           <div class="interval-col-num" id="iv-hi">—</div>
         </div>
       </div>
@@ -438,7 +438,7 @@ body{background:var(--bone);color:var(--ink);font-family:var(--sans);font-size:1
         <div class="interval-bar-labels">
           <span class="interval-bar-label" id="ibl-lo">—</span>
           <span class="interval-bar-label mid" id="ibl-mid">punto medio</span>
-          <span class="interval-bar-label" id="ibl-hi">—</span>
+          <span class="interval-bar-label" id="ibl-hi" style="display:flex;flex-direction:column;align-items:flex-end;gap:2px"><span style="font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(201,168,76,.7)">Máximo</span>—</span>
         </div>
       </div>
 
@@ -463,8 +463,8 @@ body{background:var(--bone);color:var(--ink);font-family:var(--sans);font-size:1
     <div class="alpha-wrap">
       <div class="alpha-hdr"><span class="alpha-lbl">Aportación en especie (α)</span><span class="alpha-val" id="alpha-display">50%</span></div>
       <input type="range" class="alpha-slider" id="alpha-slider" min="0" max="100" value="50" step="5">
-      <div class="alpha-labels"><span>100% efectivo</span><span>Mixto</span><span>100% en especie</span></div>
-      <div class="alpha-result"><span class="alpha-result-lbl">Valor parcial (V_partial)</span><span class="alpha-result-num" id="res-partial">—</span></div>
+      <div class="alpha-labels"><span>100% efectivo</span><span>Mixto</span><span>100% en aportación</span></div>
+      <div class="alpha-result"><span class="alpha-result-lbl">Aportación Parcial</span><span class="alpha-result-num" id="res-partial">—</span></div>
     </div>
 
     <!-- Breakdown -->

@@ -289,6 +289,41 @@ body{background:var(--bone);color:var(--ink);font-family:var(--sans);font-size:1
 .contact-cta-text{color:var(--text);font-size:15px;margin:0 0 16px;line-height:1.5;}
 .contact-cta-btn{display:inline-block;background:var(--gold);color:#1a1a1a;font-weight:700;font-size:14px;padding:12px 28px;border-radius:8px;text-decoration:none;transition:opacity .2s;}
 .contact-cta-btn:hover{opacity:.85;}
+
+/* Mode Toggle */
+.mode-toggle{display:flex;background:var(--bone);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin-bottom:20px}
+.mode-btn{flex:1;padding:11px 16px;font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;text-align:center;border:none;background:none;cursor:pointer;color:var(--muted);transition:all var(--t)}
+.mode-btn.active{background:var(--navy);color:var(--gold)}
+.mode-btn:hover:not(.active){background:rgba(201,168,76,.08)}
+
+/* Refit fields */
+.refit-fields{display:none;margin-bottom:20px;padding:16px;background:rgba(201,168,76,.04);border:1px solid var(--line-gold);border-radius:var(--radius)}
+.refit-fields.on{display:block}
+.refit-fields .field{margin-bottom:16px}
+.refit-fields .field:last-child{margin-bottom:0}
+.refit-hdr{display:flex;align-items:center;gap:8px;margin-bottom:12px;color:var(--gold);font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.discount-slider-wrap{margin-top:8px}
+.discount-slider{width:100%;-webkit-appearance:none;height:4px;border-radius:2px;background:var(--line);outline:none;cursor:pointer}
+.discount-slider::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--gold);cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.2)}
+.discount-slider::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:var(--gold);cursor:pointer;border:none}
+.discount-labels{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-top:6px}
+.discount-val{font-size:13px;font-weight:600;color:var(--gold);margin-left:auto}
+
+/* Refit result comparison */
+.refit-compare{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+@media(max-width:520px){.refit-compare{grid-template-columns:1fr}}
+.compare-card{background:var(--bone);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;position:relative}
+.compare-card.winner{border-color:var(--gold);background:var(--gold-pale)}
+.compare-card-badge{position:absolute;top:-8px;right:12px;background:var(--gold);color:var(--navy);font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:2px 8px;border-radius:3px}
+.compare-card-lbl{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.compare-card-num{font-family:var(--serif);font-size:20px;font-weight:600;color:var(--navy);line-height:1.2}
+.compare-card-sub{font-size:11px;color:var(--muted);margin-top:4px}
+
+/* Sec market ref */
+.sec-mkt-ref{background:var(--bone);border:1px solid var(--line);border-radius:var(--radius);padding:12px 16px;margin-bottom:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.sec-mkt-lbl{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.sec-mkt-val{font-family:var(--serif);font-size:18px;font-weight:600;color:var(--navy)}
+.sec-mkt-range{font-size:11px;color:var(--muted)}
 </style>
 <link rel="stylesheet" href="assets/css/site.css" />
 <script defer src="assets/js/site.js"></script>
@@ -406,6 +441,36 @@ body{background:var(--bone);color:var(--ink);font-family:var(--sans);font-size:1
   </div>
 </div>
 
+  <!-- Mode Toggle -->
+  <div class="mode-toggle" style="margin-top:24px">
+    <button class="mode-btn active" id="mode-terreno" type="button">Terreno</button>
+    <button class="mode-btn" id="mode-refit" type="button">Activo Construido (Refit)</button>
+  </div>
+
+  <!-- Refit Fields (hidden by default) -->
+  <div class="refit-fields" id="refit-fields">
+    <div class="refit-hdr">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" width="14" height="14"><rect x="3" y="5" width="14" height="12" rx="1.5"/><path d="M3 9h14M7 5V3M13 5V3"/></svg>
+      Datos de construcción existente
+    </div>
+    <div class="field">
+      <label class="label" for="inp-builtsqm">M² construidos totales</label>
+      <input type="number" id="inp-builtsqm" class="input" placeholder="ej. 5000" min="1" step="1">
+      <span class="hint">Superficie total construida incluyendo estacionamiento. El 80% se considera espacio habitable.</span>
+    </div>
+    <div class="field">
+      <div class="label-row">
+        <label class="label" for="inp-discount">Descuento sobre preventa</label>
+        <span class="discount-val" id="discount-display">20%</span>
+      </div>
+      <div class="discount-slider-wrap">
+        <input type="range" class="discount-slider" id="inp-discount" min="15" max="25" value="20" step="1">
+        <div class="discount-labels"><span>15% (premium)</span><span>25% (estándar)</span></div>
+      </div>
+      <span class="hint">Descuento sobre precio de preventa según acabados, amenidades y estado del inmueble.</span>
+    </div>
+  </div>
+
   <button class="cta" id="cta" disabled>Calcular valor estimado</button>
 
   <!-- RESULTS -->
@@ -445,6 +510,29 @@ body{background:var(--bone);color:var(--ink);font-family:var(--sans);font-size:1
       </div>
 
       <div class="lambda-note" style="display:none">Rango basado en tasa de participación JV <span>λ ∈ [18%, 24%]</span> · Precio base: <span id="iv-pm">—</span> / m²</div>
+    </div>
+
+    <!-- Refit comparison (hidden unless refit mode) -->
+    <div class="refit-compare" id="refit-compare" style="display:none">
+      <div class="compare-card" id="compare-land">
+        <div class="compare-card-lbl">Valor Terreno (JV)</div>
+        <div class="compare-card-num" id="cmp-land-val">—</div>
+        <div class="compare-card-sub" id="cmp-land-sub">Basado en potencial de desarrollo</div>
+      </div>
+      <div class="compare-card" id="compare-refit">
+        <div class="compare-card-lbl">Valor Activo Construido</div>
+        <div class="compare-card-num" id="cmp-refit-val">—</div>
+        <div class="compare-card-sub" id="cmp-refit-sub">50% de ventas esperadas · 80% habitable</div>
+      </div>
+    </div>
+
+    <!-- Secondary market price/m² reference (hidden unless refit mode) -->
+    <div class="sec-mkt-ref" id="sec-mkt-ref" style="display:none">
+      <div>
+        <div class="sec-mkt-lbl">Precio mercado secundario / m²</div>
+        <div class="sec-mkt-range" id="sec-mkt-range">—</div>
+      </div>
+      <div class="sec-mkt-val" id="sec-mkt-val">—</div>
     </div>
 
     <!-- Cash + partial -->
@@ -580,8 +668,8 @@ const API_URL='https://calculadora-api-six.vercel.app/api/calculate';
 const MB='pk.eyJ1IjoiYWNwaWlpIiwiYSI6ImNtbjZxb2J6cTA4OG8yc3ByaGxuMjRyZWYifQ.ZCTSLjhAeApeD64Fsb5j6g';
 const BBOX=[-99.36,19.04,-98.94,19.59],CTR=[-99.1332,19.4326];
 let stimer=null,aidx=-1,res=[],lastQ='';
-const st={lat:null,lng:null,address:null,muni:null,zr:null,surface:null,buildable:null,units:null,uso:null};
-let lastCalc=null;
+const st={lat:null,lng:null,address:null,muni:null,zr:null,surface:null,buildable:null,units:null,uso:null,mode:'terreno',builtSqm:null,refitDiscount:0.20};
+let lastCalc=null;let lastRefitCalc=null;
 
 async function doSearch(q){
   if(!q||q.length<4){closeSug();return;}if(q===lastQ)return;lastQ=q;
@@ -616,12 +704,18 @@ function pick(i){const f=res[i];if(!f)return;const[lng,lat]=f.geometry.coordinat
   locCard.classList.add('on');closeSug();updateCTA();}
 
 async function doCalc(){
-  if(!st.lat||!st.surface||!st.buildable||!st.units||!st.uso||!st.zr)return null;
+  if(!st.lat||!st.zr)return null;
+  // Land mode requires all fields
+  if(st.mode==='terreno'&&(!st.surface||!st.buildable||!st.units||!st.uso))return null;
+  // Refit mode requires builtSqm + refitDiscount
+  if(st.mode==='refit'&&!st.builtSqm)return null;
   try{
-    const r=await fetch(API_URL,{method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({lat:st.lat,lng:st.lng,surface:st.surface,buildable:st.buildable,units:st.units,uso:st.uso,muni:st.muni})});
+    const body={lat:st.lat,lng:st.lng,surface:st.surface,buildable:st.buildable,units:st.units,uso:st.uso,muni:st.muni};
+    if(st.mode==='refit'){body.mode='refit';body.builtSqm=st.builtSqm;body.refitDiscount=st.refitDiscount;}
+    const r=await fetch(API_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
     const d=await r.json();
-    if(d.calc)return d.calc;
+    if(st.mode==='refit'&&d.refitCalc)return{mode:'refit',refitCalc:d.refitCalc,calc:d.calc};
+    if(d.calc)return{mode:'terreno',calc:d.calc};
     return null;
   }catch(e){log('API error:',e.message);return null;}
 }
@@ -631,12 +725,90 @@ const FMT=n=>new Intl.NumberFormat('es-MX').format(n);
 // Compact number: 1,250,000 → $1.25M
 function compact(n){if(n>=1e9)return'$'+(n/1e9).toFixed(2)+'B';if(n>=1e6)return'$'+(n/1e6).toFixed(2)+'M';if(n>=1e3)return'$'+(n/1e3).toFixed(0)+'K';return MXN(n);}
 function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
-function updateCTA(){cta.disabled=!(st.lat&&st.surface&&st.buildable&&st.units&&st.uso);}
-function upPartial(a,c){partial.textContent=MXN(a*c.jvMid+(1-a)*c.cashMid);}
+function updateCTA(){
+  if(st.mode==='refit'){cta.disabled=!(st.lat&&st.builtSqm);}
+  else{cta.disabled=!(st.lat&&st.surface&&st.buildable&&st.units&&st.uso);}
+}
+function upPartial(a,result){
+  if(result.mode==='refit'&&result.refitCalc){
+    const rc=result.refitCalc;
+    partial.textContent=MXN(a*rc.finalJvMid+(1-a)*rc.cashMid);
+  }else if(result.calc){
+    const c=result.calc;
+    partial.textContent=MXN(a*c.jvMid+(1-a)*c.cashMid);
+  }
+}
 
-function renderResults(c){
+function renderResults(result){
   const UL={habitacional:'Habitacional',habitacional_mixto:'Habitacional Mixto',habitacional_comercio_pb:'Habitacional con comercio en PB'};
   const zoneName=st.zr.zone.name+(st.zr.src==='muni'?' (alcaldía)':'');
+
+  if(result.mode==='refit'&&result.refitCalc){
+    const rc=result.refitCalc;
+    const c=rc.landCalc;
+
+    // Interval hero — show final (max) values
+    document.getElementById('res-zone-tag').innerHTML=
+      '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="13" height="13"><path d="M8 1.5C5.5 1.5 3.5 3.5 3.5 6c0 3.5 4.5 8.5 4.5 8.5s4.5-5 4.5-8.5C12.5 3.5 10.5 1.5 8 1.5z"/><circle cx="8" cy="6" r="1.5"/></svg> '+esc(zoneName);
+    document.getElementById('iv-lo').textContent=compact(rc.finalJvLo);
+    document.getElementById('iv-mid').textContent=compact(rc.finalJvMid);
+    const elHi=document.getElementById('iv-hi');if(elHi)elHi.textContent=compact(rc.finalJvHi);
+    document.getElementById('ibl-lo').textContent=MXN(rc.finalJvLo);
+    document.getElementById('ibl-hi').textContent=MXN(rc.finalJvHi);
+    document.getElementById('iv-pm').textContent=MXN(rc.Pm);
+
+    // Refit comparison cards
+    const cmpEl=document.getElementById('refit-compare');cmpEl.style.display='';
+    const landCard=document.getElementById('compare-land');
+    const refitCard=document.getElementById('compare-refit');
+    document.getElementById('cmp-land-val').textContent=c?MXN(c.jvMid):'N/A';
+    document.getElementById('cmp-refit-val').textContent=MXN(rc.builtAssetJV);
+    document.getElementById('cmp-refit-sub').textContent='50% × '+FMT(Math.round(rc.livingSqm))+' m² hab × '+MXN(rc.discountedPrice)+'/m²';
+    // Winner badge
+    landCard.classList.toggle('winner',rc.winner==='land');
+    refitCard.classList.toggle('winner',rc.winner==='refit');
+    landCard.querySelector('.compare-card-badge')?.remove();
+    refitCard.querySelector('.compare-card-badge')?.remove();
+    if(rc.winner==='land'){const b=document.createElement('div');b.className='compare-card-badge';b.textContent='Mayor';landCard.appendChild(b);}
+    else{const b=document.createElement('div');b.className='compare-card-badge';b.textContent='Mayor';refitCard.appendChild(b);}
+
+    // Secondary market price/m²
+    const smEl=document.getElementById('sec-mkt-ref');smEl.style.display='';
+    document.getElementById('sec-mkt-val').textContent=MXN(rc.secMktPriceMid)+' /m²';
+    document.getElementById('sec-mkt-range').textContent='Rango: '+MXN(rc.secMktPriceLo)+' — '+MXN(rc.secMktPriceHi)+' /m²';
+
+    // Cash
+    document.getElementById('vc-cash').textContent=MXN(rc.cashMid);
+    document.getElementById('vc-cash-sub').textContent='Duración Promedio del Proyecto: · '+rc.t+' años';
+    document.getElementById('vc-tes').textContent=c?MXN(c.TES):'—';
+    document.getElementById('vc-tes-sub').textContent='Base de valuación terreno';
+
+    // Breakdown
+    document.getElementById('bd-zone').textContent=zoneName;
+    document.getElementById('bd-pm').textContent=MXN(rc.Pm)+' / m²';
+    document.getElementById('bd-x').textContent=st.surface?FMT(st.surface)+' m²':'—';
+    document.getElementById('bd-sb').textContent=st.buildable?FMT(st.buildable)+' m²':'—';
+    document.getElementById('bd-a').textContent=c?FMT(Math.round(c.A))+' m²':'—';
+    document.getElementById('bd-uso').textContent=st.uso?UL[st.uso]:'—';
+
+    // Partial slider
+    const a=slider.value/100;alphaDisp.textContent=slider.value+'%';
+    upPartial(a,result);
+    lastRefitCalc=result;lastCalc=null;
+
+    results.classList.add('on');
+    results.scrollIntoView({behavior:'smooth',block:'start'});
+    log('refit result:',{finalJvMid:rc.finalJvMid,builtAssetJV:rc.builtAssetJV,landJvMid:rc.landJvMid,winner:rc.winner,cash:rc.cashMid});
+    return;
+  }
+
+  // Standard land-only mode
+  const c=result.calc;
+  if(!c)return;
+
+  // Hide refit-specific elements
+  document.getElementById('refit-compare').style.display='none';
+  document.getElementById('sec-mkt-ref').style.display='none';
 
   // Interval hero
   document.getElementById('res-zone-tag').innerHTML=
@@ -668,7 +840,9 @@ function renderResults(c){
   document.getElementById('bd-t').textContent=c.t+' años';
 
   // Partial slider
-  const a=slider.value/100;alphaDisp.textContent=slider.value+'%';upPartial(a,c);
+  const a=slider.value/100;alphaDisp.textContent=slider.value+'%';
+  upPartial(a,result);
+  lastCalc=result;lastRefitCalc=null;
 
   results.classList.add('on');
   results.scrollIntoView({behavior:'smooth',block:'start'});
@@ -676,8 +850,11 @@ function renderResults(c){
 
 
 // Send lead data to Google Sheets
-  function sendLeadEmail(calc) {
+  function sendLeadEmail(result) {
       try {
+            const isRefit = result.mode === 'refit';
+            const calc = isRefit ? result.refitCalc : result.calc;
+            if (!calc) return;
             const data = {
                     fecha: new Date().toLocaleString('es-MX'),
                     direccion: st.address || 'No especificada',
@@ -688,10 +865,12 @@ function renderResults(c){
                     m2_construibles: st.buildable ? String(st.buildable) : '-',
                     unidades: st.units,
                     uso_de_suelo: st.uso || '-',
-                    valor_jv: calc.jvMid ? Math.round(calc.jvMid) : '-',
+                    modo: isRefit ? 'refit' : 'terreno',
+                    m2_construidos: isRefit ? String(st.builtSqm) : '-',
+                    descuento_refit: isRefit ? (st.refitDiscount * 100) + '%' : '-',
+                    valor_jv: isRefit ? Math.round(calc.finalJvMid) : (calc.jvMid ? Math.round(calc.jvMid) : '-'),
                     valor_efectivo: calc.cashMid ? Math.round(calc.cashMid) : '-'
             };
-            // Replace with your Apps Script deployment URL
             const scriptUrl = 'https://script.google.com/macros/s/AKfycbzx9ywA4EvKpChIrYxd57adlU9iWACAAVUWFWWSbk09BrAzv-HB9VEzkhi8BSIVjlw-/exec';
             fetch(scriptUrl, {
                     method: 'POST',
@@ -702,6 +881,17 @@ function renderResults(c){
 // DOM refs
 const aIn=document.getElementById('address-input'),sugEl=document.getElementById('suggestions'),locCard=document.getElementById('loc-card'),locName=document.getElementById('loc-name'),zoneBadge=document.getElementById('loc-zone-badge'),cLat=document.getElementById('c-lat'),cLng=document.getElementById('c-lng'),locClear=document.getElementById('loc-clear'),inpS=document.getElementById('inp-surface'),inpB=document.getElementById('inp-buildable'),inpU=document.getElementById('inp-units'),inpUso=document.getElementById('inp-uso'),helpBtn=document.getElementById('help-btn'),seduvi=document.getElementById('seduvi-panel'),cta=document.getElementById('cta'),results=document.getElementById('results'),slider=document.getElementById('alpha-slider'),alphaDisp=document.getElementById('alpha-display'),partial=document.getElementById('res-partial');
 
+// Refit DOM refs
+const modeTerreno=document.getElementById('mode-terreno'),modeRefit=document.getElementById('mode-refit'),refitFields=document.getElementById('refit-fields'),inpBuiltSqm=document.getElementById('inp-builtsqm'),inpDiscount=document.getElementById('inp-discount'),discountDisp=document.getElementById('discount-display');
+
+// Mode toggle handlers
+modeTerreno.addEventListener('click',()=>{st.mode='terreno';modeTerreno.classList.add('active');modeRefit.classList.remove('active');refitFields.classList.remove('on');results.classList.remove('on');updateCTA();});
+modeRefit.addEventListener('click',()=>{st.mode='refit';modeRefit.classList.add('active');modeTerreno.classList.remove('active');refitFields.classList.add('on');results.classList.remove('on');updateCTA();});
+
+// Refit input handlers
+inpBuiltSqm.addEventListener('input',()=>{if(parseFloat(inpBuiltSqm.value)<0||inpBuiltSqm.value==='-'){inpBuiltSqm.value='';}const v=parseFloat(inpBuiltSqm.value);st.builtSqm=v>0?v:null;updateCTA();});
+inpDiscount.addEventListener('input',()=>{st.refitDiscount=parseInt(inpDiscount.value)/100;discountDisp.textContent=inpDiscount.value+'%';});
+
 aIn.addEventListener('input',()=>{st.lat=st.lng=st.address=st.muni=st.zr=null;locCard.classList.remove('on');updateCTA();clearTimeout(stimer);const q=aIn.value.trim();if(q.length>=4)stimer=setTimeout(()=>doSearch(q),380);else closeSug();});
 aIn.addEventListener('keydown',e=>{const items=sugEl.querySelectorAll('.s-item');if(!items.length||!sugEl.classList.contains('open'))return;if(e.key==='ArrowDown'){e.preventDefault();aidx=Math.min(aidx+1,items.length-1);}else if(e.key==='ArrowUp'){e.preventDefault();aidx=Math.max(aidx-1,0);}else if(e.key==='Enter'&&aidx>=0){e.preventDefault();pick(aidx);return;}else if(e.key==='Escape'){closeSug();return;}items.forEach((el,i)=>el.classList.toggle('active',i===aidx));if(aidx>=0)items[aidx].scrollIntoView({block:'nearest'});});
 document.addEventListener('click',e=>{if(!e.target.closest('.addr-wrap'))closeSug();});
@@ -711,8 +901,8 @@ inpB.addEventListener('input',()=>{if(parseFloat(inpB.value)<0||inpB.value==='-'
 inpU.addEventListener('input',()=>{if(parseInt(inpU.value)<0||inpU.value==='-'){inpU.value='';}const v=parseInt(inpU.value);st.units=v>0?v:null;updateCTA();});
 inpUso.addEventListener('change',()=>{st.uso=inpUso.value||null;updateCTA();});
 helpBtn.addEventListener('click',()=>{const h=seduvi.hasAttribute('hidden');h?seduvi.removeAttribute('hidden'):seduvi.setAttribute('hidden','');helpBtn.style.background=h?'var(--gold-pale)':'';});
-slider.addEventListener('input',()=>{const a=slider.value/100;alphaDisp.textContent=slider.value+'%';if(lastCalc)upPartial(a,lastCalc);});
-cta.addEventListener('click',async()=>{cta.disabled=true;cta.textContent='Calculando...';try{const c=await doCalc();if(!c){cta.disabled=false;cta.textContent='Calcular valor';return;}lastCalc=c;renderResults(c);sendLeadEmail(c);}finally{cta.disabled=false;cta.textContent='Calcular valor';}});
+slider.addEventListener('input',()=>{const a=slider.value/100;alphaDisp.textContent=slider.value+'%';if(lastCalc)upPartial(a,lastCalc);if(lastRefitCalc)upPartial(a,lastRefitCalc);});
+cta.addEventListener('click',async()=>{cta.disabled=true;cta.textContent='Calculando...';try{const result=await doCalc();if(!result){cta.disabled=false;cta.textContent='Calcular valor';return;}renderResults(result);sendLeadEmail(result);}finally{cta.disabled=false;cta.textContent='Calcular valor';}});
 log('Calculadora v2.0 API | ?debug=1 para log en página');
 </script>
 </body>

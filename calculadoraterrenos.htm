@@ -324,6 +324,9 @@ body{background:var(--bone);color:var(--ink);font-family:var(--sans);font-size:1
 .sec-mkt-lbl{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 .sec-mkt-val{font-family:var(--serif);font-size:18px;font-weight:600;color:var(--navy)}
 .sec-mkt-range{font-size:11px;color:var(--muted)}
+.quality-btn{flex:1;padding:10px 8px;border:1.5px solid var(--border);border-radius:8px;background:transparent;color:var(--muted);font-size:.92rem;cursor:pointer;transition:all .2s;font-family:inherit;}
+.quality-btn.active{border-color:var(--gold);background:rgba(201,168,76,.12);color:var(--gold);font-weight:600;}
+.quality-btn:hover:not(.active){border-color:var(--gold);color:var(--txt);}
 </style>
 <link rel="stylesheet" href="assets/css/site.css" />
 <script defer src="assets/js/site.js"></script>
@@ -444,7 +447,7 @@ body{background:var(--bone);color:var(--ink);font-family:var(--sans);font-size:1
   <!-- Mode Toggle -->
   <div class="mode-toggle" style="margin-top:24px">
     <button class="mode-btn active" id="mode-terreno" type="button">Terreno</button>
-    <button class="mode-btn" id="mode-refit" type="button">Terreno + Construcción</button>
+    <button class="mode-btn" id="mode-refit" type="button">Terreno o Terreno+Construcción</button>
   </div>
 
   <!-- Refit Fields (hidden by default) -->
@@ -459,15 +462,13 @@ body{background:var(--bone);color:var(--ink);font-family:var(--sans);font-size:1
       <span class="hint">Superficie total construida incluyendo estacionamiento. El 80% se considera espacio habitable.</span>
     </div>
     <div class="field">
-      <div class="label-row">
-        <label class="label" for="inp-discount">Descuento sobre preventa</label>
-        <span class="discount-val" id="discount-display">20%</span>
+      <label class="label">Calidad de Acabados y Amenidades</label>
+      <div class="quality-btns" id="quality-btns" style="display:flex;gap:8px;margin-top:6px;">
+        <button type="button" class="quality-btn" data-discount="25" id="q-basico">Básico</button>
+        <button type="button" class="quality-btn active" data-discount="20" id="q-bueno">Bueno</button>
+        <button type="button" class="quality-btn" data-discount="15" id="q-excelente">Excelente</button>
       </div>
-      <div class="discount-slider-wrap">
-        <input type="range" class="discount-slider" id="inp-discount" min="15" max="25" value="20" step="1">
-        <div class="discount-labels"><span>15% (premium)</span><span>25% (estándar)</span></div>
-      </div>
-      <span class="hint">Descuento sobre precio de preventa según acabados, amenidades y estado del inmueble.</span>
+      <span class="hint">Selecciona el nivel de calidad del inmueble.</span>
     </div>
   </div>
 
@@ -522,7 +523,7 @@ body{background:var(--bone);color:var(--ink);font-family:var(--sans);font-size:1
       <div class="compare-card" id="compare-refit">
         <div class="compare-card-lbl">Valor Activo Construido</div>
         <div class="compare-card-num" id="cmp-refit-val">—</div>
-        <div class="compare-card-sub" id="cmp-refit-sub">50% de ventas esperadas · 80% habitable</div>
+        <div class="compare-card-sub" id="cmp-refit-sub" style="display:none"></div>
       </div>
     </div>
 
@@ -703,6 +704,7 @@ function pick(i){const f=res[i];if(!f)return;const[lng,lat]=f.geometry.coordinat
   cLat.textContent=lat.toFixed(6);cLng.textContent=lng.toFixed(6);
   locCard.classList.add('on');closeSug();updateCTA();}
 
+function recalcCash(jv,t){const r1=0.12,r2=0.07;if(t<=5)return jv/Math.pow(1+r1,t);return jv/(Math.pow(1+r1,5)*Math.pow(1+r2,t-5));}
 async function doCalc(){
   if(!st.lat||!st.zr)return null;
   // Land mode requires all fields
@@ -714,8 +716,8 @@ async function doCalc(){
     if(st.mode==='refit'){body.mode='refit';body.builtSqm=st.builtSqm;body.refitDiscount=st.refitDiscount;}
     const r=await fetch(API_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
     const d=await r.json();
-    if(st.mode==='refit'&&d.refitCalc)return{mode:'refit',refitCalc:d.refitCalc,calc:d.calc};
-    if(d.calc)return{mode:'terreno',calc:d.calc};
+    if(st.mode==='refit'&&d.refitCalc){const rc=d.refitCalc;rc.cashMid=recalcCash(rc.finalJvMid,rc.t);rc.cashLo=recalcCash(rc.finalJvLo,rc.t);rc.cashHi=recalcCash(rc.finalJvHi,rc.t);if(rc.landCalc){rc.landCalc.cashMid=recalcCash(rc.landCalc.jvMid,rc.landCalc.t);rc.landCalc.cashLo=recalcCash(rc.landCalc.jvLo,rc.landCalc.t);rc.landCalc.cashHi=recalcCash(rc.landCalc.jvHi,rc.landCalc.t);}return{mode:'refit',refitCalc:rc,calc:d.calc};}
+    if(d.calc){const c=d.calc;c.cashMid=recalcCash(c.jvMid,c.t);c.cashLo=recalcCash(c.jvLo,c.t);c.cashHi=recalcCash(c.jvHi,c.t);return{mode:'terreno',calc:c};}
     return null;
   }catch(e){log('API error:',e.message);return null;}
 }
@@ -763,7 +765,7 @@ function renderResults(result){
     const refitCard=document.getElementById('compare-refit');
     document.getElementById('cmp-land-val').textContent=c?MXN(c.jvMid):'N/A';
     document.getElementById('cmp-refit-val').textContent=MXN(rc.builtAssetJV);
-    document.getElementById('cmp-refit-sub').textContent='50% × '+FMT(Math.round(rc.livingSqm))+' m² hab × '+MXN(rc.discountedPrice)+'/m²';
+    document.getElementById('cmp-refit-sub').textContent='';document.getElementById('cmp-refit-sub').style.display='none';
     // Winner badge
     landCard.classList.toggle('winner',rc.winner==='land');
     refitCard.classList.toggle('winner',rc.winner==='refit');
@@ -882,7 +884,7 @@ function renderResults(result){
 const aIn=document.getElementById('address-input'),sugEl=document.getElementById('suggestions'),locCard=document.getElementById('loc-card'),locName=document.getElementById('loc-name'),zoneBadge=document.getElementById('loc-zone-badge'),cLat=document.getElementById('c-lat'),cLng=document.getElementById('c-lng'),locClear=document.getElementById('loc-clear'),inpS=document.getElementById('inp-surface'),inpB=document.getElementById('inp-buildable'),inpU=document.getElementById('inp-units'),inpUso=document.getElementById('inp-uso'),helpBtn=document.getElementById('help-btn'),seduvi=document.getElementById('seduvi-panel'),cta=document.getElementById('cta'),results=document.getElementById('results'),slider=document.getElementById('alpha-slider'),alphaDisp=document.getElementById('alpha-display'),partial=document.getElementById('res-partial');
 
 // Refit DOM refs
-const modeTerreno=document.getElementById('mode-terreno'),modeRefit=document.getElementById('mode-refit'),refitFields=document.getElementById('refit-fields'),inpBuiltSqm=document.getElementById('inp-builtsqm'),inpDiscount=document.getElementById('inp-discount'),discountDisp=document.getElementById('discount-display');
+const modeTerreno=document.getElementById('mode-terreno'),modeRefit=document.getElementById('mode-refit'),refitFields=document.getElementById('refit-fields'),inpBuiltSqm=document.getElementById('inp-builtsqm'),qualityBtns=document.getElementById('quality-btns');
 
 // Mode toggle handlers
 modeTerreno.addEventListener('click',()=>{st.mode='terreno';modeTerreno.classList.add('active');modeRefit.classList.remove('active');refitFields.classList.remove('on');results.classList.remove('on');updateCTA();});
@@ -890,7 +892,7 @@ modeRefit.addEventListener('click',()=>{st.mode='refit';modeRefit.classList.add(
 
 // Refit input handlers
 inpBuiltSqm.addEventListener('input',()=>{if(parseFloat(inpBuiltSqm.value)<0||inpBuiltSqm.value==='-'){inpBuiltSqm.value='';}const v=parseFloat(inpBuiltSqm.value);st.builtSqm=v>0?v:null;updateCTA();});
-inpDiscount.addEventListener('input',()=>{st.refitDiscount=parseInt(inpDiscount.value)/100;discountDisp.textContent=inpDiscount.value+'%';});
+qualityBtns.querySelectorAll('.quality-btn').forEach(btn=>{btn.addEventListener('click',function(){qualityBtns.querySelectorAll('.quality-btn').forEach(b=>b.classList.remove('active'));this.classList.add('active');st.refitDiscount=parseInt(this.dataset.discount)/100;});});
 
 aIn.addEventListener('input',()=>{st.lat=st.lng=st.address=st.muni=st.zr=null;locCard.classList.remove('on');updateCTA();clearTimeout(stimer);const q=aIn.value.trim();if(q.length>=4)stimer=setTimeout(()=>doSearch(q),380);else closeSug();});
 aIn.addEventListener('keydown',e=>{const items=sugEl.querySelectorAll('.s-item');if(!items.length||!sugEl.classList.contains('open'))return;if(e.key==='ArrowDown'){e.preventDefault();aidx=Math.min(aidx+1,items.length-1);}else if(e.key==='ArrowUp'){e.preventDefault();aidx=Math.max(aidx-1,0);}else if(e.key==='Enter'&&aidx>=0){e.preventDefault();pick(aidx);return;}else if(e.key==='Escape'){closeSug();return;}items.forEach((el,i)=>el.classList.toggle('active',i===aidx));if(aidx>=0)items[aidx].scrollIntoView({block:'nearest'});});

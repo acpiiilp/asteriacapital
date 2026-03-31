@@ -1,21 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-16906201019"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'AW-16906201019')
-<!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16906201019"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-16906201019'); </script>
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Calculadora de Valor de Terreno en CDMX — Asteria Capital</title>
 <link rel="canonical" href="https://asteriacapital.org/calculadoraterrenos.htm">
 <meta property="og:url" content="https://asteriacapital.org/calculadoraterrenos.htm">
-<meta name="description" content"Calcula el valor estimado de tu terreno en la Ciudad de México. Herramienta gratuita que analiza zona, densidad, uso de suelo y potencial de desarrollo inmobiliario para estimar el valor de aportación (JV) y compra en efectivo.">
+<meta name="description" content"Calcla el valor estimado de tu terreno en la Ciudad de México. Herramienta gratuita que analiza zona, densidad, uso de suelo y potencial de desarrollo inmobiliario para estimar el valor de aportación (JV) y compra en efectivo.">
 <meta name="keywords" content="valor terreno CDMX, calculadora terreno Ciudad de México, valuación inmobiliaria, precio metro cuadrado CDMX, Asteria Capital, desarrollo inmobiliario, aportación terreno, joint venture inmobiliario">
 <meta name="author" content="Asteria Capital">
 <meta name="robots" content="index, follow">
@@ -327,6 +319,41 @@ body{background:var(--bone);color:var(--ink);font-family:var(--sans);font-size:1
 .quality-btn{flex:1;padding:10px 8px;border:1.5px solid var(--border);border-radius:8px;background:transparent;color:var(--muted);font-size:.92rem;cursor:pointer;transition:all .2s;font-family:inherit;}
 .quality-btn.active{border-color:var(--gold);background:rgba(201,168,76,.12);color:var(--gold);font-weight:600;}
 .quality-btn:hover:not(.active){border-color:var(--gold);color:var(--txt);}
+
+/* Simple 2-card output */
+.simple-val-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+.simple-val-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+.simple-val-card--accent {
+  border-color: rgba(197,168,99,0.4);
+  background: rgba(197,168,99,0.06);
+}
+.simple-val-lbl {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted, #8a9bb0);
+  margin-bottom: 0.75rem;
+}
+.simple-val-num {
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 700;
+  color: var(--gold, #c5a863);
+  letter-spacing: -0.01em;
+}
+@media (max-width: 540px) {
+  .simple-val-grid { grid-template-columns: 1fr; }
+}
 </style>
 <link rel="stylesheet" href="assets/css/site.css" />
 <script defer src="assets/js/site.js"></script>
@@ -474,13 +501,24 @@ body{background:var(--bone);color:var(--ink);font-family:var(--sans);font-size:1
 
   <button class="cta" id="cta" disabled>Calcular valor estimado</button>
 
-  <!-- RESULTS -->
-  <div class="results" id="results">
+  <!-- RESULTS -->  <div class="results" id="results">
 
     <p class="res-eyebrow">Estimación de valor · Terreno</p>
 
+    <!-- Simple 2-card output -->
+    <div class="simple-val-grid">
+      <div class="simple-val-card">
+        <div class="simple-val-lbl">Valor en Aportación</div>
+        <div class="simple-val-num" id="disp-jv">—</div>
+      </div>
+      <div class="simple-val-card simple-val-card--accent">
+        <div class="simple-val-lbl">Valor Pago de Contado</div>
+        <div class="simple-val-num" id="disp-cash">—</div>
+      </div>
+    </div>
+
     <!-- Interval hero -->
-    <div class="interval-hero">
+    <div class="interval-hero" style="display:none">
       <div class="interval-zone-tag" id="res-zone-tag">
         <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="13" height="13"><path d="M8 1.5C5.5 1.5 3.5 3.5 3.5 6c0 3.5 4.5 8.5 4.5 8.5s4.5-5 4.5-8.5C12.5 3.5 10.5 1.5 8 1.5z"/><circle cx="8" cy="6" r="1.5"/></svg>
         —
@@ -551,7 +589,7 @@ body{background:var(--bone);color:var(--ink);font-family:var(--sans);font-size:1
     </div>
 
     <!-- Alpha slider -->
-    <div class="alpha-wrap">
+    <div class="alpha-wrap" style="display:none">
       <div class="alpha-hdr"><span class="alpha-lbl">Aportación en especie (α)</span><span class="alpha-val" id="alpha-display">50%</span></div>
       <input type="range" class="alpha-slider" id="alpha-slider" min="0" max="100" value="50" step="5">
       <div class="alpha-labels"><span>100% efectivo</span><span>Mixto</span><span>100% en aportación</span></div>
@@ -562,7 +600,7 @@ body{background:var(--bone);color:var(--ink);font-family:var(--sans);font-size:1
     <div class="breakdown">
       <div class="bd-sec"><span class="bd-sec-lbl">Inputs</span></div>
       <div class="bd-row"><span class="bd-lbl">Zona detectada</span><span class="bd-val" id="bd-zone">—</span></div>
-      <div class="bd-row"><span class="bd-lbl">Precio de mercado / m²</span><span class="bd-val" id="bd-pm">—</span></div>
+      <div class="bd-row" style="display:none"><span class="bd-lbl">Precio de mercado / m²</span><span class="bd-val" id="bd-pm">—</span></div>
       <div class="bd-row"><span class="bd-lbl">Superficie terreno (x)</span><span class="bd-val" id="bd-x">—</span></div>
       <div class="bd-row"><span class="bd-lbl">M² construibles</span><span class="bd-val" id="bd-sb">—</span></div>
       <div class="bd-row"><span class="bd-lbl">Tamaño promedio de departamento</span><span class="bd-val" id="bd-a">—</span></div>
@@ -754,6 +792,7 @@ function renderResults(result){
       '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="13" height="13"><path d="M8 1.5C5.5 1.5 3.5 3.5 3.5 6c0 3.5 4.5 8.5 4.5 8.5s4.5-5 4.5-8.5C12.5 3.5 10.5 1.5 8 1.5z"/><circle cx="8" cy="6" r="1.5"/></svg> '+esc(zoneName);
     document.getElementById('iv-lo').textContent=compact(rc.finalJvLo);
     document.getElementById('iv-mid').textContent=compact(rc.finalJvMid);
+  document.getElementById('disp-jv').textContent=MXN(rc.finalJvMid);
     const elHi=document.getElementById('iv-hi');if(elHi)elHi.textContent=compact(rc.finalJvHi);
     document.getElementById('ibl-lo').textContent=MXN(rc.finalJvLo);
     document.getElementById('ibl-hi').textContent=MXN(rc.finalJvHi);
@@ -781,6 +820,7 @@ function renderResults(result){
 
     // Cash
     document.getElementById('vc-cash').textContent=MXN(rc.cashMid);
+  document.getElementById('disp-cash').textContent=MXN(rc.cashMid);
     document.getElementById('vc-cash-sub').textContent='Duración Promedio del Proyecto: · '+rc.t+' años';
     document.getElementById('vc-tes').textContent=c?MXN(c.TES):'—';
     document.getElementById('vc-tes-sub').textContent='Base de valuación terreno';
@@ -817,6 +857,7 @@ function renderResults(result){
     '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="13" height="13"><path d="M8 1.5C5.5 1.5 3.5 3.5 3.5 6c0 3.5 4.5 8.5 4.5 8.5s4.5-5 4.5-8.5C12.5 3.5 10.5 1.5 8 1.5z"/><circle cx="8" cy="6" r="1.5"/></svg> '+esc(zoneName);
   document.getElementById('iv-lo').textContent=compact(c.jvLo);
   document.getElementById('iv-mid').textContent=compact(c.jvMid);
+  document.getElementById('disp-jv').textContent=MXN(c.jvMid);
   const elHi=document.getElementById('iv-hi');if(elHi)elHi.textContent=compact(c.jvHi);
   document.getElementById('ibl-lo').textContent=MXN(c.jvLo);
   document.getElementById('ibl-hi').textContent=MXN(c.jvHi);
@@ -824,6 +865,7 @@ function renderResults(result){
 
   // Cash + TES
   document.getElementById('vc-cash').textContent=MXN(c.cashMid);
+  document.getElementById('disp-cash').textContent=MXN(c.cashMid);
   document.getElementById('vc-cash-sub').textContent='Duración Promedio del Proyecto: · '+c.t+' años';
   document.getElementById('vc-tes').textContent=MXN(c.TES);
   document.getElementById('vc-tes-sub').textContent='Base de valuación';

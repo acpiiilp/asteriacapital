@@ -389,7 +389,7 @@ body{background:var(--bone);color:var(--ink);font-family:var(--sans);font-size:1
 <div class="card">
   <p class="eyebrow">Asteria Capital · Valuación</p>
   <h1 class="title">¿Cuánto vale<br><em>tu terreno</em> en CDMX?</h1>
-  <p class="subtitle">Ingresa los datos de tu predio y calcularemos el valor estimado con base en zona, densidad, uso de suelo y potencial de desarrollo. (Asteria Capital no es un perito valuador, no recabamos datos personales a traves de esta consulta, solamente datos de la consulta para propositos de mejoramiento de la plataforma).</p>
+  <p class="subtitle">Ingresa los datos de tu predio y calcularemos el valor estimado con base en zona, densidad, uso de suelo y potencial de desarrollo. (Asteria Capital no es un perito valuador).</p>
 
   <!-- 1. Dirección -->
   <div class="field">
@@ -498,7 +498,13 @@ body{background:var(--bone);color:var(--ink);font-family:var(--sans);font-size:1
       <span class="hint">Selecciona el nivel de calidad del inmueble.</span>
     </div>
   </div>
+  
+<p style="font-family: var(--sans); font-size: 11px; color: var(--muted); margin-bottom: 12px; line-height: 1.4;">
+    Al utilizar esta herramienta, los datos ingresados se registran con fines estadísticos y analíticos conforme a nuestro 
+    <a href="/privacidad" target="_blank" style="color: var(--gold); text-decoration: none;">Aviso de Privacidad</a>.
+</p>
 
+<button id="calc" class="cta" disabled>Calcular valor estimado</button>
   <button class="cta" id="cta" disabled>Calcular valor estimado</button>
 
   <!-- RESULTS -->  <div class="results" id="results">

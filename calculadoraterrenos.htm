@@ -747,7 +747,6 @@ function pick(i){const f=res[i];if(!f)return;const[lng,lat]=f.geometry.coordinat
   cLat.textContent=lat.toFixed(6);cLng.textContent=lng.toFixed(6);
   locCard.classList.add('on');closeSug();updateCTA();}
 
-function recalcCash(jv,t){const r1=0.12,r2=0.07;if(t<=5)return jv/Math.pow(1+r1,t);return jv/(Math.pow(1+r1,5)*Math.pow(1+r2,t-5));}
 async function doCalc(){
   if(!st.lat||!st.zr)return null;
   // Land mode requires all fields
@@ -759,8 +758,8 @@ async function doCalc(){
     if(st.mode==='refit'){body.mode='refit';body.builtSqm=st.builtSqm;body.refitDiscount=st.refitDiscount;}
     const r=await fetch(API_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
     const d=await r.json();
-    if(st.mode==='refit'&&d.refitCalc){const rc=d.refitCalc;rc.cashMid=recalcCash(rc.finalJvMid,rc.t);rc.cashLo=recalcCash(rc.finalJvLo,rc.t);rc.cashHi=recalcCash(rc.finalJvHi,rc.t);if(rc.landCalc){rc.landCalc.cashMid=recalcCash(rc.landCalc.jvMid,rc.landCalc.t);rc.landCalc.cashLo=recalcCash(rc.landCalc.jvLo,rc.landCalc.t);rc.landCalc.cashHi=recalcCash(rc.landCalc.jvHi,rc.landCalc.t);}return{mode:'refit',refitCalc:rc,calc:d.calc};}
-    if(d.calc){const c=d.calc;c.cashMid=recalcCash(c.jvMid,c.t);c.cashLo=recalcCash(c.jvLo,c.t);c.cashHi=recalcCash(c.jvHi,c.t);return{mode:'terreno',calc:c};}
+    if(st.mode==='refit'&&d.refitCalc){const rc=d.refitCalc;return{mode:'refit',refitCalc:rc,calc:d.calc};}
+    if(d.calc){const c=d.calc;return{mode:'terreno',calc:c};}
     return null;
   }catch(e){log('API error:',e.message);return null;}
 }

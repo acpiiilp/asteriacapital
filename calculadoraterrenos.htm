@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-16906201019"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-16906201019');
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -841,6 +848,7 @@ function renderResults(result){
     const a=slider.value/100;alphaDisp.textContent=slider.value+'%';
     upPartial(a,result);
     lastRefitCalc=result;lastCalc=null;
+    gtag('event','conversion',{'send_to':'AW-16906201019/_XzfCPiF25IcELvPwP0-'});
 
     results.classList.add('on');
     results.scrollIntoView({behavior:'smooth',block:'start'});
@@ -891,6 +899,7 @@ function renderResults(result){
   const a=slider.value/100;alphaDisp.textContent=slider.value+'%';
   upPartial(a,result);
   lastCalc=result;lastRefitCalc=null;
+  gtag('event','conversion',{'send_to':'AW-16906201019/_XzfCPiF25IcELvPwP0-'});
 
   results.classList.add('on');
   results.scrollIntoView({behavior:'smooth',block:'start'});

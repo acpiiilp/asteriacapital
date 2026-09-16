@@ -40,7 +40,8 @@
   // Active nav link
   const path = window.location.pathname.split('/').pop() || 'index.htm';
   document.querySelectorAll('.nav-links a, .nav__panel a').forEach(a=>{
-    const href = (a.getAttribute('href')||'').split('#')[0];
+    let href = (a.getAttribute('href')||'').split('#')[0];
+    if(href === '/') href = 'index.htm';
     if(href && href !== '' && (href === path || (href === 'index.htm' && (path === '' || path === 'asteriacapital')))) {
       a.classList.add('active');
     }

@@ -26,45 +26,29 @@
   setTimeout(go,1400);
   if(d.fonts&&d.fonts.ready){ Promise.race([d.fonts.ready,new Promise(function(r){setTimeout(r,900);})]).then(go); } else go();
 
-  // hero: interior cut lens (magnifier) on the tower
+  // hero: the tower opens to show its interiors on hover (tap on touch screens)
   (function(){
-    var svg=d.querySelector('.elev'); if(!svg) return;
-    var c=d.getElementById('lensC'), bg=d.getElementById('lensBg'), mag=d.getElementById('mag'), ui=d.getElementById('lensUI');
-    var S=3.2, BOX={x0:600,x1:930,y0:10,y1:670}, coarse=window.matchMedia('(pointer:coarse)').matches;
-    var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches, demo=null;
-    var hintTxt=d.querySelector('.hint__txt');
-    if(coarse&&hintTxt) hintTxt.textContent='Toca la torre para ver el interior';
-    function place(x,y){
-      c.setAttribute('cx',x); c.setAttribute('cy',y); bg.setAttribute('cx',x); bg.setAttribute('cy',y);
-      ui.setAttribute('transform','translate('+x+' '+y+')');
-      mag.setAttribute('transform','translate('+x+' '+y+') scale('+S+') translate('+(-x)+' '+(-y)+')');
-    }
+    var svg=d.querySelector('.elev'); if(!svg||!hero) return;
+    var BOX={x0:640,x1:900,y0:0,y1:572}, coarse=window.matchMedia('(pointer:coarse)').matches;
+    var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches, demoT=null;
+    var txt=d.querySelector('.tower-hint__txt');
+    if(coarse&&txt) txt.textContent='Toca la torre para verla por dentro';
     function toSvg(e){ var p=svg.createSVGPoint(); p.x=e.clientX; p.y=e.clientY; var m=svg.getScreenCTM(); return m?p.matrixTransform(m.inverse()):null; }
     function inBox(p){ return p&&p.x>BOX.x0&&p.x<BOX.x1&&p.y>BOX.y0&&p.y<BOX.y1; }
-    function stopDemo(){ if(demo){ cancelAnimationFrame(demo); demo=null; } }
+    function set(on){ hero.classList.toggle('open',on); }
     svg.addEventListener('pointermove',function(e){
       if(e.pointerType==='touch') return;
-      var p=toSvg(e); stopDemo();
-      if(inBox(p)){ place(p.x,p.y); hero.classList.add('lens-on','lens-used'); } else hero.classList.remove('lens-on');
+      var on=inBox(toSvg(e)); if(on){ clearTimeout(demoT); hero.classList.add('used'); } set(on);
     });
-    svg.addEventListener('pointerleave',function(e){ if(e.pointerType!=='touch'){ stopDemo(); hero.classList.remove('lens-on'); }});
+    svg.addEventListener('pointerleave',function(e){ if(e.pointerType!=='touch') set(false); });
     svg.addEventListener('pointerdown',function(e){
       if(e.pointerType!=='touch') return;
-      var p=toSvg(e); stopDemo();
-      if(inBox(p)){ place(p.x,p.y); hero.classList.add('lens-on','lens-used'); } else hero.classList.remove('lens-on');
+      clearTimeout(demoT); hero.classList.add('used');
+      set(inBox(toSvg(e)) ? !hero.classList.contains('open') : false);
     });
-    // one guided sweep after the drawing finishes, so people discover it
-    function sweep(){
-      if(reduce||hero.classList.contains('lens-used')) { if(coarse){ place(760,300); hero.classList.add('lens-on'); } return; }
-      var t0=null, dur=3200;
-      function step(ts){
-        if(!t0) t0=ts; var k=Math.min(1,(ts-t0)/dur), e=k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2;
-        place(700+110*Math.sin(e*Math.PI), 560-440*e); hero.classList.add('lens-on');
-        if(k<1) demo=requestAnimationFrame(step); else { demo=null; if(coarse){ place(760,300); } else setTimeout(function(){ if(!hero.classList.contains('lens-used')) hero.classList.remove('lens-on'); },500); }
-      }
-      demo=requestAnimationFrame(step);
-    }
-    setTimeout(sweep,3600);
+    // open once by itself after the drawing finishes, so people discover it
+    if(!reduce){ demoT=setTimeout(function(){ if(hero.classList.contains('used')) return; set(true);
+      demoT=setTimeout(function(){ if(!hero.classList.contains('used')) set(false); },2600); },4200); }
   })();
 
   // process: scroll-driven construction stages

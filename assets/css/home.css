@@ -31,7 +31,7 @@ p{margin:0}
 main,.foot,.tb,.mnav{margin:0 calc(var(--inset) + 1px)}
 
 /* ---------- type */
-.mega{font-family:var(--display);font-weight:780;font-variation-settings:"wdth" 112;text-transform:uppercase;letter-spacing:-.035em;line-height:.86;font-size:clamp(46px,7.4vw,132px)}
+.mega{font-family:var(--display);font-weight:780;font-variation-settings:"wdth" 112;text-transform:uppercase;letter-spacing:-.035em;line-height:.86;font-size:clamp(44px,5.9vw,112px)}
 .mega--sm{font-size:clamp(44px,7vw,112px)}
 .h2{font-weight:650;font-variation-settings:"wdth" 104;letter-spacing:-.025em;line-height:1.02;font-size:clamp(32px,4.2vw,60px);max-width:16ch}
 .lead{font-size:clamp(16px,1.25vw,18px);line-height:1.6;color:var(--ink-2);max-width:46ch}

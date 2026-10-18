@@ -357,3 +357,4 @@ svg .cut-head circle{fill:var(--ink)}
   .stats--3 div:nth-child(3){grid-column:1/-1;border-top:1px solid var(--line)}
   .pts__list div{grid-template-columns:72px 1fr}
 }
+.phero .mega--sm{font-size:clamp(40px,4.4vw,80px)}

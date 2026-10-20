@@ -18,7 +18,7 @@
 
   // hero: tighter crop on phones
   var el=d.querySelector('.elev');
-  if(el&&window.matchMedia('(max-width:600px)').matches){ el.setAttribute('viewBox', el.getAttribute('data-vb-m')); }
+  if(el&&window.matchMedia('(max-width:600px)').matches){ el.setAttribute('viewBox', el.getAttribute('data-vb-m')); el.setAttribute('preserveAspectRatio','xMidYMid meet'); }
 
   // hero: draw the building once fonts/layout are ready
   var hero=d.querySelector('.hero');
@@ -29,7 +29,7 @@
   // hero: the tower opens to show its interiors on hover (tap on touch screens)
   (function(){
     var svg=d.querySelector('.elev'); if(!svg||!hero) return;
-    var BOX={x0:640,x1:900,y0:0,y1:572}, coarse=window.matchMedia('(pointer:coarse)').matches;
+    var BOX={x0:1340,x1:1600,y0:0,y1:572}, coarse=window.matchMedia('(pointer:coarse)').matches;
     var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches, demoT=null;
     var txt=d.querySelector('.tower-hint__txt');
     if(coarse&&txt) txt.textContent='Toca la torre para verla por dentro';

@@ -24,4 +24,10 @@
               <changefreq>monthly</changefreq>
               <priority>0.9</priority>
       </url>
+      <url>
+              <loc>https://asteriacapital.org/sig-edomex/</loc>
+              <lastmod>2026-10-20</lastmod>
+              <changefreq>monthly</changefreq>
+              <priority>0.9</priority>
+      </url>
 </urlset>

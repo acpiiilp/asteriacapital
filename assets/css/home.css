@@ -358,3 +358,6 @@ svg .cut-head circle{fill:var(--ink)}
   .pts__list div{grid-template-columns:72px 1fr}
 }
 .phero .mega--sm{font-size:clamp(40px,4.4vw,80px)}
+.land__more{font-size:14px;color:rgba(236,233,226,.82);max-width:46ch}
+.land__more a{color:var(--paper);text-decoration:underline;text-decoration-color:var(--terra-lt);text-underline-offset:3px}
+.land__more a:hover{color:var(--terra-lt)}

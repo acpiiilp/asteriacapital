@@ -49,14 +49,18 @@ main,.foot,.tb,.mnav{margin:0 calc(var(--inset) + 1px)}
 .foot__row a{text-decoration:none}.foot__row a:hover{color:var(--terra-ink)}
 .disc{font-size:12px;color:var(--pencil);max-width:90ch}
 html{scroll-padding-top:96px}
+.tb__nav a{white-space:nowrap}
 @media (max-width:1180px){.tb__nav a{min-width:118px}}
-@media (max-width:900px){
-  :root{--inset:8px}
+/* five menu items need ~1000px on one line: below that the header switches to the "Menú" button */
+@media (max-width:1023px){
   .tb{height:56px}
   .tb__nav{display:none}
   .tb__menu{display:block;border:0;border-left:1px solid var(--line);background:transparent;font:500 14px var(--display);color:var(--ink);padding:0 22px;min-width:96px;cursor:pointer}
   .mnav:not([hidden]){display:flex;flex-direction:column;position:sticky;top:calc(var(--inset) + 56px);z-index:39;background:var(--vellum);border-bottom:1px solid var(--line)}
   .mnav a{padding:16px 22px;border-top:1px solid var(--line);text-decoration:none;font-size:18px;font-weight:500}
+}
+@media (max-width:900px){
+  :root{--inset:8px}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 .tb a,.mnav a,.foot a{color:inherit}

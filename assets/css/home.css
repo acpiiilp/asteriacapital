@@ -361,3 +361,23 @@ svg .cut-head circle{fill:var(--ink)}
 .land__more{font-size:14px;color:rgba(236,233,226,.82);max-width:46ch}
 .land__more a{color:var(--paper);text-decoration:underline;text-decoration-color:var(--terra-lt);text-underline-offset:3px}
 .land__more a:hover{color:var(--terra-lt)}
+
+/* ---------- v5: full-width panorama hero */
+.hero__draw{padding:clamp(18px,2.4vw,32px) 0 0}
+.elev{width:100%;height:min(80vh,calc((100vw - 30px) * .37));min-height:440px;max-height:none;overflow:hidden}
+svg .sky{fill:none;stroke:var(--pencil);stroke-width:.7;stroke-linecap:round}
+svg .bird{stroke:var(--ink-2);stroke-width:1}
+svg .mtn{fill:var(--paper);stroke:none}
+svg .mtn-l{stroke-width:1.1}
+svg .farcity{fill:none;stroke:var(--line);stroke-width:.8}
+svg .farcity.th{stroke-width:.45}
+svg .pave{stroke:var(--line)}
+svg .ppl circle{fill:var(--ink)}
+.js .elev .bk{opacity:0}
+.js .drawn .elev .bk{opacity:1;transition:opacity 2.4s ease .1s}
+.tower-hint{bottom:14px;z-index:2;background:rgba(236,233,226,.86);padding:6px 10px 6px 8px}
+@media (max-width:600px){
+  .elev{height:auto;min-height:0}
+  .hero__draw{padding-top:12px}
+}
+@media (prefers-reduced-motion:reduce){.js .elev .bk{opacity:1}}

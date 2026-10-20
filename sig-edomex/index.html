@@ -11,14 +11,34 @@
   gtag('js', new Date());
   gtag('config', 'AW-16906201019')
 </script>
-<title>SIG Edomex · Uso de suelo Naucalpan y Huixquilucan | Asteria Capital</title>
-<meta name="description" content="Consulta gratuita del uso de suelo por predio en Naucalpan y Huixquilucan, Estado de México: clave del plan municipal, lote mínimo, COS, CUS y niveles.">
-<meta name="robots" content="index,follow">
+<title>Uso de suelo en Naucalpan y Huixquilucan · Consulta por predio</title>
+<meta name="description" content="Consulta gratis el uso de suelo de tu predio en Naucalpan y Huixquilucan: clave del plan municipal, lote mínimo, COS, CUS y niveles. Por dirección o coordenadas.">
+<meta name="robots" content="index,follow,max-image-preview:large">
 <link rel="canonical" href="https://asteriacapital.org/sig-edomex/">
 <meta property="og:url" content="https://asteriacapital.org/sig-edomex/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Asteria Capital">
 <meta property="og:locale" content="es_MX">
-<meta property="og:title" content="SIG Edomex · Uso de suelo Naucalpan y Huixquilucan">
-<meta property="og:description" content="Consulta gratuita del uso de suelo por predio en Naucalpan y Huixquilucan: clave del plan municipal, lote mínimo, COS, CUS y niveles.">
+<meta property="og:title" content="Uso de suelo en Naucalpan y Huixquilucan · Consulta por predio">
+<meta property="og:description" content="Consulta gratis el uso de suelo de tu predio en Naucalpan y Huixquilucan: clave del plan municipal, lote mínimo, COS, CUS y niveles.">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+ {"@type":"WebApplication","@id":"https://asteriacapital.org/sig-edomex/#app","name":"SIG Edomex: consulta de uso de suelo en Naucalpan y Huixquilucan","url":"https://asteriacapital.org/sig-edomex/","inLanguage":"es-MX","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","isAccessibleForFree":true,
+  "description":"Consulta gratuita del uso de suelo por predio en Naucalpan y Huixquilucan, Estado de México: clave del plan municipal de desarrollo urbano, lote mínimo, COS, CUS y niveles permitidos.",
+  "offers":{"@type":"Offer","price":"0","priceCurrency":"MXN"},
+  "areaServed":[{"@type":"City","name":"Naucalpan de Juárez, Estado de México"},{"@type":"City","name":"Huixquilucan, Estado de México"}],
+  "provider":{"@type":"Organization","name":"Asteria Capital","url":"https://asteriacapital.org/"}},
+ {"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://asteriacapital.org/"},{"@type":"ListItem","position":2,"name":"SIG Edomex","item":"https://asteriacapital.org/sig-edomex/"}]},
+ {"@type":"FAQPage","mainEntity":[
+  {"@type":"Question","name":"¿Cómo sé el uso de suelo de mi terreno?","acceptedAnswer":{"@type":"Answer","text":"Escribe la calle, el número y la colonia, o pega las coordenadas o la liga de Google Maps del terreno, y presiona Consultar. También puedes hacer clic directo sobre el plano. Verás la clave del plan municipal y sus normas."}},
+  {"@type":"Question","name":"¿Qué significa una clave como H-200-A?","acceptedAnswer":{"@type":"Answer","text":"En Naucalpan, la H indica uso habitacional y el número son los metros cuadrados de terreno bruto por vivienda. H-200-A permite una vivienda por cada 200 m² de terreno. La letra final distingue variantes de la misma densidad."}},
+  {"@type":"Question","name":"¿Qué son el COS y el CUS?","acceptedAnswer":{"@type":"Answer","text":"El COS (coeficiente de ocupación del suelo) es la parte del terreno que puede ocupar la construcción en planta baja. El CUS (coeficiente de utilización del suelo) es cuántas veces la superficie del terreno se puede construir en total, sumando todos los niveles."}},
+  {"@type":"Question","name":"¿Qué pasa en fraccionamientos como Lomas Anáhuac o La Herradura?","acceptedAnswer":{"@type":"Answer","text":"En Huixquilucan, en los fraccionamientos y conjuntos urbanos rige la norma de su autorización. La consulta te muestra la tabla del plan municipal para ese fraccionamiento: lote mínimo, frente, área libre, COS, niveles, altura y CUS."}},
+  {"@type":"Question","name":"¿Esta consulta sustituye la cédula o la licencia de uso de suelo?","acceptedAnswer":{"@type":"Answer","text":"No. Es una consulta informativa basada en los planos publicados por la Secretaría de Desarrollo Urbano e Infraestructura del Estado de México. El documento oficial lo expide el Ayuntamiento."}}
+ ]}
+]}
+</script>
 <meta name="theme-color" content="#ECE9E2">
 <link rel="icon" href="https://asteriacapital.org/assets/logo-asteria.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -86,6 +106,13 @@ td.v{font-family:var(--f-mono);color:var(--ink)}
 details summary{cursor:pointer;font-weight:600;font-size:13px;color:var(--navy)}
 details p,details li{font-size:12.5px;color:var(--muted)}
 .foot{font-size:11.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px}
+.seo{display:flex;flex-direction:column;gap:8px;border-top:1px solid var(--line);padding-top:16px}
+.seo h2{font-size:15px;line-height:1.3;margin:0;color:var(--ink);font-weight:700;text-wrap:balance}
+.seo h3{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:8px 0 0}
+.seo p{font-size:12.5px;color:var(--muted);margin:0}
+.seo details{border-bottom:1px solid var(--line);padding:6px 0}
+.seo details p{margin-top:6px}
+.seo a{color:var(--navy)}
 .foot a{color:var(--navy)}
 .hint{position:absolute;left:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:500;background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:6px 10px;font-size:12px;box-shadow:0 1px 4px rgba(0,0,0,.12)}
 .scale{position:absolute;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:500;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:4px 8px;font:12px var(--f-mono);color:var(--ink)}
@@ -166,6 +193,40 @@ details p,details li{font-size:12.5px;color:var(--muted)}
         <li>Huixquilucan: en fraccionamientos (F-#) y conjuntos urbanos (C-#) rige la norma de su autorización. Se muestra la Tabla 98 del plan.</li>
       </ul>
     </details>
+
+    <section class="seo" aria-labelledby="seo-h">
+      <h2 id="seo-h">Consulta de uso de suelo en Naucalpan y Huixquilucan</h2>
+      <p>Escribe la dirección o las coordenadas de un terreno y te decimos qué uso de suelo le toca según el plan municipal de desarrollo urbano: la clave del plano (por ejemplo H-200-A en Naucalpan o HU300 en Huixquilucan), el lote mínimo, cuánto se puede construir (COS y CUS) y cuántos niveles se permiten. Es gratis y no necesitas registrarte.</p>
+
+      <h3>Zonas de Naucalpan</h3>
+      <p>Lomas Verdes, Ciudad Satélite, Echegaray, San Mateo, Vista del Valle, Naucalpan Centro, Los Remedios, Zona Industrial, Naucalpan Sur, Toreo, Tecamachalco, Rincón Verde, El Cobradero, Chiluca, El Cristo, Ejido San Mateo, Santiago Tepatlaxco, Ejido Santiago Occipaco, Cipreses y Ejido Los Remedios, San Francisco Chimalpa y Otomí-Mexica.</p>
+
+      <h3>Zonas de Huixquilucan</h3>
+      <p>Interlomas, Bosque Real, La Herradura, Lomas Anáhuac, Hacienda de las Palmas, Bosques de las Palmas, Lomas de las Palmas, Lomas del Sol, Lomas Country Club, Lomas de Tecamachalco (secciones Bosques y Cumbres), Jardines de la Herradura, Fuentes de las Lomas, Palmas Hills, Cañada de las Lomas, Paseos del Bosque, Central Park, Avivia y otros fraccionamientos y conjuntos urbanos del municipio.</p>
+
+      <h3>Preguntas frecuentes</h3>
+      <details>
+        <summary>¿Cómo sé el uso de suelo de mi terreno?</summary>
+        <p>Escribe la calle, el número y la colonia, o pega las coordenadas o la liga de Google Maps del terreno, y presiona Consultar. También puedes hacer clic directo sobre el plano. Verás la clave del plan municipal y sus normas.</p>
+      </details>
+      <details>
+        <summary>¿Qué significa una clave como H-200-A?</summary>
+        <p>En Naucalpan, la H indica uso habitacional y el número son los metros cuadrados de terreno bruto por vivienda. H-200-A permite una vivienda por cada 200 m² de terreno. La letra final distingue variantes de la misma densidad.</p>
+      </details>
+      <details>
+        <summary>¿Qué son el COS y el CUS?</summary>
+        <p>El COS (coeficiente de ocupación del suelo) es la parte del terreno que puede ocupar la construcción en planta baja. El CUS (coeficiente de utilización del suelo) es cuántas veces la superficie del terreno se puede construir en total, sumando todos los niveles.</p>
+      </details>
+      <details>
+        <summary>¿Qué pasa en fraccionamientos como Lomas Anáhuac o La Herradura?</summary>
+        <p>En Huixquilucan, en los fraccionamientos y conjuntos urbanos rige la norma de su autorización. La consulta te muestra la tabla del plan municipal para ese fraccionamiento: lote mínimo, frente, área libre, COS, niveles, altura y CUS.</p>
+      </details>
+      <details>
+        <summary>¿Esta consulta sustituye la cédula o la licencia de uso de suelo?</summary>
+        <p>No. Es una consulta informativa basada en los planos publicados por la Secretaría de Desarrollo Urbano e Infraestructura del Estado de México. El documento oficial lo expide el Ayuntamiento.</p>
+      </details>
+      <p class="help">¿Tienes un terreno y quieres desarrollarlo? <a href="/#contacto">Escríbenos</a>.</p>
+    </section>
 
     <p class="foot">Fuentes: <a href="https://sedui.edomex.gob.mx/naucalpan" target="_blank" rel="noopener">SEDUI Edomex · Naucalpan</a> y <a href="https://sedui.edomex.gob.mx/huixquilucan" target="_blank" rel="noopener">SEDUI Edomex · Huixquilucan</a> (planos E-2/E-02B, tablas de usos del suelo y PMDU). Consulta informativa: el documento oficial es la cédula o licencia de uso de suelo del Ayuntamiento. Búsqueda de direcciones: © colaboradores de <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>.</p>
   </aside>

@@ -111,16 +111,16 @@ svg .north text{fill:currentColor;font:500 11px var(--mono)}
 .sect{width:100%;height:auto;display:block}
 .proc__fig figcaption{display:flex;align-items:center;gap:14px;padding:14px 0;border-top:1px solid var(--line);margin-top:8px;color:var(--ink-2)}
 .bar{flex:1;height:1px;background:var(--line);position:relative}
-.bar i{position:absolute;left:0;top:-1px;height:3px;width:20%;background:var(--terra);transition:width .6s cubic-bezier(.6,0,.2,1)}
-.sect [data-stage]{transition:opacity .7s ease}
-.sect [data-stage] .ln{stroke-dasharray:1;stroke-dashoffset:0;transition:stroke-dashoffset 1.1s cubic-bezier(.6,.05,.3,1)}
+.bar i{position:absolute;left:0;top:-1px;height:3px;width:20%;background:var(--terra);transition:width .15s linear}
+.sect [data-stage]{transition:opacity .45s ease}
+.sect [data-stage] .ln{stroke-dasharray:1;stroke-dashoffset:0;transition:stroke-dashoffset .8s cubic-bezier(.3,.6,.2,1)}
 .js .sect [data-stage]:not(.on){opacity:0}
 .js .sect [data-stage]:not(.on) .ln{stroke-dashoffset:1}
 .sect .crane{transition:opacity .6s}
 .sect.s5 .crane{opacity:0}
 .sect [data-stage="2"] .env,.sect [data-stage="2"] .stamp{transition:opacity .6s}
 .steps{list-style:none;margin:0;padding:0}
-.step{min-height:62vh;padding:18px 0 0;border-top:1px solid var(--line);display:grid;grid-template-columns:56px 1fr;grid-template-rows:auto 1fr;column-gap:16px;opacity:.38;transition:opacity .5s}
+.step{min-height:62vh;padding:18px 0 0;border-top:1px solid var(--line);display:grid;grid-template-columns:56px 1fr;grid-template-rows:auto 1fr;column-gap:16px;opacity:.38;transition:opacity .3s}
 .step.on{opacity:1}
 .step__n{grid-row:1/3;color:var(--terra-ink);padding-top:10px}
 .step h3{font-weight:650;font-variation-settings:"wdth" 104;font-size:clamp(26px,2.6vw,38px);letter-spacing:-.02em;margin-bottom:12px}
@@ -381,3 +381,33 @@ svg .ppl circle{fill:var(--ink)}
   .hero__draw{padding-top:12px}
 }
 @media (prefers-reduced-motion:reduce){.js .elev .bk{opacity:1}}
+
+/* ---------- v6: living city — runs only while .hero.alive (cursor over the drawing) */
+.elev .tr,.elev .walker,.elev .leg,.elev .car,.elev .cloud,.elev .flock,.elev .bird{animation-play-state:paused}
+.hero.alive .elev .tr,.hero.alive .elev .walker,.hero.alive .elev .leg,.hero.alive .elev .car,
+.hero.alive .elev .cloud,.hero.alive .elev .flock,.hero.alive .elev .bird{animation-play-state:running}
+.elev .tr{transform-box:fill-box;transform-origin:50% 100%;animation:sway 4.6s ease-in-out infinite alternate}
+.elev .tr:nth-child(3n){animation-duration:5.8s;animation-delay:-1.4s}
+.elev .tr:nth-child(3n+1){animation-duration:3.9s;animation-delay:-2.6s}
+.elev .tr.sm{animation-duration:3.1s}
+@keyframes sway{from{transform:rotate(-1.8deg)}to{transform:rotate(1.8deg)}}
+.elev .walker{animation:walk var(--d) ease-in-out infinite;animation-delay:var(--dl)}
+@keyframes walk{0%,4%{transform:translateX(0)}46%,54%{transform:translateX(var(--dist))}96%,100%{transform:translateX(0)}}
+.elev .leg{transform-box:fill-box;animation:stride .48s ease-in-out infinite alternate}
+.elev .leg-a{transform-origin:100% 0}
+.elev .leg-b{transform-origin:0 0;animation-direction:alternate-reverse}
+@keyframes stride{from{transform:rotate(-24deg)}to{transform:rotate(24deg)}}
+.elev .car{animation:drive var(--d) linear infinite;animation-delay:var(--dl)}
+.elev .car-in.flip{transform-box:fill-box;transform-origin:50% 50%;transform:scaleX(-1)}
+@keyframes drive{0%{transform:translateX(0);opacity:0}7%{opacity:1}93%{opacity:1}100%{transform:translateX(var(--dist));opacity:0}}
+.elev .cloud{animation:drift var(--d) ease-in-out infinite alternate;animation-delay:var(--dl)}
+@keyframes drift{to{transform:translateX(var(--dist))}}
+.elev .flock{animation:fly var(--d) ease-in-out infinite alternate;animation-delay:var(--dl)}
+@keyframes fly{to{transform:translate(var(--bx),var(--by))}}
+.elev .bird{transform-box:fill-box;transform-origin:50% 100%;animation:flap var(--fd,.45s) ease-in-out infinite alternate}
+@keyframes flap{to{transform:scaleY(.3)}}
+/* paused unless the city is alive (declared after the animation shorthands, which reset play-state) */
+.elev .tr,.elev .walker,.elev .leg,.elev .car,.elev .cloud,.elev .flock,.elev .bird{animation-play-state:paused}
+.hero.alive .elev .tr,.hero.alive .elev .walker,.hero.alive .elev .leg,.hero.alive .elev .car,
+.hero.alive .elev .cloud,.hero.alive .elev .flock,.hero.alive .elev .bird{animation-play-state:running}
+@media (prefers-reduced-motion:reduce){.elev .tr,.elev .walker,.elev .leg,.elev .car,.elev .cloud,.elev .flock,.elev .bird{animation:none}}

@@ -51,24 +51,43 @@
       demoT=setTimeout(function(){ if(!hero.classList.contains('used')) set(false); },2600); },4200); }
   })();
 
-  // process: scroll-driven construction stages
+  // hero: the city comes alive (people walk, trees sway, cars drive) while the cursor is over it;
+  // on touch screens it stays alive once the drawing has finished
+  (function(){
+    var stage=d.querySelector('.hero__draw'); if(!stage||!hero) return;
+    if(window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+    if(window.matchMedia('(pointer:coarse)').matches){ setTimeout(function(){ hero.classList.add('alive'); },3200); return; }
+    stage.addEventListener('pointerenter',function(){ hero.classList.add('alive'); });
+    stage.addEventListener('pointerleave',function(){ hero.classList.remove('alive'); });
+  })();
+
+  // process: construction stages follow the scroll position, read every frame (no thin trigger band to skip past)
   var steps=[].slice.call(d.querySelectorAll('.step')),
       sect=d.querySelector('.sect'),
       stages=sect?[].slice.call(sect.querySelectorAll('[data-stage]')):[],
-      cap=d.querySelector('[data-cap]'), bar=d.querySelector('.bar i'), cur=0;
+      cap=d.querySelector('[data-cap]'), bar=d.querySelector('.bar i'), cur=0, ticking=false;
   function setStage(n){
     if(n===cur) return; cur=n;
     stages.forEach(function(g){ g.classList.toggle('on', +g.getAttribute('data-stage')<=n); });
     steps.forEach(function(s){ s.classList.toggle('on', +s.getAttribute('data-step')===n); });
     if(sect){ sect.classList.toggle('s5', n>=5); }
     if(cap) cap.textContent='Etapa '+n+' de 5';
-    if(bar) bar.style.width=(n*20)+'%';
   }
-  if('IntersectionObserver' in window && steps.length){
-    var io=new IntersectionObserver(function(es){
-      es.forEach(function(e){ if(e.isIntersecting) setStage(+e.target.getAttribute('data-step')); });
-    },{rootMargin:'-45% 0px -50% 0px'});
-    steps.forEach(function(s){io.observe(s);});
-    setStage(1);
-  } else { stages.forEach(function(g){g.classList.add('on');}); steps.forEach(function(s){s.classList.add('on');}); }
+  function update(){
+    ticking=false;
+    var mid=window.innerHeight*0.5, n=1;
+    for(var i=0;i<steps.length;i++){ if(steps[i].getBoundingClientRect().top<mid) n=i+1; }
+    setStage(n);
+    if(bar){
+      var a=steps[0].getBoundingClientRect().top, b=steps[steps.length-1].getBoundingClientRect().top;
+      var p=b>a?(mid-a)/(b-a):1; p=Math.max(0,Math.min(1,p));
+      bar.style.width=(20+p*80)+'%';
+    }
+  }
+  function onScroll(){ if(!ticking){ ticking=true; requestAnimationFrame(update); } }
+  if(steps.length){
+    window.addEventListener('scroll',onScroll,{passive:true});
+    window.addEventListener('resize',onScroll);
+    update();
+  }
 })();

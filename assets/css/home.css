@@ -411,3 +411,45 @@ svg .ppl circle{fill:var(--ink)}
 .hero.alive .elev .tr,.hero.alive .elev .walker,.hero.alive .elev .leg,.hero.alive .elev .car,
 .hero.alive .elev .cloud,.hero.alive .elev .flock,.hero.alive .elev .bird{animation-play-state:running}
 @media (prefers-reduced-motion:reduce){.elev .tr,.elev .walker,.elev .leg,.elev .car,.elev .cloud,.elev .flock,.elev .bird{animation:none}}
+
+/* ---------- v7: "La Obra" game section */
+.play{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.6fr);border-bottom:1px solid var(--line)}
+.play__l{padding:clamp(48px,7vw,96px) var(--pad);border-right:1px solid var(--line);display:flex;flex-direction:column;gap:20px;align-items:flex-start}
+.play__r{padding:clamp(28px,4vw,56px) var(--pad);display:flex;flex-direction:column;justify-content:center;gap:12px;background:var(--vellum)}
+.play__keys{display:flex;gap:18px;flex-wrap:wrap;color:var(--ink-2)}
+.play__keys kbd{font:500 11px var(--mono);border:1px solid var(--line);border-bottom-width:2px;padding:2px 6px;margin-right:6px;background:var(--paper)}
+.obra{position:relative;width:100%;border:1px solid var(--line);background:var(--paper)}
+.obra canvas{display:block;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.obra canvas:focus-visible{outline:2px solid var(--terra);outline-offset:2px}
+.obra__hud{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.play__cap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:var(--pencil)}
+@media (max-width:900px){.play{grid-template-columns:1fr}.play__l{border-right:0;border-bottom:1px solid var(--line)}}
+.nf-play{padding:clamp(28px,4vw,48px) var(--pad) clamp(48px,7vw,96px);max-width:980px}
+.nf-play .small{display:block;margin-bottom:10px}
+
+/* ---------- v7: header tools — theme switch + reading progress */
+.tb__theme{display:grid;place-items:center;width:64px;border:0;border-left:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer;padding:0}
+.tb__theme svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.3}
+.tb__theme:hover{background:var(--vellum)}
+.tb__theme[aria-pressed="true"]{color:var(--terra)}
+.tb__prog{position:absolute;left:0;bottom:-1px;height:2px;width:100%;background:var(--terra);transform:scaleX(0);transform-origin:0 50%;pointer-events:none}
+@media (max-width:1023px){.tb__theme{width:56px}}
+.foot__clock{font-family:var(--mono);font-size:12px;color:var(--pencil)}
+.foot__clock b{font-weight:500;color:var(--ink-2)}
+
+/* ---------- v7: drafting cursor readout over the hero drawing */
+.coords{position:absolute;left:0;top:0;z-index:3;pointer-events:none;font:11px var(--mono);color:var(--ink-2);background:var(--vellum);border:1px solid var(--line);padding:3px 7px;white-space:nowrap;opacity:0;transition:opacity .2s}
+.hero.alive .coords.on{opacity:1}
+@media (pointer:coarse){.coords{display:none}}
+
+/* ---------- v7: "Plano azul" — blueprint theme */
+html.cyan{--paper:#E3ECF5;--paper-2:#D6E2EE;--vellum:#EEF4FA;--ink:#0D2742;--ink-2:#3A5470;--pencil:#7891AB;--line:#B3C6D9;
+  --moss:#173A5E;--moss-2:#102C49;--terra:#1D5FA6;--terra-ink:#164B85;--terra-lt:#9CC6F0;--leaf:#2E6E9E;--leaf-2:#94B9D6}
+html.cyan .tb{background:rgba(227,236,245,.92)}
+html.cyan .tower-hint{background:rgba(227,236,245,.86)}
+html.cyan .phero__copy{background:rgba(227,236,245,.82)}
+html.cyan svg .glass{fill:#D2DFEC}
+html.cyan svg .glass.dk{fill:#C0D1E3}
+html.cyan svg .glass.lt{fill:#DCE7F2}
+html.cyan svg .portal{fill:#CBDAE9}
+html.theming,html.theming *{transition:background-color .45s,color .45s,border-color .45s,fill .45s,stroke .45s!important}

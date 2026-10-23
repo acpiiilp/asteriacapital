@@ -22,10 +22,12 @@
 <meta name="robots" content="index,follow" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script>try{if(localStorage.getItem("asteria-theme")==="cyan")document.documentElement.classList.add("cyan")}catch(e){}</script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Geist+Mono:wght@400;500&family=Spectral:ital,wght@0,300;1,300&display=swap">
 <link rel="stylesheet" href="assets/css/chrome.css?v=20261018c" />
-<link rel="stylesheet" href="assets/css/home.css?v=20261021" />
-<script defer src="assets/js/home.js?v=20261021"></script>
+<link rel="stylesheet" href="assets/css/home.css?v=20261023" />
+<script defer src="assets/js/home.js?v=20261023"></script>
+<script defer src="assets/js/obra.js?v=20261023"></script>
 </head>
 <body>
 <a class="skip" href="#main">Ir al contenido</a>
@@ -2669,6 +2671,20 @@
       <p>Acceso a empresas privadas antes de que salgan a bolsa, con más liquidez que un fondo de capital privado tradicional.</p>
       <span class="link">Conocer los fondos</span>
     </a>
+  </div>
+</section>
+
+<!-- ============ LA OBRA (juego) ============ -->
+<section class="play" id="obra" aria-labelledby="pl-h">
+  <div class="play__l">
+    <span class="small">Para la pausa del café</span>
+    <h2 id="pl-h" class="h2">Mientras tanto, construye.</h2>
+    <p class="lead">Corre por la obra, salta conos, costales y trámites, y junta ladrillos. Cada 120 m² sube un piso de la torre.</p>
+    <div class="play__keys small"><span><kbd>Espacio</kbd>o <kbd>↑</kbd> saltar</span><span>En celular: toca el dibujo</span></div>
+  </div>
+  <div class="play__r">
+    <div class="obra" data-obra></div>
+    <div class="play__cap small"><span>La Obra · v1</span><span>Tu récord se guarda solo en este navegador</span></div>
   </div>
 </section>
 

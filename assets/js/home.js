@@ -90,4 +90,60 @@
     window.addEventListener('resize',onScroll);
     update();
   }
+
+  // ---------- v7 extras (only on pages that load home.css; the calculator keeps its own skin)
+  var tb=d.querySelector('.tb'), full=!!d.querySelector('link[href*="home.css"]');
+  if(!tb||!full) return;
+
+  // "Plano azul" theme switch, remembered per visitor (the class is set early by an inline script to avoid a flash)
+  var KEY='asteria-theme', meta=d.querySelector('meta[name="theme-color"]');
+  var tbtn=d.createElement('button'); tbtn.className='tb__theme'; tbtn.type='button';
+  tbtn.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17"/><path d="M3.5 9.5h17M9.5 3.5v17M13 14l2.5 2.5L20 12"/></svg>';
+  function paint(on){
+    root.classList.toggle('cyan',on); tbtn.setAttribute('aria-pressed',String(on));
+    var label=on?'Volver al plano en papel':'Ver como plano azul'; tbtn.setAttribute('aria-label',label); tbtn.title=label;
+    if(meta) meta.setAttribute('content',on?'#E3ECF5':'#ECE9E2');
+    d.dispatchEvent(new Event('asteria:theme'));
+  }
+  paint(root.classList.contains('cyan'));
+  tbtn.addEventListener('click',function(){
+    var on=!root.classList.contains('cyan');
+    root.classList.add('theming'); paint(on); setTimeout(function(){ root.classList.remove('theming'); },520);
+    try{ localStorage.setItem(KEY,on?'cyan':'paper'); }catch(e){}
+  });
+  var menuBtn=tb.querySelector('.tb__menu'); tb.insertBefore(tbtn,menuBtn||null);
+
+  // reading progress: a thin green line under the header
+  var prog=d.createElement('i'); prog.className='tb__prog'; prog.setAttribute('aria-hidden','true'); tb.appendChild(prog);
+  var pt=false;
+  function progress(){ pt=false; var h=d.documentElement.scrollHeight-window.innerHeight; prog.style.transform='scaleX('+(h>0?Math.min(1,window.scrollY/h):0)+')'; }
+  window.addEventListener('scroll',function(){ if(!pt){ pt=true; requestAnimationFrame(progress); } },{passive:true});
+  window.addEventListener('resize',progress); progress();
+
+  // live Mexico City time in the footer
+  var row=d.querySelector('.foot__row');
+  if(row&&window.Intl){
+    var clk=d.createElement('span'); clk.className='foot__clock';
+    var fmt=new Intl.DateTimeFormat('es-MX',{timeZone:'America/Mexico_City',hour:'2-digit',minute:'2-digit',hour12:false});
+    function tick(){ clk.innerHTML='CDMX <b>'+fmt.format(new Date())+'</b> h'; }
+    tick(); setInterval(tick,15000); row.appendChild(clk);
+  }
+
+  // drafting readout: cursor position over the hero drawing, in metres from the street line
+  (function(){
+    var stage=d.querySelector('.hero__draw'), svg=d.querySelector('.elev');
+    if(!stage||!svg||window.matchMedia('(pointer:coarse)').matches) return;
+    var tag=d.createElement('span'); tag.className='coords'; tag.setAttribute('aria-hidden','true'); stage.appendChild(tag);
+    var GROUND=660, PX_PER_M=3.3, pend=null;
+    stage.addEventListener('pointermove',function(e){ pend=e; requestAnimationFrame(function(){
+      if(!pend) return; var ev=pend; pend=null;
+      var m=svg.getScreenCTM(); if(!m) return; var p=svg.createSVGPoint(); p.x=ev.clientX; p.y=ev.clientY; p=p.matrixTransform(m.inverse());
+      var r=stage.getBoundingClientRect(), x=ev.clientX-r.left+14, y=ev.clientY-r.top+16;
+      if(x>r.width-150) x-=170;
+      var hgt=Math.max(0,(GROUND-p.y)/PX_PER_M), east=(p.x-120)/PX_PER_M;
+      tag.textContent='E '+east.toFixed(1)+' m · N+ '+hgt.toFixed(1)+' m';
+      tag.style.transform='translate('+x+'px,'+y+'px)'; tag.classList.add('on');
+    }); });
+    stage.addEventListener('pointerleave',function(){ tag.classList.remove('on'); });
+  })();
 })();

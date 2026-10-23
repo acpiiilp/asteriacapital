@@ -70,6 +70,9 @@ body{background:var(--paper);color:var(--ink);font-family:var(--f-ui);font-size:
 #map{position:absolute;inset:0;background:var(--mapbg)}
 h1{font-size:19px;line-height:1.25;margin:0;color:var(--navy);font-weight:700;letter-spacing:-.01em;text-wrap:balance}
 .brand{display:inline-block;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);text-decoration:none;font-weight:300}.brand b{font-weight:600}
+.topbar{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.back{display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:0 12px 0 9px;border:1px solid var(--line);border-radius:6px;font-size:13px;font-weight:600;color:var(--ink);text-decoration:none;background:var(--paper)}
+.back:hover{border-color:var(--navy);color:var(--navy)}
 .sub{color:var(--muted);font-size:12.5px;margin:4px 0 0}
 .eyebrow{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:0 0 6px}
 label{font-weight:600;font-size:13px;display:block;margin-bottom:6px}
@@ -133,7 +136,10 @@ details p,details li{font-size:12.5px;color:var(--muted)}
 <div class="app">
   <aside class="panel">
     <header>
-      <a class="brand" href="https://asteriacapital.org" rel="noopener"><b>Asteria</b> Capital · SIG Edomex</a>
+      <div class="topbar">
+        <a class="back" id="back" href="/" aria-label="Regresar a la página anterior"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M10 3 5 8l5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Regresar</a>
+        <a class="brand" href="/"><b>Asteria</b> Capital · SIG Edomex</a>
+      </div>
       <p class="eyebrow" style="margin-top:14px">Planes municipales de desarrollo urbano</p>
       <h1>Uso de suelo por predio: Naucalpan y Huixquilucan</h1>
       <p class="sub">Naucalpan: modificación del PMDU (planos E-2, 2023–2025). Huixquilucan: PMDU 2017 (planos E-02B) con fe de erratas 2020. Incluye Tecamachalco, Lomas Anáhuac e Interlomas.</p>
@@ -390,6 +396,12 @@ async function geocode(q){
 }
 $("q").addEventListener("paste",()=>setTimeout(()=>{const p=parse($("q").value);if(p&&!p.address&&!p.bad)$("f").requestSubmit();},0));
 map.on("click",e=>query(e.latlng.lng+OE,e.latlng.lat+ON));
+
+/* ---------- regresar: a la página anterior del sitio si se llegó desde ahí; si no, al inicio ---------- */
+$("back").addEventListener("click",e=>{
+  let same=false;try{same=!!document.referrer&&new URL(document.referrer).origin===location.origin;}catch(_){}
+  if(same&&history.length>1){e.preventDefault();history.back();}
+});
 
 /* ---------- verificación con Claude ---------- */
 let sampleFn=null;

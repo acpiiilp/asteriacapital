@@ -1,0 +1,3 @@
+{"version":1,"updated":null,"unit":"MXN/m²","cell":500,"min_n":3,
+ "uses":{"vivienda":{"label":"Vivienda en venta"},"renta":{"label":"Vivienda en renta","unit":"MXN/m² al mes"},"comercio":{"label":"Comercio"},"oficina":{"label":"Oficinas"},"terreno":{"label":"Terreno"}},
+ "cells":[]}

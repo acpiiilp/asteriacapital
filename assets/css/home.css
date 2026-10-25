@@ -442,14 +442,29 @@ svg .ppl circle{fill:var(--ink)}
 .hero.alive .coords.on{opacity:1}
 @media (pointer:coarse){.coords{display:none}}
 
-/* ---------- v7: "Plano azul" — blueprint theme */
-html.cyan{--paper:#E3ECF5;--paper-2:#D6E2EE;--vellum:#EEF4FA;--ink:#0D2742;--ink-2:#3A5470;--pencil:#7891AB;--line:#B3C6D9;
-  --moss:#173A5E;--moss-2:#102C49;--terra:#1D5FA6;--terra-ink:#164B85;--terra-lt:#9CC6F0;--leaf:#2E6E9E;--leaf-2:#94B9D6}
-html.cyan .tb{background:rgba(227,236,245,.92)}
-html.cyan .tower-hint{background:rgba(227,236,245,.86)}
-html.cyan .phero__copy{background:rgba(227,236,245,.82)}
-html.cyan svg .glass{fill:#D2DFEC}
-html.cyan svg .glass.dk{fill:#C0D1E3}
-html.cyan svg .glass.lt{fill:#DCE7F2}
-html.cyan svg .portal{fill:#CBDAE9}
+/* ---------- v8: "Plano azul" — classic blueprint: deep blue sheet, white lines */
+html.cyan{--paper:#1D4F91;--paper-2:#1A4785;--vellum:#2459A0;--ink:#FFFFFF;--ink-2:#DCE8F7;--pencil:#A9C3E6;--line:#5F86BF;
+  --moss:#143D72;--moss-2:#0F3260;--terra:#FFFFFF;--terra-ink:#FFFFFF;--terra-lt:#CFE6FF;--leaf:#E3EEFB;--leaf-2:#A9C3E6}
+html.cyan body::before{mix-blend-mode:overlay;opacity:.1}
+html.cyan .tb{background:rgba(29,79,145,.94)}
+html.cyan .tower-hint{background:rgba(29,79,145,.9)}
+html.cyan .phero__copy{background:rgba(29,79,145,.86)}
+html.cyan svg .glass{fill:#2A60A8}
+html.cyan svg .glass.dk{fill:#23559A}
+html.cyan svg .glass.lt{fill:#3068B0}
+html.cyan svg .portal{fill:#2A5E9F}
+html.cyan .land,html.cyan .contact{--paper:#FFFFFF}
+html.cyan .contact{background:#143D72}
+html.cyan .contact .form .btn--ink{background:#FFFFFF;color:#143D72;border-color:#FFFFFF}
+html.cyan .btn--ink{background:#FFFFFF;color:#1D4F91;border-color:#FFFFFF}
+html.cyan .btn--ink:hover,html.cyan .btn:hover{background:#CFE6FF;color:#143D72;border-color:#CFE6FF}
+html.cyan .tb__nav .tb__cta::after,html.cyan .keys dt,html.cyan .bar i,html.cyan .tower-hint__dot{background:#FFFFFF}
+html.cyan .keys dt{color:#1D4F91}
+html.cyan .logos img{filter:brightness(0) invert(1);opacity:.85}
+html.cyan .card img,html.cyan .proj img{filter:saturate(.85)}
+html.cyan ::selection{background:#FFFFFF;color:#1D4F91}
 html.theming,html.theming *{transition:background-color .45s,color .45s,border-color .45s,fill .45s,stroke .45s!important}
+.play__rules{margin:0;padding:0;list-style:none;display:grid;gap:10px;font-size:14px;line-height:1.5;color:var(--ink-2);max-width:52ch}
+.play__rules li{padding-left:14px;border-left:2px solid var(--line)}
+.play__rules b{color:var(--ink);font-weight:600}
+.play__l .small a{color:var(--terra-ink)}

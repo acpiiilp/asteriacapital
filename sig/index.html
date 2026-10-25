@@ -1,0 +1,761 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-16906201019"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-16906201019')
+</script>
+<title>SIG de uso de suelo · Ciudad de México y Estado de México</title>
+<meta name="description" content="Mapa gratuito de uso de suelo: planos de los programas de desarrollo urbano de la Ciudad de México y del Estado de México, con calculadora de potencial y medición de terrenos.">
+<meta name="robots" content="noindex,follow">
+<link rel="canonical" href="https://asteriacapital.org/sig/">
+<meta property="og:url" content="https://asteriacapital.org/sig/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Asteria Capital">
+<meta property="og:locale" content="es_MX">
+<meta property="og:title" content="SIG de uso de suelo · Ciudad de México y Estado de México">
+<meta property="og:description" content="Consulta gratis el uso de suelo de tu predio en Naucalpan y Huixquilucan: clave del plan municipal, lote mínimo, COS, CUS y niveles.">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"SIG de uso de suelo · Asteria Capital","url":"https://asteriacapital.org/sig/","applicationCategory":"ReferenceApplication","operatingSystem":"Navegador web","inLanguage":"es-MX","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"MXN"},"areaServed":[{"@type":"City","name":"Ciudad de México"},{"@type":"State","name":"Estado de México"}],"provider":{"@type":"Organization","name":"Asteria Capital","url":"https://asteriacapital.org/"}}</script>
+<meta name="theme-color" content="#ECE9E2">
+<link rel="icon" href="https://asteriacapital.org/assets/logo-asteria.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}[hidden]{display:none!important}*,*::before,*::after{box-sizing:border-box}</style>
+<style> .leaflet-pane, .leaflet-tile, .leaflet-marker-icon, .leaflet-marker-shadow, .leaflet-tile-container, .leaflet-pane > svg, .leaflet-pane > canvas, .leaflet-zoom-box, .leaflet-image-layer, .leaflet-layer { position: absolute; left: 0; top: 0; } .leaflet-container { overflow: hidden; } .leaflet-tile, .leaflet-marker-icon, .leaflet-marker-shadow { -webkit-user-select: none; -moz-user-select: none; user-select: none; -webkit-user-drag: none; } .leaflet-tile::selection { background: transparent; } .leaflet-safari .leaflet-tile { image-rendering: -webkit-optimize-contrast; } .leaflet-safari .leaflet-tile-container { width: 1600px; height: 1600px; -webkit-transform-origin: 0 0; } .leaflet-marker-icon, .leaflet-marker-shadow { display: block; } .leaflet-container .leaflet-overlay-pane svg { max-width: none !important; max-height: none !important; } .leaflet-container .leaflet-marker-pane img, .leaflet-container .leaflet-shadow-pane img, .leaflet-container .leaflet-tile-pane img, .leaflet-container img.leaflet-image-layer, .leaflet-container .leaflet-tile { max-width: none !important; max-height: none !important; width: auto; padding: 0; } .leaflet-container img.leaflet-tile { mix-blend-mode: plus-lighter; } .leaflet-container.leaflet-touch-zoom { -ms-touch-action: pan-x pan-y; touch-action: pan-x pan-y; } .leaflet-container.leaflet-touch-drag { -ms-touch-action: pinch-zoom; touch-action: none; touch-action: pinch-zoom; } .leaflet-container.leaflet-touch-drag.leaflet-touch-zoom { -ms-touch-action: none; touch-action: none; } .leaflet-container { -webkit-tap-highlight-color: transparent; } .leaflet-container a { -webkit-tap-highlight-color: rgba(51, 181, 229, 0.4); } .leaflet-tile { filter: inherit; visibility: hidden; } .leaflet-tile-loaded { visibility: inherit; } .leaflet-zoom-box { width: 0; height: 0; -moz-box-sizing: border-box; box-sizing: border-box; z-index: 800; } .leaflet-overlay-pane svg { -moz-user-select: none; } .leaflet-pane { z-index: 400; } .leaflet-tile-pane { z-index: 200; } .leaflet-overlay-pane { z-index: 400; } .leaflet-shadow-pane { z-index: 500; } .leaflet-marker-pane { z-index: 600; } .leaflet-tooltip-pane { z-index: 650; } .leaflet-popup-pane { z-index: 700; } .leaflet-map-pane canvas { z-index: 100; } .leaflet-map-pane svg { z-index: 200; } .leaflet-vml-shape { width: 1px; height: 1px; } .lvml { behavior: url(#default#VML); display: inline-block; position: absolute; } .leaflet-control { position: relative; z-index: 800; pointer-events: visiblePainted; pointer-events: auto; } .leaflet-top, .leaflet-bottom { position: absolute; z-index: 1000; pointer-events: none; } .leaflet-top { top: 0; } .leaflet-right { right: 0; } .leaflet-bottom { bottom: 0; } .leaflet-left { left: 0; } .leaflet-control { float: left; clear: both; } .leaflet-right .leaflet-control { float: right; } .leaflet-top .leaflet-control { margin-top: 10px; } .leaflet-bottom .leaflet-control { margin-bottom: 10px; } .leaflet-left .leaflet-control { margin-left: 10px; } .leaflet-right .leaflet-control { margin-right: 10px; } .leaflet-fade-anim .leaflet-popup { opacity: 0; -webkit-transition: opacity 0.2s linear; -moz-transition: opacity 0.2s linear; transition: opacity 0.2s linear; } .leaflet-fade-anim .leaflet-map-pane .leaflet-popup { opacity: 1; } .leaflet-zoom-animated { -webkit-transform-origin: 0 0; -ms-transform-origin: 0 0; transform-origin: 0 0; } svg.leaflet-zoom-animated { will-change: transform; } .leaflet-zoom-anim .leaflet-zoom-animated { -webkit-transition: -webkit-transform 0.25s cubic-bezier(0,0,0.25,1); -moz-transition: -moz-transform 0.25s cubic-bezier(0,0,0.25,1); transition: transform 0.25s cubic-bezier(0,0,0.25,1); } .leaflet-zoom-anim .leaflet-tile, .leaflet-pan-anim .leaflet-tile { -webkit-transition: none; -moz-transition: none; transition: none; } .leaflet-zoom-anim .leaflet-zoom-hide { visibility: hidden; } .leaflet-interactive { cursor: pointer; } .leaflet-grab { cursor: -webkit-grab; cursor: -moz-grab; cursor: grab; } .leaflet-crosshair, .leaflet-crosshair .leaflet-interactive { cursor: crosshair; } .leaflet-popup-pane, .leaflet-control { cursor: auto; } .leaflet-dragging .leaflet-grab, .leaflet-dragging .leaflet-grab .leaflet-interactive, .leaflet-dragging .leaflet-marker-draggable { cursor: move; cursor: -webkit-grabbing; cursor: -moz-grabbing; cursor: grabbing; } .leaflet-marker-icon, .leaflet-marker-shadow, .leaflet-image-layer, .leaflet-pane > svg path, .leaflet-tile-container { pointer-events: none; } .leaflet-marker-icon.leaflet-interactive, .leaflet-image-layer.leaflet-interactive, .leaflet-pane > svg path.leaflet-interactive, svg.leaflet-image-layer.leaflet-interactive path { pointer-events: visiblePainted; pointer-events: auto; } .leaflet-container { background: #ddd; outline-offset: 1px; } .leaflet-container a { color: #0078A8; } .leaflet-zoom-box { border: 2px dotted #38f; background: rgba(255,255,255,0.5); } .leaflet-container { font-family: "Helvetica Neue", Arial, Helvetica, sans-serif; font-size: 12px; font-size: 0.75rem; line-height: 1.5; } .leaflet-bar { box-shadow: 0 1px 5px rgba(0,0,0,0.65); border-radius: 4px; } .leaflet-bar a { background-color: #fff; border-bottom: 1px solid #ccc; width: 26px; height: 26px; line-height: 26px; display: block; text-align: center; text-decoration: none; color: black; } .leaflet-bar a, .leaflet-control-layers-toggle { background-position: 50% 50%; background-repeat: no-repeat; display: block; } .leaflet-bar a:hover, .leaflet-bar a:focus { background-color: #f4f4f4; } .leaflet-bar a:first-child { border-top-left-radius: 4px; border-top-right-radius: 4px; } .leaflet-bar a:last-child { border-bottom-left-radius: 4px; border-bottom-right-radius: 4px; border-bottom: none; } .leaflet-bar a.leaflet-disabled { cursor: default; background-color: #f4f4f4; color: #bbb; } .leaflet-touch .leaflet-bar a { width: 30px; height: 30px; line-height: 30px; } .leaflet-touch .leaflet-bar a:first-child { border-top-left-radius: 2px; border-top-right-radius: 2px; } .leaflet-touch .leaflet-bar a:last-child { border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; } .leaflet-control-zoom-in, .leaflet-control-zoom-out { font: bold 18px 'Lucida Console', Monaco, monospace; text-indent: 1px; } .leaflet-touch .leaflet-control-zoom-in, .leaflet-touch .leaflet-control-zoom-out { font-size: 22px; } .leaflet-control-layers { box-shadow: 0 1px 5px rgba(0,0,0,0.4); background: #fff; border-radius: 5px; } .leaflet-control-layers-toggle { background-image: url(images/layers.png); width: 36px; height: 36px; } .leaflet-retina .leaflet-control-layers-toggle { background-image: url(images/layers-2x.png); background-size: 26px 26px; } .leaflet-touch .leaflet-control-layers-toggle { width: 44px; height: 44px; } .leaflet-control-layers .leaflet-control-layers-list, .leaflet-control-layers-expanded .leaflet-control-layers-toggle { display: none; } .leaflet-control-layers-expanded .leaflet-control-layers-list { display: block; position: relative; } .leaflet-control-layers-expanded { padding: 6px 10px 6px 6px; color: #333; background: #fff; } .leaflet-control-layers-scrollbar { overflow-y: scroll; overflow-x: hidden; padding-right: 5px; } .leaflet-control-layers-selector { margin-top: 2px; position: relative; top: 1px; } .leaflet-control-layers label { display: block; font-size: 13px; font-size: 1.08333em; } .leaflet-control-layers-separator { height: 0; border-top: 1px solid #ddd; margin: 5px -10px 5px -6px; } .leaflet-default-icon-path { background-image: url(images/marker-icon.png); } .leaflet-container .leaflet-control-attribution { background: #fff; background: rgba(255, 255, 255, 0.8); margin: 0; } .leaflet-control-attribution, .leaflet-control-scale-line { padding: 0 5px; color: #333; line-height: 1.4; } .leaflet-control-attribution a { text-decoration: none; } .leaflet-control-attribution a:hover, .leaflet-control-attribution a:focus { text-decoration: underline; } .leaflet-attribution-flag { display: inline !important; vertical-align: baseline !important; width: 1em; height: 0.6669em; } .leaflet-left .leaflet-control-scale { margin-left: 5px; } .leaflet-bottom .leaflet-control-scale { margin-bottom: 5px; } .leaflet-control-scale-line { border: 2px solid #777; border-top: none; line-height: 1.1; padding: 2px 5px 1px; white-space: nowrap; -moz-box-sizing: border-box; box-sizing: border-box; background: rgba(255, 255, 255, 0.8); text-shadow: 1px 1px #fff; } .leaflet-control-scale-line:not(:first-child) { border-top: 2px solid #777; border-bottom: none; margin-top: -2px; } .leaflet-control-scale-line:not(:first-child):not(:last-child) { border-bottom: 2px solid #777; } .leaflet-touch .leaflet-control-attribution, .leaflet-touch .leaflet-control-layers, .leaflet-touch .leaflet-bar { box-shadow: none; } .leaflet-touch .leaflet-control-layers, .leaflet-touch .leaflet-bar { border: 2px solid rgba(0,0,0,0.2); background-clip: padding-box; } .leaflet-popup { position: absolute; text-align: center; margin-bottom: 20px; } .leaflet-popup-content-wrapper { padding: 1px; text-align: left; border-radius: 12px; } .leaflet-popup-content { margin: 13px 24px 13px 20px; line-height: 1.3; font-size: 13px; font-size: 1.08333em; min-height: 1px; } .leaflet-popup-content p { margin: 17px 0; margin: 1.3em 0; } .leaflet-popup-tip-container { width: 40px; height: 20px; position: absolute; left: 50%; margin-top: -1px; margin-left: -20px; overflow: hidden; pointer-events: none; } .leaflet-popup-tip { width: 17px; height: 17px; padding: 1px; margin: -10px auto 0; pointer-events: auto; -webkit-transform: rotate(45deg); -moz-transform: rotate(45deg); -ms-transform: rotate(45deg); transform: rotate(45deg); } .leaflet-popup-content-wrapper, .leaflet-popup-tip { background: white; color: #333; box-shadow: 0 3px 14px rgba(0,0,0,0.4); } .leaflet-container a.leaflet-popup-close-button { position: absolute; top: 0; right: 0; border: none; text-align: center; width: 24px; height: 24px; font: 16px/24px Tahoma, Verdana, sans-serif; color: #757575; text-decoration: none; background: transparent; } .leaflet-container a.leaflet-popup-close-button:hover, .leaflet-container a.leaflet-popup-close-button:focus { color: #585858; } .leaflet-popup-scrolled { overflow: auto; } .leaflet-oldie .leaflet-popup-content-wrapper { -ms-zoom: 1; } .leaflet-oldie .leaflet-popup-tip { width: 24px; margin: 0 auto; -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=0.70710678, M12=0.70710678, M21=-0.70710678, M22=0.70710678)"; filter: progid:DXImageTransform.Microsoft.Matrix(M11=0.70710678, M12=0.70710678, M21=-0.70710678, M22=0.70710678); } .leaflet-oldie .leaflet-control-zoom, .leaflet-oldie .leaflet-control-layers, .leaflet-oldie .leaflet-popup-content-wrapper, .leaflet-oldie .leaflet-popup-tip { border: 1px solid #999; } .leaflet-div-icon { background: #fff; border: 1px solid #666; } .leaflet-tooltip { position: absolute; padding: 6px; background-color: #fff; border: 1px solid #fff; border-radius: 3px; color: #222; white-space: nowrap; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; pointer-events: none; box-shadow: 0 1px 3px rgba(0,0,0,0.4); } .leaflet-tooltip.leaflet-interactive { cursor: pointer; pointer-events: auto; } .leaflet-tooltip-top:before, .leaflet-tooltip-bottom:before, .leaflet-tooltip-left:before, .leaflet-tooltip-right:before { position: absolute; pointer-events: none; border: 6px solid transparent; background: transparent; content: ""; } .leaflet-tooltip-bottom { margin-top: 6px; } .leaflet-tooltip-top { margin-top: -6px; } .leaflet-tooltip-bottom:before, .leaflet-tooltip-top:before { left: 50%; margin-left: -6px; } .leaflet-tooltip-top:before { bottom: 0; margin-bottom: -12px; border-top-color: #fff; } .leaflet-tooltip-bottom:before { top: 0; margin-top: -12px; margin-left: -6px; border-bottom-color: #fff; } .leaflet-tooltip-left { margin-left: -6px; } .leaflet-tooltip-right { margin-left: 6px; } .leaflet-tooltip-left:before, .leaflet-tooltip-right:before { top: 50%; margin-top: -6px; } .leaflet-tooltip-left:before { right: 0; margin-right: -12px; border-left-color: #fff; } .leaflet-tooltip-right:before { left: 0; margin-left: -12px; border-right-color: #fff; } @media print { .leaflet-control { -webkit-print-color-adjust: exact; print-color-adjust: exact; } } </style>
+<style>
+/* Layout: panel de consulta a la izquierda + plano oficial a la derecha; en teléfono se apilan (plano arriba). */
+:root{
+  --paper:#ECE9E2; --panel:#F4F2EC; --ink:#1E211F; --muted:#4A4F4B; --line:#C9C4B8;
+  --navy:#0F5A46; --navy-soft:#DCE8E1; --mapbg:#E4E0D7; --ok:#0F5A46; --ok-bg:#DCE8E1; --warn:#8A4B12; --warn-bg:#F3E6D3;
+  --pin:#C0161E;
+  --f-ui:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --f-mono:"Geist Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#151917; --panel:#1C211E; --ink:#E9E6DF; --muted:#A7ADA8; --line:#333A36;
+  --navy:#8FD1B4; --navy-soft:#1F2E28; --mapbg:#1A1F1C; --ok:#8FD1B4; --ok-bg:#1F2E28; --warn:#E8B57A; --warn-bg:#33281a; --pin:#ff4b55; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#151917; --panel:#1C211E; --ink:#E9E6DF; --muted:#A7ADA8; --line:#333A36;
+  --navy:#8FD1B4; --navy-soft:#1F2E28; --mapbg:#1A1F1C; --ok:#8FD1B4; --ok-bg:#1F2E28; --warn:#E8B57A; --warn-bg:#33281a; --pin:#ff4b55; color-scheme:dark}
+html,body{height:100%}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-ui);font-size:14px;line-height:1.5}
+.app{display:grid;grid-template-columns:minmax(330px,420px) 1fr;height:100%;min-height:0}
+.panel{background:var(--panel);border-right:1px solid var(--line);overflow-y:auto;min-width:0;
+  padding-block:20px 28px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:20px;display:flex;flex-direction:column;gap:18px}
+.mapwrap{position:relative;min-width:0;min-height:0}
+#map{position:absolute;inset:0;background:var(--mapbg)}
+h1{font-size:19px;line-height:1.25;margin:0;color:var(--navy);font-weight:700;letter-spacing:-.01em;text-wrap:balance}
+.brand{display:inline-block;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);text-decoration:none;font-weight:300}.brand b{font-weight:600}
+.topbar{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.back{display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:0 12px 0 9px;border:1px solid var(--line);border-radius:6px;font-size:13px;font-weight:600;color:var(--ink);text-decoration:none;background:var(--paper)}
+.back:hover{border-color:var(--navy);color:var(--navy)}
+.sub{color:var(--muted);font-size:12.5px;margin:4px 0 0}
+.eyebrow{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:0 0 6px}
+label{font-weight:600;font-size:13px;display:block;margin-bottom:6px}
+.row{display:flex;gap:8px}
+input[type=text]{flex:1;min-width:0;font:inherit;font-size:14px;padding:9px 11px;border:1px solid var(--line);border-radius:6px;background:var(--paper);color:var(--ink)}
+input[type=text]:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid var(--navy);outline-offset:2px}
+button,.btn{font:inherit;font-weight:600;font-size:13px;padding:9px 13px;border-radius:6px;border:1px solid var(--navy);background:var(--navy);color:var(--panel);cursor:pointer;white-space:nowrap;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+button.ghost,.btn.ghost{background:transparent;color:var(--navy)}
+button:disabled{opacity:.55;cursor:default}
+.help{font-size:12.5px;color:var(--muted);margin:8px 0 0}
+.help b{color:var(--ink);font-weight:600}
+.steps{margin:8px 0 0;padding-left:18px;font-size:12.5px;color:var(--muted);display:grid;gap:3px}
+.err{color:var(--warn);font-size:12.5px;margin-top:6px}
+.card{border:1px solid var(--line);border-radius:8px;padding:14px;display:flex;flex-direction:column;gap:12px;background:var(--panel)}
+.clave{font-family:var(--f-mono);font-size:26px;font-weight:500;color:var(--navy);letter-spacing:.02em;line-height:1.1}
+.desc{font-size:13.5px;font-weight:600}
+.chip{font-size:11px;font-weight:600;letter-spacing:.04em;padding:2px 8px;border-radius:99px;display:inline-block}
+.chip.ok{background:var(--ok-bg);color:var(--ok)} .chip.mid{background:var(--warn-bg);color:var(--warn)}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:12.5px}
+.kv dt{color:var(--muted)} .kv dd{margin:0;font-family:var(--f-mono);font-variant-numeric:tabular-nums;word-break:break-word}
+.note{font-size:12.5px;padding:8px 10px;border-radius:6px;background:var(--warn-bg);color:var(--warn)}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:12.5px;font-variant-numeric:tabular-nums}
+th,td{padding:5px 6px;border-bottom:1px solid var(--line);text-align:right;vertical-align:top}
+th:first-child,td:first-child{text-align:left;color:var(--muted);font-weight:500}
+thead th{font-size:11px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+td.v{font-family:var(--f-mono);color:var(--ink)}
+.muted{color:var(--muted)}
+.georesults{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+.geo{background:var(--panel);color:var(--ink);border:1px solid var(--line);font-weight:500;text-align:left;white-space:normal;justify-content:flex-start}
+.geo:hover{border-color:var(--navy)}
+.sheets{display:flex;flex-wrap:wrap;gap:6px}
+.sheets button{background:var(--navy-soft);color:var(--navy);border-color:transparent;font-weight:500;font-size:12px;padding:5px 9px}
+details summary{cursor:pointer;font-weight:600;font-size:13px;color:var(--navy)}
+details p,details li{font-size:12.5px;color:var(--muted)}
+.foot{font-size:11.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px}
+.seo{display:flex;flex-direction:column;gap:8px;border-top:1px solid var(--line);padding-top:16px}
+.seo h2{font-size:15px;line-height:1.3;margin:0;color:var(--ink);font-weight:700;text-wrap:balance}
+.seo h3{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:8px 0 0}
+.seo p{font-size:12.5px;color:var(--muted);margin:0}
+.seo details{border-bottom:1px solid var(--line);padding:6px 0}
+.seo details p{margin-top:6px}
+.seo a{color:var(--navy)}
+.foot a{color:var(--navy)}
+.nonoff{font-size:12px;margin:8px 0 0;padding:7px 10px;border-radius:6px;background:var(--warn-bg);color:var(--warn)}
+.nonoff b{font-weight:700}
+.cta{border:1px solid var(--navy);border-radius:8px;padding:12px;display:flex;flex-direction:column;gap:8px;align-items:flex-start;background:var(--navy-soft)}
+.cta p{margin:0;font-size:12.5px;color:var(--ink)}
+.cta b{font-weight:700}
+.hint{position:absolute;left:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:500;background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:6px 10px;font-size:12px;box-shadow:0 1px 4px rgba(0,0,0,.12)}
+.scale{position:absolute;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:500;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:4px 8px;font:12px var(--f-mono);color:var(--ink)}
+.pinicon{width:26px;height:26px;border-radius:50%;border:3px solid var(--pin);box-shadow:0 0 0 2px #fff,0 0 0 3px rgba(0,0,0,.4);position:relative}
+.pinicon::after{content:"";position:absolute;left:50%;top:50%;width:5px;height:5px;margin:-2.5px 0 0 -2.5px;border-radius:50%;background:var(--pin)}
+.leaflet-container{font-family:var(--f-ui)}
+.leaflet-control-zoom a{color:#152238}
+/* v2: calculadora de potencial, medición, mapa base */
+input[type=number],select{font:inherit;font-size:14px;padding:8px 10px;border:1px solid var(--line);border-radius:6px;background:var(--paper);color:var(--ink);width:100%;min-width:0;font-variant-numeric:tabular-nums}
+input[type=number]:focus-visible,select:focus-visible{outline:2px solid var(--navy);outline-offset:2px}
+.calc{border-top:1px solid var(--line);padding-top:12px;display:flex;flex-direction:column;gap:10px}
+.calc__in{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.calc__in label{font-size:12px;font-weight:600;margin:0;display:flex;flex-direction:column;gap:4px}
+.calc__in label .u{font-weight:400;color:var(--muted)}
+.calc__in .wide{grid-column:1/-1}
+.calc table td.v{white-space:nowrap}
+@media (max-width:520px){
+  .calc table thead{display:none}
+  .calc table tr{display:grid;grid-template-columns:1fr auto;column-gap:10px;border-bottom:1px solid var(--line);padding:5px 0}
+  .calc table td{border:0;padding:0 2px}
+  .calc table td:nth-child(3){grid-column:2;font-size:11px;color:var(--muted)}
+  .calc table td:nth-child(3)::before{content:"por 100 m²: "}
+  .calc table td.na{display:none}
+  .calc table tr.big td:nth-child(3){font-size:11px;color:var(--muted);font-weight:500}
+}
+.calc .big td{font-weight:700;color:var(--ink)} .calc .big td.v{color:var(--navy);font-size:13.5px}
+.linkbtn{background:none;border:0;padding:0;color:var(--navy);font-weight:600;font-size:12.5px;text-decoration:underline;text-underline-offset:2px;cursor:pointer}
+.warn{font-size:12px;color:var(--warn);margin:0;padding-left:16px}
+.acts{display:flex;flex-wrap:wrap;gap:6px}
+.acts button,.acts .btn{font-size:12px;padding:6px 10px}
+.tools{position:absolute;top:12px;right:12px;z-index:600;display:flex;flex-direction:column;gap:6px}
+.tools button{background:var(--panel);color:var(--ink);border:1px solid var(--line);box-shadow:0 1px 4px rgba(0,0,0,.12);font-weight:600;font-size:12px;padding:7px 10px;justify-content:flex-start}
+.tools button svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.tools button[aria-pressed="true"]{background:var(--navy);color:var(--panel);border-color:var(--navy)}
+.mbox{position:absolute;top:12px;left:56px;right:150px;max-width:420px;z-index:600;background:var(--panel);border:1px solid var(--line);border-radius:8px;box-shadow:0 2px 10px rgba(0,0,0,.15);padding:10px 12px;display:flex;flex-direction:column;gap:8px}
+.mbox .read{font:500 15px var(--f-mono);color:var(--navy);font-variant-numeric:tabular-nums}
+.mbox .read small{display:block;font:12px var(--f-ui);color:var(--muted);margin-top:2px}
+.mbox .help{margin:0}
+.measuring .leaflet-container,.measuring #map{cursor:crosshair}
+.vtx{width:14px;height:14px;border-radius:50%;background:var(--panel);border:2.5px solid var(--navy);box-shadow:0 0 0 1px rgba(0,0,0,.25);cursor:move}
+.vtx.first{background:var(--navy)}
+.seglbl{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:1px 5px;font:11px var(--f-mono);color:var(--ink);white-space:nowrap;transform:translate(-50%,-50%);display:inline-block;box-shadow:0 1px 2px rgba(0,0,0,.12)}
+.seglbl.tot{background:var(--navy);color:var(--panel);border-color:var(--navy);font-weight:500}
+.basemap{filter:grayscale(1) contrast(.95)}
+.layers{display:flex;flex-direction:column;gap:6px}
+.chk{display:flex;align-items:center;gap:8px;font-weight:500;font-size:13px;margin:0}
+.chk input{width:16px;height:16px;accent-color:var(--navy);margin:0}
+.chk.price{justify-content:space-between}.chk.price label{display:flex;align-items:center;gap:8px;margin:0;font-weight:500}
+.chk.price select{width:auto;max-width:58%;padding:4px 8px;font-size:12.5px}
+.pricebox{border-top:1px solid var(--line);padding-top:10px;font-size:12.5px}
+.pricebox .pv{font:600 18px var(--f-mono);color:var(--navy)}
+.plegend{position:absolute;left:12px;bottom:calc(46px + env(safe-area-inset-bottom,0px));z-index:500;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:8px 10px;font-size:11px;box-shadow:0 1px 4px rgba(0,0,0,.12);max-width:220px}
+.plegend b{display:block;font-size:11.5px;margin-bottom:4px}
+.plegend .row{display:flex;align-items:center;gap:6px;font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.plegend i{display:inline-block;width:14px;height:10px;border:1px solid rgba(0,0,0,.15)}
+.cov ul{margin:6px 0 0;padding-left:16px;font-size:12px;color:var(--muted);max-height:240px;overflow:auto}
+.cov li span{font-size:10.5px;color:var(--warn)}
+.osm{position:absolute;right:12px;bottom:calc(46px + env(safe-area-inset-bottom,0px));z-index:500;font-size:10px;color:var(--muted);background:var(--panel);opacity:.85;padding:1px 5px;border-radius:3px}
+.osm a{color:inherit}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .basemap{filter:grayscale(1) invert(1) brightness(.8)}}
+@media print{
+  .tools,.mbox,.hint,.seo,.sheets,details,.back,#f,#tip,.acts,#claude,.osm,.cta,section:has(#sheets){display:none!important}
+  .app{display:block;height:auto}.panel{overflow:visible;border:0}
+  .mapwrap{height:340px;page-break-inside:avoid}
+}
+@media (max-width:760px){
+  .mbox{left:10px;right:10px;top:auto;bottom:10px;max-width:none;padding:8px 10px;gap:6px}
+  .mbox .help{display:none}
+  .mbox .acts button{padding:5px 8px;font-size:11.5px}
+  .measuring .scale,.measuring .osm{display:none}
+  .tools{top:10px;right:10px}
+  .tools button span{display:none}
+  .app{grid-template-columns:1fr;grid-template-rows:52vh auto;height:auto}
+  .mapwrap{order:-1;height:52vh}
+  .panel{border-right:0;border-top:1px solid var(--line);overflow:visible;padding-right:max(16px,env(safe-area-inset-right,0px))}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+</head>
+<body>
+<div class="app">
+  <aside class="panel">
+    <header>
+      <div class="topbar">
+        <a class="back" id="back" href="/" aria-label="Regresar a la página anterior"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M10 3 5 8l5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Regresar</a>
+        <a class="brand" href="/"><b>Asteria</b> Capital · SIG</a>
+      </div>
+      <p class="eyebrow" style="margin-top:14px">Planes municipales de desarrollo urbano</p>
+      <h1>Uso de suelo: Ciudad de México y Estado de México</h1>
+      <p class="nonoff" role="note"><b>No oficial.</b> Consulta informativa que puede tener fallas: confirma siempre con la cédula o licencia de uso de suelo del Ayuntamiento.</p>
+      <p class="sub">Planos de los programas de desarrollo urbano. Estado de México: Naucalpan (PMDU 2023–2025) y Huixquilucan (PMDU 2017). Ciudad de México: programas delegacionales y parciales, en integración.</p>
+    </header>
+
+    <section>
+      <label for="q">Ubicación del predio</label>
+      <form class="row" id="f" autocomplete="off">
+        <input type="text" id="q" placeholder="Dirección, coordenadas o liga de Google Maps">
+        <button type="submit" id="go">Consultar</button>
+      </form>
+      <div id="qerr" class="err" hidden></div>
+      <div id="georesults" class="georesults" hidden></div>
+      <div id="addrhelp" hidden>
+        <p class="help">¿No aparece? Ubica el predio en Google Maps y pega aquí sus coordenadas:</p>
+        <ol class="steps">
+          <li><a id="gmaps" class="btn ghost" href="#" target="_blank" rel="noopener">Abrir la dirección en Google Maps ↗</a></li>
+          <li>Clic derecho (o mantener presionado) sobre el lote.</li>
+          <li>Clic en las coordenadas que aparecen arriba del menú: se copian solas.</li>
+          <li>Pégalas aquí y presiona Consultar.</li>
+        </ol>
+      </div>
+      <p class="help" id="tip">Escribe calle, número y colonia, o pega coordenadas decimales, grados-minutos-segundos, ligas de Google Maps o UTM (E N). También puedes <b>hacer clic en el plano</b>.</p>
+    </section>
+
+    <section class="layers" aria-labelledby="ly-h">
+      <p class="eyebrow" id="ly-h">Capas</p>
+      <label class="chk"><input type="checkbox" id="l-plan" checked> Planos de uso de suelo</label>
+      <label class="chk"><input type="checkbox" id="l-base" checked> Calles (OpenStreetMap)</label>
+      <div class="chk price"><label><input type="checkbox" id="l-price"> Precio por m²</label><select id="l-use" aria-label="Tipo de inmueble"></select></div>
+      <p class="help" id="l-note" style="margin:0"></p>
+    </section>
+
+    <section class="card" id="res" hidden>
+      <div>
+        <p class="eyebrow" id="r-sheet"></p>
+        <div class="clave" id="r-clave"></div>
+        <div class="desc" id="r-desc" style="margin-top:6px"></div>
+        <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap;align-items:center"><span class="chip" id="r-conf"></span><span class="help" id="r-conftxt" style="margin:0"></span></div>
+      </div>
+      <div id="r-note" class="note" hidden></div>
+      <div id="r-norm" class="tbl" hidden></div>
+      <div id="r-price" class="pricebox" hidden></div>
+      <div id="calc" class="calc" hidden>
+        <p class="eyebrow" style="margin:0">Potencial del predio</p>
+        <div class="calc__in">
+          <label>Superficie del terreno <span class="u">m²</span><input type="number" id="c-area" inputmode="decimal" min="1" step="any" placeholder="Ej. 450"></label>
+          <label>Frente <span class="u">m · opcional</span><input type="number" id="c-frente" inputmode="decimal" min="0" step="any" placeholder="Ej. 15"></label>
+          <label class="wide" id="c-rowwrap" hidden>Uso dentro del fraccionamiento<select id="c-row"></select></label>
+          <label class="wide">Costo de construcción con acabados <span class="u">$ por m² construido</span><input type="number" id="c-costo" inputmode="numeric" min="0" step="500" value="20000"></label>
+        </div>
+        <p class="help" style="margin:0">¿No sabes la superficie? <button type="button" class="linkbtn" id="c-measure">Mídela sobre el plano</button></p>
+        <div id="c-out"></div>
+      </div>
+      <div id="claude" hidden>
+        <button id="read" type="button" class="ghost">Verificar la clave con Claude</button>
+        <p class="help" id="read-help">Claude lee la etiqueta del polígono en un recorte del plano oficial alrededor del punto.</p>
+        <div id="read-out" class="help" hidden></div>
+      </div>
+      <dl class="kv">
+        <dt>Lat, Lon</dt><dd id="r-ll"></dd>
+        <dt>UTM 14N</dt><dd id="r-utm"></dd>
+      </dl>
+      <div class="cta" id="cta">
+        <p><b>¿Tienes un terreno o un negocio en esta zona?</b> Si quieres desarrollarlo, venderlo o asociarte, escríbenos y lo revisamos contigo.</p>
+        <a class="btn" id="cta-mail" href="mailto:asteriacapitalpartners@gmail.com">Escríbenos</a>
+      </div>
+      <div class="acts">
+        <button type="button" class="ghost" id="a-copy">Copiar liga</button>
+        <a class="btn ghost" id="a-gmaps" href="#" target="_blank" rel="noopener">Google Maps ↗</a>
+        <button type="button" class="ghost" id="a-print">Imprimir ficha</button>
+      </div>
+    </section>
+
+    <section class="cov">
+      <p class="eyebrow">Cobertura</p>
+      <p class="help" style="margin:0"><b>Estado de México:</b> Naucalpan y Huixquilucan, completos.</p>
+      <p class="help" style="margin:4px 0 0"><b>Ciudad de México:</b> <span id="cov-cdmx"></span></p>
+      <details id="cov-list"><summary>Programas de la CDMX</summary><ul id="cov-ul"></ul></details>
+    </section>
+
+    <section>
+      <p class="eyebrow">Planos</p>
+      <div class="sheets" id="sheets"></div>
+    </section>
+
+    <details>
+      <summary>Cómo se obtiene la clave</summary>
+      <ul>
+        <li>Los planos oficiales traen coordenadas: la cuadrícula UTM impresa (Naucalpan) o la georreferencia del PDF (Huixquilucan). El punto cae en el plano con error de pocos metros.</li>
+        <li>La clave es la etiqueta del plano dentro del mismo polígono de color. Si la zona tiene una sola etiqueta, la confianza es alta. Si tiene varias del mismo color, se toma la más cercana.</li>
+        <li>En los planos de Naucalpan Centro, Zona Industrial, Rincón Verde y El Cobradero las etiquetas son imagen. Ahí se muestra el grupo por color y conviene verificar la clave leyendo el plano.</li>
+        <li>Huixquilucan: en fraccionamientos (F-#) y conjuntos urbanos (C-#) rige la norma de su autorización. Se muestra la Tabla 98 del plan.</li>
+      </ul>
+    </details>
+
+    <section class="seo" aria-labelledby="seo-h">
+      <h2 id="seo-h">Consulta de uso de suelo en Naucalpan y Huixquilucan</h2>
+      <p>Escribe la dirección o las coordenadas de un terreno y te decimos qué uso de suelo le toca según el plan municipal de desarrollo urbano: la clave del plano (por ejemplo H-200-A en Naucalpan o HU300 en Huixquilucan), el lote mínimo, cuánto se puede construir (COS y CUS) y cuántos niveles se permiten. Es gratis y no necesitas registrarte.</p>
+
+      <h3>Zonas de Naucalpan</h3>
+      <p>Lomas Verdes, Ciudad Satélite, Echegaray, San Mateo, Vista del Valle, Naucalpan Centro, Los Remedios, Zona Industrial, Naucalpan Sur, Toreo, Tecamachalco, Rincón Verde, El Cobradero, Chiluca, El Cristo, Ejido San Mateo, Santiago Tepatlaxco, Ejido Santiago Occipaco, Cipreses y Ejido Los Remedios, San Francisco Chimalpa y Otomí-Mexica.</p>
+
+      <h3>Zonas de Huixquilucan</h3>
+      <p>Interlomas, Bosque Real, La Herradura, Lomas Anáhuac, Hacienda de las Palmas, Bosques de las Palmas, Lomas de las Palmas, Lomas del Sol, Lomas Country Club, Lomas de Tecamachalco (secciones Bosques y Cumbres), Jardines de la Herradura, Fuentes de las Lomas, Palmas Hills, Cañada de las Lomas, Paseos del Bosque, Central Park, Avivia y otros fraccionamientos y conjuntos urbanos del municipio.</p>
+
+      <h3>Preguntas frecuentes</h3>
+      <details>
+        <summary>¿Cómo sé el uso de suelo de mi terreno?</summary>
+        <p>Escribe la calle, el número y la colonia, o pega las coordenadas o la liga de Google Maps del terreno, y presiona Consultar. También puedes hacer clic directo sobre el plano. Verás la clave del plan municipal y sus normas.</p>
+      </details>
+      <details>
+        <summary>¿Qué significa una clave como H-200-A?</summary>
+        <p>En Naucalpan, la H indica uso habitacional y el número son los metros cuadrados de terreno bruto por vivienda. H-200-A permite una vivienda por cada 200 m² de terreno. La letra final distingue variantes de la misma densidad.</p>
+      </details>
+      <details>
+        <summary>¿Cuántos metros y departamentos puedo construir en mi terreno?</summary>
+        <p>Consulta el predio, escribe la superficie del terreno y la calculadora aplica la norma de la zona: desplante, área libre, niveles, metros construibles, departamentos permitidos y una estimación del costo de obra. Todo se muestra también por cada 100 m² de terreno. Si no conoces la superficie, mídela sobre el plano con la herramienta "Medir área".</p>
+      </details>
+      <details>
+        <summary>¿Cómo mido un terreno en el plano?</summary>
+        <p>Usa "Medir área" y toca cada esquina del terreno: verás el área en m² y el perímetro, con la medida de cada lado. "Medir distancia" sirve para frentes, fondos o distancias a una vialidad. El plano está en coordenadas UTM, así que las medidas son en metros reales, con error de pocos metros por la precisión del plano.</p>
+      </details>
+      <details>
+        <summary>¿Qué son el COS y el CUS?</summary>
+        <p>El COS (coeficiente de ocupación del suelo) es la parte del terreno que puede ocupar la construcción en planta baja. El CUS (coeficiente de utilización del suelo) es cuántas veces la superficie del terreno se puede construir en total, sumando todos los niveles.</p>
+      </details>
+      <details>
+        <summary>¿Qué pasa en fraccionamientos como Lomas Anáhuac o La Herradura?</summary>
+        <p>En Huixquilucan, en los fraccionamientos y conjuntos urbanos rige la norma de su autorización. La consulta te muestra la tabla del plan municipal para ese fraccionamiento: lote mínimo, frente, área libre, COS, niveles, altura y CUS.</p>
+      </details>
+      <details>
+        <summary>¿Esta consulta sustituye la cédula o la licencia de uso de suelo?</summary>
+        <p>No. Es una consulta informativa basada en los planos publicados por la Secretaría de Desarrollo Urbano e Infraestructura del Estado de México. El documento oficial lo expide el Ayuntamiento.</p>
+      </details>
+      <p class="help">¿Tienes un terreno y quieres desarrollarlo? <a href="/#contacto">Escríbenos</a>.</p>
+    </section>
+
+    <section class="cta cta--panel">
+      <p><b>¿Tienes un negocio, un terreno o un proyecto inmobiliario?</b> En Asteria desarrollamos vivienda y nos asociamos con dueños de tierra. Cuéntanos qué tienes.</p>
+      <a class="btn" href="mailto:asteriacapitalpartners@gmail.com?subject=Tengo%20un%20negocio%20o%20terreno%20(SIG%20Edomex)">Escríbenos</a>
+    </section>
+
+    <p class="foot">Fuentes: <a href="https://sedui.edomex.gob.mx/naucalpan" target="_blank" rel="noopener">SEDUI Edomex · Naucalpan</a> y <a href="https://sedui.edomex.gob.mx/huixquilucan" target="_blank" rel="noopener">SEDUI Edomex · Huixquilucan</a> (planos E-2/E-02B, tablas de usos del suelo y PMDU). Consulta informativa: el documento oficial es la cédula o licencia de uso de suelo del Ayuntamiento. Búsqueda de direcciones: © colaboradores de <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>. <br><a href="mailto:asteriacapitalpartners@gmail.com?subject=Falla%20en%20SIG%20Edomex" id="report">Reportar una falla</a> · Este sitio no es del Gobierno del Estado de México ni de los Ayuntamientos.</p>
+  </aside>
+
+  <div class="mapwrap">
+    <div id="map" role="application" aria-label="Plano de uso de suelo"></div>
+    <div class="hint" id="hint">Clic en el plano para consultar un punto</div>
+    <div class="tools" role="toolbar" aria-label="Herramientas del plano">
+      <button type="button" id="t-line" aria-pressed="false" title="Medir distancias"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17 17 3l4 4L7 21z"/><path d="m7 13 2 2m1-5 2 2m1-5 2 2"/></svg><span>Medir distancia</span></button>
+      <button type="button" id="t-area" aria-pressed="false" title="Medir área y perímetro"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7 12 3l8 5-2 11H7z"/></svg><span>Medir área</span></button>
+      <button type="button" id="t-loc" title="Ir a mi ubicación"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3"/></svg><span>Mi ubicación</span></button>
+    </div>
+    <div class="mbox" id="mbox" hidden>
+      <div class="read" id="m-read"></div>
+      <p class="help" id="m-help"></p>
+      <div class="acts">
+        <button type="button" class="ghost" id="m-undo">Deshacer punto</button>
+        <button type="button" id="m-use" hidden>Usar en la calculadora</button>
+        <button type="button" class="ghost" id="m-clear">Borrar</button>
+        <button type="button" class="ghost" id="m-close">Salir</button>
+      </div>
+    </div>
+    <div class="plegend" id="plegend" hidden></div>
+    <div class="osm">Calles © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a></div>
+    <div class="scale" id="scale"></div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+<script src="data/edomex.js"></script>
+<script src="data/cdmx.js"></script>
+<script>
+"use strict";
+const{NORM_N,NORM_H,FRAC}=window.SIG_EDOMEX;
+/* ---------- fuentes: cada hoja trae su carpeta de imágenes y su familia de normas ---------- */
+const SOURCES=[{id:"edomex",name:"Estado de México",data:window.SIG_EDOMEX.DATA,base:"../sig-edomex/s/"},...(window.SIG_CDMX&&window.SIG_CDMX.DATA.s.length?[{id:"cdmx",name:"Ciudad de México",data:window.SIG_CDMX.DATA,base:"data/cdmx/"}]:[])];
+const DATA={o:window.SIG_EDOMEX.DATA.o,s:SOURCES.flatMap(src=>src.data.s.map(x=>({...x,src:src.id,base:src.base})))};
+const TM=(()=>{const a=6378137,f=1/298.257223563,n=f/(2-f),k0=0.9996,A=a/(1+n)*(1+n*n/4+n**4/64);
+const al=[n/2-2*n*n/3+5*n**3/16,13*n*n/48-3*n**3/5,61*n**3/240],be=[n/2-2*n*n/3+37*n**3/96,n*n/48+n**3/15,17*n**3/480],de=[2*n-2*n*n/3-2*n**3,7*n*n/3-8*n**3/5,56*n**3/15];
+const L0=-99*Math.PI/180,c2=2*Math.sqrt(n)/(1+n);
+return{fwd(lat,lon){const p=lat*Math.PI/180,l=lon*Math.PI/180-L0,s=Math.sin(p);const t=Math.sinh(Math.atanh(s)-c2*Math.atanh(c2*s));
+const xi=Math.atan(t/Math.cos(l)),eta=Math.atanh(Math.sin(l)/Math.sqrt(1+t*t));let E=eta,N=xi;
+for(let j=1;j<=3;j++){E+=al[j-1]*Math.cos(2*j*xi)*Math.sinh(2*j*eta);N+=al[j-1]*Math.sin(2*j*xi)*Math.cosh(2*j*eta);}return[500000+k0*A*E,k0*A*N];},
+inv(E,N){const xi=N/(k0*A),eta=(E-500000)/(k0*A);let x=xi,y=eta;for(let j=1;j<=3;j++){x-=be[j-1]*Math.sin(2*j*xi)*Math.cosh(2*j*eta);y-=be[j-1]*Math.cos(2*j*xi)*Math.sinh(2*j*eta);}
+const chi=Math.asin(Math.sin(x)/Math.cosh(y));let p=chi;for(let j=1;j<=3;j++)p+=de[j-1]*Math.sin(2*j*chi);return[p*180/Math.PI,(L0+Math.atan(Math.sinh(y)/Math.cos(x)))*180/Math.PI];}};})();
+
+const OE=DATA.o[0],ON=DATA.o[1];
+const ll=(E,N)=>L.latLng(N-ON,E-OE);
+const GROUPS=[null,"Habitacional, densidad muy alta–alta (H-100 a H-167)","Habitacional, densidad media (H-200 a H-500)","Habitacional, densidad baja–muy baja (H-667 a H-1667)","Centro urbano (CU)","Equipamiento (E)","Industria (I-G-N)","Uso M (ver tabla de usos)","Infraestructura (IF)","Área verde (AV)","Barranca (N-BAR)","Parque (N-PAR)","Cuerpo de agua (CA)"];
+
+/* ---------- mapa ---------- */
+const map=L.map("map",{crs:L.CRS.Simple,minZoom:-6,maxZoom:3,zoomSnap:.25,zoomDelta:.5,wheelPxPerZoomLevel:90,attributionControl:false});
+map.createPane("hi");map.getPane("hi").style.zIndex=420;
+const S=DATA.s.map(s=>({...s,mE:(s.E1-s.E0)/s.w,mN:(s.N0-s.N1)/s.h}));
+let all=null;
+[...S].reverse().forEach(s=>{const b=L.latLngBounds(ll(s.E0,s.N1),ll(s.E1,s.N0));L.imageOverlay(s.base+s.c+"_ov.webp",b,{interactive:false}).addTo(map);all=all?all.extend(b):L.latLngBounds(b.getSouthWest(),b.getNorthEast());});
+/* área de trabajo: Edomex integrado + CDMX (también mientras sus planos se integran) */
+const CDMXB=L.latLngBounds(ll(461000,2105000),ll(506500,2168500));const AREA=L.latLngBounds(all.getSouthWest(),all.getNorthEast()).extend(CDMXB);
+map.fitBounds(AREA,{padding:[10,10]});
+const loaded=new Set();
+function chunkBounds(s,k){const[,x,y,w,h]=k;return L.latLngBounds(ll(s.E0+x*s.mE,s.N0-(y+h)*s.mN),ll(s.E0+(x+w)*s.mE,s.N0-y*s.mN));}
+function loadHi(){if(map.getZoom()<-2)return;const vb=map.getBounds().pad(.25);
+  [...S].reverse().forEach(s=>s.k.forEach(k=>{const id=k[0];if(loaded.has(id))return;const b=chunkBounds(s,k);if(vb.intersects(b)){loaded.add(id);L.imageOverlay(s.base+id,b,{pane:"hi",interactive:false}).addTo(map);}}));}
+function scaleTxt(){const z=map.getZoom();const mpp=1/Math.pow(2,z);const target=mpp*110;const nice=[5,10,20,50,100,200,500,1000,2000,5000].find(v=>v>=target)||5000;
+  const px=nice/mpp;document.getElementById("scale").innerHTML=`<span style="display:inline-block;width:${px.toFixed(0)}px;border-bottom:2px solid currentColor;margin-right:6px;vertical-align:middle"></span>${nice>=1000?nice/1000+" km":nice+" m"}`;}
+map.on("moveend zoomend",()=>{loadHi();scaleTxt();});loadHi();scaleTxt();
+const sh=document.getElementById("sheets");
+S.forEach(s=>{const b=document.createElement("button");b.type="button";b.textContent=(s.muni==="Huixquilucan"?"Huix. ":"")+s.n;
+  b.onclick=()=>map.fitBounds(L.latLngBounds(ll(s.E0,s.N1),ll(s.E1,s.N0)));sh.appendChild(b);});
+
+/* ---------- raster de claves ---------- */
+const clsCache={};
+function getCls(s){if(clsCache[s.c])return clsCache[s.c];
+  clsCache[s.c]=new Promise((res,rej)=>{const im=new Image();im.onload=()=>{const c=document.createElement("canvas");c.width=im.width;c.height=im.height;const x=c.getContext("2d",{willReadFrequently:true});x.drawImage(im,0,0);res({w:im.width,h:im.height,d:x.getImageData(0,0,im.width,im.height).data});};im.onerror=rej;im.src=s.base+s.c+"_cls.png";});
+  return clsCache[s.c];}
+const RANK={1:1,2:2,3:3,5:4,4:5,6:6};
+async function lookup(E,N){
+  let best=null;
+  for(const s of S){if(E<s.E0||E>s.E1||N<s.N1||N>s.N0)continue;
+    const g=await getCls(s);const cx=Math.floor((E-s.E0)/(s.E1-s.E0)*s.cw),cy=Math.floor((s.N0-N)/(s.N0-s.N1)*s.ch);
+    if(cx<0||cy<0||cx>=g.w||cy>=g.h)continue;const i=(cy*g.w+cx)*4;const v=g.d[i]+256*g.d[i+1],fl=g.d[i+2];
+    if(!v||!fl)continue;const r=(RANK[fl]||9)+(s.g?10:0);
+    if(!best||r<best.r)best={s,v,fl,r};}
+  if(!best){ // hueco: zona más cercana a menos de ~60 m
+    for(const s of S){if(E<s.E0-170||E>s.E1+170||N<s.N1-170||N>s.N0+170)continue;const g=await getCls(s);
+      const cs=(s.E1-s.E0)/s.cw,cx=Math.floor((E-s.E0)/cs),cy=Math.floor((s.N0-N)/cs),R=Math.ceil(150/cs);let bd=1e9,bb=null;
+      for(let dy=-R;dy<=R;dy++)for(let dx=-R;dx<=R;dx++){const X=cx+dx,Y=cy+dy;if(X<0||Y<0||X>=g.w||Y>=g.h)continue;const i=(Y*g.w+X)*4;const v=g.d[i]+256*g.d[i+1],fl=g.d[i+2];
+        if(!v||!fl)continue;const d=dx*dx+dy*dy+(s.g?1e5:0);if(d<bd){bd=d;bb={s,v,fl:fl>=5?6:4,r:20,near:Math.round(Math.sqrt(dx*dx+dy*dy)*cs)};}}
+      if(bb&&(!best||bd<best.bd)){best=bb;best.bd=bd;}}}
+  return best;}
+
+/* ---------- descripción de claves ---------- */
+const HDESC={HU200:"Habitacional unifamiliar, densidad media",HU300:"Habitacional unifamiliar, densidad baja",PR:"Poblado rural",HU200MX:"Habitacional unifamiliar mixto, densidad media",HU400MX:"Habitacional unifamiliar mixto, densidad muy baja",HM50:"Habitacional plurifamiliar, densidad baja",
+HP300:"Habitacional plurifamiliar, densidad media",HP500:"Habitacional plurifamiliar, densidad media",HP800:"Habitacional plurifamiliar, densidad media",HP1000:"Habitacional plurifamiliar, densidad alta",HP1500:"Habitacional plurifamiliar, densidad muy alta",
+HP1400MX:"Habitacional plurifamiliar mixto, densidad media",HP2000MX:"Habitacional plurifamiliar mixto, densidad alta",HP2500MX:"Habitacional plurifamiliar mixto, densidad muy alta",HP4000MX:"Habitacional plurifamiliar mixto, densidad muy alta",
+CS:"Comercio y servicios",CRU200:"Corredor urbano",SUB:"Subcentro urbano de baja intensidad",SUA:"Subcentro urbano de alta intensidad",CU100:"Centro urbano de baja densidad",CU2000MX:"Centro urbano de media densidad",CU:"Centro urbano de alta densidad",
+PT:"Parque tecnológico",IL:"Industria ligera",UE:"Uso especial",AGBP:"Agropecuario de baja productividad",AV:"Área verde","NAT-PE":"Área natural de preservación ecológica","NAT-PD":"Área natural protegida decretada",CA:"Cuerpo de agua",
+"E-EC":"Equipamiento de educación y cultura","E-SAS":"Equipamiento de salud y asistencia social","E-CA":"Equipamiento de comercio y abasto","E-CT":"Equipamiento de comunicaciones y transportes","E-ASU":"Equipamiento de administración y servicios urbanos","E-RD":"Equipamiento de recreación y deporte","E-ET":"Equipamiento (E-ET)",E:"Equipamiento"};
+const ESUB={EC:"educación y cultura",RD:"recreación y deporte",RE:"religión",AS:"administración pública y servicios urbanos",SA:"salud y asistencia",CT:"comunicaciones y transporte",CA:"comercio y abasto",E:"especial"};
+function descN(k){let m;
+  if(m=k.match(/^H-(\d+)-/))return`Habitacional · 1 vivienda por cada ${m[1]} m² de terreno bruto`;
+  if(m=k.match(/^CU-(\d+)-/))return`Centro urbano (uso mixto) · ${m[1]} m² de terreno bruto por vivienda`;
+  if(/^CU-/.test(k))return"Centro urbano (uso mixto)";
+  if(m=k.match(/^CRU-(\d+)-/))return`Corredor urbano · aplica a predios con frente a la vialidad · ${m[1]} m² bruto por vivienda`;
+  if(k==="E-E")return"Equipamiento especial";
+  if(m=k.match(/^E-([A-Z]+)(?:-([LMR]))?$/)){const esc={L:"local",M:"microrregional",R:"regional"}[m[2]];return`Equipamiento de ${ESUB[m[1]]||m[1]}${esc?" · cobertura "+esc:""}`;}
+  if(k==="AV")return"Área verde";if(k==="IF")return"Infraestructura";if(k==="CA")return"Cuerpo de agua";
+  if(/^N-BAR-P/.test(k))return"Zona natural · barranca protegida";if(/^N-BAR/.test(k))return"Zona natural · barranca no protegida";if(/^N-PAR/.test(k))return"Zona natural · parque";
+  if(/^I-/.test(k))return"Industria";return"";}
+function descH(k){if(/^F-/.test(k)){const f=FRAC.F[k];return"Fraccionamiento"+(f?" "+f.n:"")+" · rige la norma de su autorización";}
+  if(/^C-/.test(k))return"Conjunto urbano "+(FRAC.C[k]||"")+" · rige la norma de su autorización";return HDESC[k]||"";}
+const esc=t=>String(t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function normN(k){const v=NORM_N[k];if(!v)return"";const rows=[["Densidad (viv/ha)","viv_ha"],["Terreno bruto por vivienda (m²)","m2_bruto"],["Lote mínimo (m²)","lote"],["Frente mínimo (m)","frente"],["Viviendas por lote","viv_lote"],["Área libre (%)","libre"],["Área verde (%)","verde"],["Desplante máximo, COS (%)","cos"],["Niveles","niv"],["Altura (m)","alt"],["Intensidad máxima, CUS (veces)","cus"]];
+  const hd=v.length>1?`<thead><tr><th></th>${v.map(c=>`<th>Lote ${esc(c.lote)} m²</th>`).join("")}</tr></thead>`:"";
+  return`<p class="eyebrow">Normas de aprovechamiento · Tabla de usos 2025</p><table>${hd}<tbody>${rows.map(([n,f])=>`<tr><td>${n}</td>${v.map(c=>`<td class="v">${esc(c[f]??"")}</td>`).join("")}</tr>`).join("")}</tbody></table>${v.length>1?'<p class="help">La tabla da dos columnas para esta clave; la segunda aplica a lotes del tamaño indicado.</p>':""}<p class="help">NP: no permitido · DT: sujeto a dictamen técnico.</p>`;}
+function normH(k){if(/^F-/.test(k)){const f=FRAC.F[k];if(!f)return"";
+    return`<p class="eyebrow">Tabla 98 del PMDU · ${esc(k)} ${esc(f.n)}</p><table><thead><tr><th>Uso</th><th>Viv/m²</th><th>Frente</th><th>Lote m²</th><th>Libre %</th><th>COS</th><th>Niv.</th><th>m</th><th>CUS</th></tr></thead><tbody>${f.r.map(r=>`<tr>${r.map((x,i)=>i?`<td class="v">${esc(x)}</td>`:`<td>${esc(x)}</td>`).join("")}</tr>`).join("")}</tbody></table><p class="help">HU unifamiliar · HM plurifamiliar (CH horizontal, CV vertical) · CS comercio y servicios · V vialidad. * revisar el plano autorizado.</p>`;}
+  if(/^C-/.test(k))return`<p class="help">Conjunto urbano autorizado (Tabla 99 del PMDU). Las normas de lote, altura y densidad son las de su acuerdo de autorización publicado en Gaceta.</p>`;
+  const v=NORM_H[k];if(!v)return"";const rows=[["Densidad (viv/ha)","dens"],["Lote mínimo (m²)","lote"],["Frente mínimo (m)","frente"],["Área libre mínima","libre"],["COS","cos"],["Altura máxima (niveles)","niv"],["CUS","cus"],["Restricción al frente (m)","r_frente"],["Restricción al fondo (m)","r_fondo"],["Restricción lateral (m)","r_lat"]];
+  return`<p class="eyebrow">Normas · Tabla general de usos 2017</p><table><tbody>${rows.map(([n,f])=>`<tr><td>${n}</td><td class="v">${esc(v[f]??"")}</td></tr>`).join("")}</tbody></table><p class="help">SNEU: sujeto a normas de equipamiento urbano · F: ver norma de fraccionamientos.</p>`;}
+
+/* ---------- entrada ---------- */
+function parse(q){q=q.trim();if(!q)return null;
+  let m=q.match(/@(-?\d+\.\d+),(-?\d+\.\d+)/)||q.match(/!3d(-?\d+\.\d+)!4d(-?\d+\.\d+)/)||q.match(/[?&](?:q|query|ll)=(-?\d+\.\d+)(?:,|%2C)\s*(-?\d+\.\d+)/i);
+  if(m)return norm(+m[1],+m[2]);
+  const dms=[...q.matchAll(/(\d+(?:\.\d+)?)\s*[°º]\s*(\d+(?:\.\d+)?)\s*['’′]\s*(?:(\d+(?:\.\d+)?)\s*(?:["”″]|''))?\s*([NSWEO])?/gi)];
+  if(dms.length>=2){const v=dms.slice(0,2).map(d=>{let x=+d[1]+(+d[2])/60+(d[3]?+d[3]:0)/3600;if(/[SWO]/i.test(d[4]||""))x=-x;return x;});return norm(v[0],v[1]);}
+  const nums=(q.match(/-?\d+(?:\.\d+)?/g)||[]).map(Number);
+  if(nums.length===2&&!/[a-zñ]{4,}/i.test(q.replace(/(?:utm|zona|lat|lon|lng)/gi,""))){
+    const[a,b]=nums;
+    if(a>300000&&a<700000&&b>2000000&&b<2300000)return{E:a,N:b};
+    if(b>300000&&b<700000&&a>2000000&&a<2300000)return{E:b,N:a};
+    return norm(a,b);}
+  return{address:q};}
+function norm(a,b){let lat=a,lon=b;if(Math.abs(a)>90){lat=b;lon=a;}
+  if(lon>0)lon=-lon;if(!(lat>18&&lat<21&&lon<-98&&lon>-100.5))return{bad:true};const[E,N]=TM.fwd(lat,lon);return{E,N,lat,lon};}
+
+/* ---------- consulta ---------- */
+let pin=null,cur=null;const $=id=>document.getElementById(id);
+const CONF={1:["alta","ok","La etiqueta está en el mismo polígono."],2:["media","mid","La zona tiene varias etiquetas del mismo color; se tomó la más cercana."],3:["media","mid","Polígono sin etiqueta propia; se tomó la etiqueta más cercana del mismo color."],4:["sobre vialidad","mid","El punto cae en una calle; se tomó la zona contigua."],5:["por color","mid","Este plano no trae las etiquetas como texto; el color indica el grupo."],6:["por color","mid","Sobre vialidad; grupo por color de la zona contigua."]};
+async function query(E,N,lat,lon){
+  if(lat==null)[lat,lon]=TM.inv(E,N);
+  cur={E,N,lat,lon};
+  const icon=L.divIcon({className:"",html:'<div class="pinicon"></div>',iconSize:[26,26],iconAnchor:[13,13]});
+  if(pin)pin.setLatLng(ll(E,N));else pin=L.marker(ll(E,N),{icon,keyboard:false}).addTo(map);
+  map.setView(ll(E,N),Math.max(map.getZoom(),.25));
+  $("hint").hidden=true;$("res").hidden=false;$("read-out").hidden=true;
+  $("r-ll").textContent=`${lat.toFixed(6)}, ${lon.toFixed(6)}`;
+  try{history.replaceState(null,"","#"+lat.toFixed(6)+","+lon.toFixed(6));}catch(_){}
+  $("a-gmaps").href=`https://www.google.com/maps/search/?api=1&query=${lat.toFixed(6)},${lon.toFixed(6)}`;$("r-utm").textContent=`E ${E.toFixed(0)}  N ${N.toFixed(0)}`;
+  PR.show(E,N);
+  const r=await lookup(E,N);cur.hit=r;
+  const note=$("r-note");note.hidden=true;$("r-norm").hidden=true;
+  if(!r){$("r-sheet").textContent="Fuera de cobertura";$("r-clave").textContent="Sin dato";$("r-desc").textContent="";$("r-conf").textContent="";$("r-conf").className="chip";$("r-conftxt").textContent="";
+    note.hidden=false;note.textContent=inCDMX(lat,lon)?"Ciudad de México: estamos integrando los planos de los programas de desarrollo urbano de esta zona. Mientras, consulta el uso de suelo oficial en ciudadmx.cdmx.gob.mx.":"El punto no cae en una zona con planos integrados.";$("claude").hidden=!sampleFn;calcSet(null);return;}
+  const s=r.s;$("r-sheet").textContent=`${s.muni} · ${s.n}`;
+  if(r.near){note.hidden=false;note.textContent=`El punto no tiene uso asignado en el plano; se muestra la zona más cercana (a ~${r.near} m).`+(r.near>60?" Verifica en el plano: la distancia es grande.":"");}
+  else if(s.g){note.hidden=false;note.textContent="Dato del plano general (menor detalle): no hay plano de distrito para este punto.";}
+  let clave="",desc="",nh="";
+  if(r.fl>=5){clave=GROUPS[r.v]||"Zona";desc="Clave exacta no disponible en este plano";}
+  else{clave=s.claves[r.v-1]||"";desc=s.src==="cdmx"?descC(clave):s.muni==="Naucalpan"?descN(clave):descH(clave);nh=s.src==="cdmx"?normC(clave):s.muni==="Naucalpan"?normN(clave):normH(clave);}
+  $("r-clave").textContent=clave;$("r-clave").style.fontSize=r.fl>=5?"17px":"";$("r-desc").textContent=desc;
+  const c=CONF[r.fl]||["","",""];$("r-conf").textContent="Confianza "+c[0];$("r-conf").className="chip "+c[1];$("r-conftxt").textContent=c[2];
+  if(nh){$("r-norm").innerHTML=nh;$("r-norm").hidden=false;}
+  if(/^CRU/.test(clave)&&note.hidden){note.hidden=false;note.textContent="Corredor urbano: aplica a los predios con frente a la vialidad marcada.";}
+  $("claude").hidden=!sampleFn;
+  if(r.near>60){$("r-conf").textContent="Confianza baja";$("r-conf").className="chip mid";}
+  calcSet(r.fl>=5?null:clave,s.muni,s.src);
+}
+$("f").addEventListener("submit",e=>{e.preventDefault();const p=parse($("q").value);const er=$("qerr");er.hidden=true;$("addrhelp").hidden=true;
+  if(!p)return;
+  if(p.address){geocode(p.address);return;}
+  if(p.bad){er.hidden=false;er.textContent="Esa coordenada no está en la zona. Formato esperado: 19.4012, -99.2706";return;}
+  $("tip").hidden=false;query(p.E,p.N,p.lat,p.lon);});
+async function geocode(q){
+  $("gmaps").href="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(q+", Estado de México");
+  const box=$("georesults");box.innerHTML='<p class="help">Buscando la dirección…</p>';box.hidden=false;$("tip").hidden=true;
+  try{
+    const u="https://nominatim.openstreetmap.org/search?format=jsonv2&limit=6&countrycodes=mx&bounded=1&viewbox=-99.45,19.58,-99.15,19.28&q="+encodeURIComponent(q);
+    const r=await fetch(u,{headers:{"Accept-Language":"es"}});if(!r.ok)throw 0;const js=await r.json();
+    if(!js.length){box.innerHTML='<p class="help">No encontré esa dirección en Naucalpan o Huixquilucan.</p>';$("addrhelp").hidden=false;return;}
+    box.innerHTML='<p class="help">Elige el resultado (si no aparece el número exacto, haz clic en el lote sobre el plano):</p>';
+    js.forEach(it=>{const b=document.createElement("button");b.type="button";b.className="geo";b.textContent=it.display_name.split(", México")[0];
+      b.onclick=()=>{box.hidden=true;$("addrhelp").hidden=true;const[E,N]=TM.fwd(+it.lat,+it.lon);query(E,N,+it.lat,+it.lon);map.setView(ll(E,N),.5);};box.appendChild(b);});
+    $("addrhelp").hidden=false;
+  }catch(e){box.hidden=true;$("addrhelp").hidden=false;}
+}
+$("q").addEventListener("paste",()=>setTimeout(()=>{const p=parse($("q").value);if(p&&!p.address&&!p.bad)$("f").requestSubmit();},0));
+map.on("click",e=>{if(M.mode){M.add(e.latlng);return;}query(e.latlng.lng+OE,e.latlng.lat+ON);});
+
+
+/* ---------- potencial del predio ---------- */
+const nf=(x,d=0)=>Number(x).toLocaleString("es-MX",{minimumFractionDigits:d,maximumFractionDigits:d});
+const money=x=>"$"+nf(Math.round(x));
+const num=x=>{if(x==null)return NaN;const v=parseFloat(String(x).replace(/[%*,\s]/g,""));return isFinite(v)?v:NaN;};
+let CK=null; // {clave, muni}
+function normRows(clave,muni,src){
+  if(!clave)return null;
+  if(src==="cdmx"){const z=parseC(clave);if(!z||!isFinite(z.niv))return null;
+    return{src:"Programa de desarrollo urbano de la CDMX · Norma 11",rows:[{label:clave,m2viv:z.m2viv,np:z.lit==="Z"?false:!isFinite(z.m2viv)&&!z.lit,frente:NaN,lote:NaN,libre:z.libre,cos:1-z.libre,niv:z.niv,alt:NaN,cus:(1-z.libre)*z.niv}]};}
+  if(muni==="Naucalpan"){const v=NORM_N[clave];if(!v)return null;
+    return{src:"Tabla de usos del suelo 2025",byLote:true,rows:v.map(c=>({label:`Lote de ${c.lote} m² o más`,lote:num(c.lote),frente:num(c.frente),m2viv:num(c.m2_bruto),np:c.m2_bruto==="NP",
+      cos:num(c.cos)/100,cus:num(c.cus),niv:num(c.niv),alt:num(c.alt),libre:num(c.libre)/100}))};}
+  if(/^F-/.test(clave)){const f=FRAC.F[clave];if(!f)return null;
+    const rows=f.r.filter(r=>isFinite(num(r[3]))||isFinite(num(r[8]))).map(r=>{const m=String(r[1]).match(/1\s*\/\s*([\d.]+)/);
+      return{label:r[0],m2viv:m?+m[1]:NaN,np:!m,frente:num(r[2]),lote:num(r[3]),libre:num(r[4])/100,cos:num(r[5]),niv:num(r[6]),alt:num(r[7]),cus:num(r[8])};});
+    return rows.length?{src:"Tabla 98 del PMDU · "+f.n,pick:true,rows}:null;}
+  if(/^C-/.test(clave))return null;
+  const v=NORM_H[clave];if(!v)return null;const d=num(v.dens);
+  return{src:"Tabla general de usos 2017",rows:[{label:clave,m2viv:d>0?10000/d:NaN,np:!(d>0),frente:num(v.frente),lote:num(v.lote),libre:num(v.libre)/100,cos:num(v.cos),niv:num(v.niv),alt:NaN,cus:num(v.cus)}]};}
+function calcSet(clave,muni,src){
+  const n=normRows(clave,muni,src);CK=n?{clave,muni,n}:null;$("calc").hidden=!n;if(!n)return;
+  const sel=$("c-row"),wrap=$("c-rowwrap");
+  if(n.pick&&n.rows.length>1){sel.innerHTML=n.rows.map((r,i)=>`<option value="${i}">${esc(r.label)}</option>`).join("");wrap.hidden=false;}else{wrap.hidden=true;sel.innerHTML="";}
+  calc();}
+function calc(){
+  const out=$("c-out");if(!CK){out.innerHTML="";return;}
+  const n=CK.n,T=num($("c-area").value),F=num($("c-frente").value),P=num($("c-costo").value);
+  if(!(T>0)){out.innerHTML='<p class="help" style="margin:0">Escribe la superficie del terreno para ver cuánto se puede construir, cuántos departamentos caben y el costo estimado de obra.</p>';return;}
+  let r;
+  if(n.byLote){const ok=n.rows.filter(x=>!(x.lote>T));r=(ok.length?ok:n.rows).reduce((a,b)=>(b.lote>a.lote&&!(b.lote>T))?b:a,ok[0]||n.rows[0]);}
+  else r=n.rows[+($("c-row").value||0)]||n.rows[0];
+  const des=isFinite(r.cos)?T*r.cos:NaN, lib=isFinite(r.libre)?T*r.libre:(isFinite(r.cos)?T*(1-r.cos):NaN);
+  const byCus=isFinite(r.cus)?T*r.cus:NaN, byNiv=isFinite(des)&&isFinite(r.niv)?des*r.niv:NaN;
+  const con=isFinite(byCus)&&isFinite(byNiv)?Math.min(byCus,byNiv):(isFinite(byCus)?byCus:byNiv);
+  let viv=NaN,small=false;if(isFinite(r.m2viv)&&r.m2viv>0){viv=Math.floor(T/r.m2viv+1e-9);if(viv<1){if(!(r.lote>T))viv=1;else small=true;}}else if(r.np)viv=0;
+  const cost=isFinite(con)&&P>0?con*P:NaN;
+  const per=(x,d=0)=>isFinite(x)?nf(x*100/T,d):"—";
+  const row=(l,a,b,cls="")=>`<tr class="${cls}"><td>${l}</td><td class="v">${a}</td><td class="v${b==="—"||b==="100 m²"?" na":""}">${b}</td></tr>`;
+  const m2=x=>isFinite(x)?nf(x)+" m²":"—";
+  let h=`<div class="tbl"><table><thead><tr><th></th><th>Tu terreno</th><th>Por cada 100 m²</th></tr></thead><tbody>`;
+  h+=row("Terreno",m2(T),"100 m²");
+  h+=row(`Desplante máximo${isFinite(r.cos)?" (COS "+nf(r.cos*100)+"%)":""}`,m2(des),isFinite(des)?per(des)+" m²":"—");
+  h+=row(`Área libre mínima${isFinite(r.libre)?" ("+nf(r.libre*100)+"%)":""}`,m2(lib),isFinite(lib)?per(lib)+" m²":"—");
+  h+=row(`Niveles máximos${isFinite(r.alt)?" · "+nf(r.alt)+" m":""}`,isFinite(r.niv)?nf(r.niv):"—","—");
+  h+=row(`Metros construibles${isFinite(r.cus)?" (CUS "+nf(r.cus,2)+")":""}`,m2(con),isFinite(con)?per(con)+" m²":"—","big");
+  h+=row("Departamentos permitidos",isFinite(viv)?(small?"0 · terreno insuficiente":viv===0?"No permite vivienda":nf(viv)):"Sin dato",isFinite(viv)&&viv>0?per(viv,2):"—","big");
+  if(isFinite(viv)&&viv>0&&isFinite(con))h+=row("m² mínimos por depto (para usar todo lo construible)",nf(con/viv)+" m²","—");
+  if(isFinite(r.m2viv))h+=row("Terreno por vivienda que pide la norma",nf(r.m2viv)+" m²","—");
+  h+=row(`Costo de construcción${P>0?" ($"+nf(P)+"/m²)":""}`,isFinite(cost)?money(cost):"—",isFinite(cost)?money(cost*100/T):"—","big");
+  h+="</tbody></table></div>";
+  const w=[];
+  if(isFinite(r.lote)&&T<r.lote)w.push(`El terreno es menor al lote mínimo de ${nf(r.lote)} m²: el Ayuntamiento puede limitar lo que se autoriza.`);
+  if(isFinite(r.frente)&&F>0&&F<r.frente)w.push(`El frente es menor al mínimo de ${nf(r.frente)} m.`);
+  if(n.byLote&&n.rows.length>1)w.push(`Esta clave tiene normas distintas según el tamaño del lote; se usó la de ${esc(r.label.toLowerCase())}.`);
+  if(isFinite(byCus)&&isFinite(byNiv)&&byNiv<byCus-1)w.push("Lo construible queda limitado por desplante × niveles, no por el CUS.");
+  if(w.length)h+=`<ul class="warn">${w.map(x=>`<li>${x}</li>`).join("")}</ul>`;
+  h+=`<p class="help" style="margin:0">Estimación informativa con ${esc(n.src)}. El costo es solo obra con acabados: no incluye terreno, proyecto, licencias, IVA ni financiamiento. Restricciones, estacionamiento y derechos de vía pueden reducir el potencial.</p>`;
+  out.innerHTML=h;}
+["c-area","c-frente","c-costo","c-row"].forEach(id=>$(id).addEventListener("input",calc));
+$("c-measure").addEventListener("click",()=>{M.start("area");$("map").scrollIntoView({behavior:"smooth",block:"center"});});
+
+/* ---------- correos: contacto con contexto y reporte de fallas ---------- */
+const MAIL="asteriacapitalpartners@gmail.com";
+$("cta-mail").addEventListener("click",e=>{const h=cur&&cur.hit,cl=$("r-clave").textContent||"",sh=$("r-sheet").textContent||"";
+  e.currentTarget.href=`mailto:${MAIL}?subject=${encodeURIComponent("Terreno o negocio en "+(sh||"Edomex")+(cl?" ("+cl+")":""))}&body=${encodeURIComponent("Hola, vi este predio en el SIG Edomex:\n"+location.href+"\n\nSuperficie aproximada: "+($("c-area").value?$("c-area").value+" m²":"")+"\n\nLes cuento:\n")}`;});
+$("report").addEventListener("click",e=>{e.currentTarget.href=`mailto:${MAIL}?subject=${encodeURIComponent("Falla en SIG Edomex")}&body=${encodeURIComponent("Liga de la consulta: "+location.href+"\nClave mostrada: "+($("r-clave").textContent||"—")+"\n\n¿Qué está mal? \n")}`;});
+
+/* ---------- acciones de la ficha ---------- */
+$("a-copy").addEventListener("click",async()=>{const b=$("a-copy");try{await navigator.clipboard.writeText(location.href);b.textContent="Liga copiada";}catch(_){b.textContent="No se pudo copiar";}setTimeout(()=>b.textContent="Copiar liga",1800);});
+$("a-print").addEventListener("click",()=>window.print());
+$("t-loc").addEventListener("click",()=>{const b=$("t-loc");if(!navigator.geolocation)return;b.disabled=true;
+  navigator.geolocation.getCurrentPosition(p=>{b.disabled=false;const{latitude:la,longitude:lo}=p.coords;const[E,N]=TM.fwd(la,lo);query(E,N,la,lo);map.setView(ll(E,N),.75);},
+    ()=>{b.disabled=false;$("hint").hidden=false;$("hint").textContent="No se pudo obtener tu ubicación.";},{enableHighAccuracy:true,timeout:10000});});
+
+/* ---------- medir distancias y áreas (el plano está en metros UTM: la distancia es directa) ---------- */
+const M=(()=>{
+  map.createPane("meas");map.getPane("meas").style.zIndex=450;const rend=L.svg({pane:"meas"});
+  const g=L.layerGroup().addTo(map),vg=L.layerGroup().addTo(map);let mode=null,pts=[],vtx=[];
+  const fmtL=d=>d<1000?nf(d,d<100?2:1)+" m":nf(d/1000,2)+" km";
+  const fmtA=a=>nf(a,a<1000?1:0)+" m²"+(a>=10000?" ("+nf(a/10000,2)+" ha)":"");
+  const dist=(a,b)=>Math.hypot(a.lat-b.lat,a.lng-b.lng);
+  function area(p){let s=0;for(let i=0;i<p.length;i++){const a=p[i],b=p[(i+1)%p.length];s+=a.lng*b.lat-b.lng*a.lat;}return Math.abs(s)/2;}
+  function lbl(at,t,cls="seglbl"){return L.marker(at,{interactive:false,keyboard:false,icon:L.divIcon({className:"",html:`<span class="${cls}">${t}</span>`,iconSize:[0,0]})});}
+  function draw(){g.clearLayers();const n=pts.length,poly=mode==="area"&&n>=3;
+    if(n>=2)(poly?L.polygon(pts,{renderer:rend,color:"#0F5A46",weight:3,fillColor:"#0F5A46",fillOpacity:.22}):L.polyline(pts,{renderer:rend,color:"#0F5A46",weight:3,dashArray:mode==="area"?"6 5":null})).addTo(g);
+    let per=0;const segs=poly?n:n-1;
+    for(let i=0;i<segs;i++){const a=pts[i],b=pts[(i+1)%n],d=dist(a,b);per+=d;if(map.getZoom()>-1.5||segs<6)lbl(L.latLng((a.lat+b.lat)/2,(a.lng+b.lng)/2),fmtL(d)).addTo(g);}
+    let txt="",sub="";
+    if(mode==="line"){txt=n<2?"Toca el plano para empezar":"Distancia: "+fmtL(per);sub=n>=2?`${n-1} ${n===2?"tramo":"tramos"}`:"";}
+    else{if(n<3){txt=n?`${n} de 3 puntos mínimo`:"Toca las esquinas del terreno";}else{const A=area(pts);txt="Área: "+fmtA(A);sub="Perímetro: "+fmtL(per)+` · ${n} lados`;
+      const c=pts.reduce((s,p)=>[s[0]+p.lat/n,s[1]+p.lng/n],[0,0]);lbl(L.latLng(c[0],c[1]),fmtA(A),"seglbl tot").addTo(g);}}
+    $("m-read").innerHTML=esc(txt)+(sub?`<small>${esc(sub)}</small>`:"");
+    $("m-use").hidden=!(mode==="area"&&n>=3);$("m-undo").disabled=!n;}
+  function vtxs(){vg.clearLayers();vtx=pts.map((p,i)=>{const m=L.marker(p,{draggable:true,keyboard:false,icon:L.divIcon({className:"",html:`<div class="vtx${i===0?" first":""}"></div>`,iconSize:[14,14],iconAnchor:[7,7]})}).addTo(vg);
+    m.on("drag",e=>{pts[i]=e.target.getLatLng();draw();});
+    if(i===0)m.on("click",()=>{if(mode==="area"&&pts.length>=3)finish();});return m;});}
+  function add(p){pts.push(p);vtxs();draw();}
+  function finish(){$("m-help").textContent="Listo. Arrastra los puntos para ajustar, o usa el área en la calculadora.";}
+  function start(m){if(mode===m){stop();return;}mode=m;pts=[];vtxs();g.clearLayers();
+    $("t-line").setAttribute("aria-pressed",String(m==="line"));$("t-area").setAttribute("aria-pressed",String(m==="area"));
+    $("mbox").hidden=false;$("hint").hidden=true;document.body.classList.add("measuring");map.doubleClickZoom.disable();
+    $("m-help").textContent=m==="area"?"Toca cada esquina del terreno en orden. Arrastra un punto para ajustarlo; el área se cierra sola.":"Toca el plano para marcar cada punto. Arrastra un punto para ajustarlo.";draw();}
+  function stop(){mode=null;pts=[];g.clearLayers();vg.clearLayers();$("mbox").hidden=true;document.body.classList.remove("measuring");map.doubleClickZoom.enable();
+    $("t-line").setAttribute("aria-pressed","false");$("t-area").setAttribute("aria-pressed","false");}
+  $("t-line").addEventListener("click",()=>start("line"));$("t-area").addEventListener("click",()=>start("area"));
+  $("m-undo").addEventListener("click",()=>{pts.pop();vtxs();draw();});
+  $("m-clear").addEventListener("click",()=>{pts=[];vtxs();draw();});
+  $("m-close").addEventListener("click",stop);
+  $("m-use").addEventListener("click",async()=>{if(pts.length<3)return;const A=area(pts);
+    const n=pts.length,c=pts.reduce((s,p)=>[s[0]+p.lat/n,s[1]+p.lng/n],[0,0]);
+    if(!cur||!cur.hit||Math.hypot(cur.E-(c[1]+OE),cur.N-(c[0]+ON))>80)await query(c[1]+OE,c[0]+ON);
+    $("c-area").value=Math.round(A);calc();$("calc").scrollIntoView({behavior:"smooth",block:"start"});});
+  map.on("zoomend",()=>{if(mode)draw();});
+  return{get mode(){return mode;},add,start,stop};})();
+
+/* ---------- mapa base de calles bajo los planos: llena los huecos entre hojas y fuera de cobertura ---------- */
+(()=>{const R=6378137,lim=AREA.pad(.25);
+  const tx=(lon,z)=>(lon+180)/360*2**z, ty=(lat,z)=>{const p=lat*Math.PI/180;return(1-Math.log(Math.tan(p)+1/Math.cos(p))/Math.PI)/2*2**z;};
+  const lon2=(x,z)=>x/2**z*360-180, lat2=(y,z)=>{const n=Math.PI-2*Math.PI*y/2**z;return 180/Math.PI*Math.atan(.5*(Math.exp(n)-Math.exp(-n)));};
+  const Base=L.GridLayer.extend({createTile(c,done){
+    const t=document.createElement("canvas");t.width=t.height=256;const sc=2**c.z,g=t.getContext("2d");
+    const E0=c.x*256/sc+OE,E1=(c.x+1)*256/sc+OE,Nt=-(c.y*256)/sc+ON,Nb=-((c.y+1)*256)/sc+ON;
+    const[la0,lo0]=TM.inv(E0,Nt),[la1,lo1]=TM.inv(E1,Nb);
+    let Z=Math.round(Math.log2(2*Math.PI*R*Math.cos(la0*Math.PI/180)/256*sc));Z=Math.max(9,Math.min(19,Z));
+    let x0=Math.floor(tx(lo0,Z)),x1=Math.floor(tx(lo1,Z)),y0=Math.floor(ty(la0,Z)),y1=Math.floor(ty(la1,Z));
+    while((x1-x0+1)*(y1-y0+1)>16&&Z>9){Z--;x0=Math.floor(tx(lo0,Z));x1=Math.floor(tx(lo1,Z));y0=Math.floor(ty(la0,Z));y1=Math.floor(ty(la1,Z));}
+    let left=(x1-x0+1)*(y1-y0+1);const fin=()=>{if(--left<=0)done(null,t);};
+    const px=(E,N)=>[(E-OE)*sc-c.x*256,-(N-ON)*sc-c.y*256];
+    for(let X=x0;X<=x1;X++)for(let Y=y0;Y<=y1;Y++){const im=new Image();
+      im.onload=()=>{const[eA,nA]=TM.fwd(lat2(Y,Z),lon2(X,Z)),[eB,nB]=TM.fwd(lat2(Y+1,Z),lon2(X+1,Z));const a=px(eA,nA),b=px(eB,nB);
+        try{g.drawImage(im,a[0],a[1],b[0]-a[0],b[1]-a[1]);}catch(_){}fin();};
+      im.onerror=fin;im.src=`https://tile.openstreetmap.org/${Z}/${X}/${Y}.png`;}
+    return t;}});
+  window.BASEMAP=new Base({bounds:lim,tileSize:256,minZoom:-6,maxZoom:3,opacity:.55,className:"basemap",keepBuffer:1,updateWhenIdle:true}).addTo(map);})();
+
+
+/* ---------- CDMX: claves tipo "H 3/20/M" = uso, niveles, % área libre, literal de densidad (Norma 11) ---------- */
+const USO_C={H:"Habitacional",HC:"Habitacional con comercio en planta baja",HO:"Habitacional con oficinas",HM:"Habitacional mixto",CB:"Centro de barrio",E:"Equipamiento",I:"Industria",EA:"Espacios abiertos",AV:"Áreas de valor ambiental",RE:"Rescate ecológico",PE:"Preservación ecológica",PRA:"Producción rural agroindustrial",HR:"Habitacional rural",HRC:"Habitacional rural con comercio",HRB:"Habitacional rural de baja densidad"};
+const LIT={A:33,M:50,B:100,MB:200,R:500};
+function parseC(k){const m=String(k).toUpperCase().replace(/\s+/g," ").match(/^([A-Z]{1,3})\s*(\d+)\s*\/\s*(\d+)(?:\s*\/\s*(MB|A|M|B|R|Z))?/);
+  if(!m)return{uso:String(k).trim().split(" ")[0],niv:NaN,libre:NaN,lit:null,m2viv:NaN};
+  const lit=m[4]||null;return{uso:m[1],niv:+m[2],libre:+m[3]/100,lit,m2viv:lit&&LIT[lit]?LIT[lit]:NaN};}
+function descC(k){const z=parseC(k);const u=USO_C[z.uso]||"";if(!isFinite(z.niv))return u;
+  return`${u}${u?" · ":""}${z.niv} niveles, ${Math.round(z.libre*100)}% de área libre`+(z.lit?` · densidad ${z.lit}${LIT[z.lit]?" (1 vivienda por cada "+LIT[z.lit]+" m² de terreno)":z.lit==="Z"?" (la del proyecto)":""}`:"");}
+function normC(k){const z=parseC(k);if(!isFinite(z.niv))return"";const cos=1-z.libre;
+  const rows=[["Niveles máximos",z.niv],["Área libre mínima",Math.round(z.libre*100)+"%"],["Desplante (COS, Norma 1)",cos.toFixed(2)],["Construcción (CUS, Norma 1)",(cos*z.niv).toFixed(2)],["Densidad (Norma 11)",z.lit?z.lit+(LIT[z.lit]?" · "+LIT[z.lit]+" m² por vivienda":z.lit==="Z"?" · según proyecto":""):"—"]];
+  return`<p class="eyebrow">Normas de la zonificación</p><table><tbody>${rows.map(([n,v])=>`<tr><td>${n}</td><td class="v">${esc(v)}</td></tr>`).join("")}</tbody></table><p class="help">Las normas de ordenación generales y particulares del programa pueden modificar estos valores.</p>`;}
+function inCDMX(lat,lon){return lat>19.04&&lat<19.6&&lon>-99.37&&lon<-98.94;}
+
+/* ---------- cobertura de la CDMX ---------- */
+(()=>{const C=window.SIG_CDMX;if(!C)return;const P=C.PROGRAMS,done=new Set((C.DATA.s||[]).map(x=>x.prog));
+  const f1=P.filter(p=>p.fase===1),ok=P.filter(p=>done.has(p.id));
+  $("cov-cdmx").textContent=ok.length?`${ok.length} de ${P.length} programas integrados.`:`en integración. Primero el poniente: Miguel Hidalgo, Cuajimalpa, Álvaro Obregón, Benito Juárez, Cuauhtémoc y Coyoacán (${f1.length} programas).`;
+  $("cov-ul").innerHTML=P.slice().sort((a,b)=>a.fase-b.fase||a.alc.localeCompare(b.alc)).map(p=>`<li>${esc(C.ALC[p.alc]||p.alc)} · ${esc(p.n.replace(/^Programa (Delegacional|Parcial) · /,p.tipo==="PDDU"?"Delegacional":"Parcial: "))} ${done.has(p.id)?"✓":`<span>${p.fase===1?"siguiente":"después"}</span>`}</li>`).join("");})();
+
+/* ---------- capa de precio por m² ----------
+   Datos: data/precios.json, rejilla en UTM 14N. Cada celda trae, por tipo de inmueble, [mediana, n, p25, p75] en MXN/m².
+   Se pinta solo con n ≥ min_n. Se genera con tools/precios/construir_precios.py a partir de un CSV. */
+const PR=(()=>{
+  const PAL=["#ffffcc","#d9f0a3","#addd8e","#78c679","#41ab5d","#238443","#005a32"];
+  let D=null,use=null,cell=500,minN=3,idx=new Map(),br=[],layer=null;
+  const fmt=v=>"$"+Math.round(v).toLocaleString("es-MX");
+  const colorOf=v=>{let i=0;while(i<br.length&&v>br[i])i++;return PAL[i];};
+  function rebuild(){idx.clear();br=[];if(!D||!use)return;const vals=[];
+    for(const c of D.cells){const v=c.v&&c.v[use];if(!v||!(v[1]>=minN))continue;idx.set(Math.floor(c.e/cell)+","+Math.floor(c.n/cell),v);vals.push(v[0]);}
+    vals.sort((a,b)=>a-b);for(let q=1;q<PAL.length;q++)br.push(vals[Math.min(vals.length-1,Math.floor(q*vals.length/PAL.length))]);
+    legend();if(layer)layer.redraw();}
+  function legend(){const el=$("plegend");if(!layer||!map.hasLayer(layer)||!idx.size){el.hidden=true;return;}
+    const u=D.uses[use]||{},unit=u.unit||D.unit||"MXN/m²",lo=[...idx.values()].reduce((m,v)=>Math.min(m,v[0]),1e12);
+    el.innerHTML=`<b>${esc(u.label||use)} · ${esc(unit)}</b>`+PAL.map((c,i)=>`<div class="row"><i style="background:${c}"></i>${i===0?"hasta "+fmt(br[0]):i===PAL.length-1?"más de "+fmt(br[i-1]):fmt(br[i-1])+" – "+fmt(br[i])}</div>`).join("")+`<div class="help" style="margin-top:4px">Mediana por celda de ${cell} m · ${D.updated?"datos al "+esc(D.updated):""}</div>`;el.hidden=false;}
+  const Grid=L.GridLayer.extend({createTile(c){const t=document.createElement("canvas");t.width=t.height=256;if(!idx.size)return t;
+    const g=t.getContext("2d"),sc=2**c.z,E0=c.x*256/sc+OE,E1=(c.x+1)*256/sc+OE,Nt=-(c.y*256)/sc+ON,Nb=-((c.y+1)*256)/sc+ON;
+    const i0=Math.floor(E0/cell),i1=Math.floor(E1/cell),j0=Math.floor(Nb/cell),j1=Math.floor(Nt/cell);if((i1-i0+1)*(j1-j0+1)>40000)return t;
+    g.globalAlpha=.62;for(let i=i0;i<=i1;i++)for(let j=j0;j<=j1;j++){const v=idx.get(i+","+j);if(!v)continue;
+      const x=(i*cell-OE)*sc-c.x*256,y=-((j+1)*cell-ON)*sc-c.y*256,w=cell*sc;g.fillStyle=colorOf(v[0]);g.fillRect(x,y,Math.ceil(w)+.5,Math.ceil(w)+.5);}
+    return t;}});
+  function init(d){D=d&&d.cells?d:null;const sel=$("l-use"),chk=$("l-price"),note=$("l-note");
+    const uses=D?Object.keys(D.uses||{}):[];sel.innerHTML=uses.map(u=>`<option value="${u}">${esc(D.uses[u].label||u)}</option>`).join("");
+    if(!D||!D.cells.length){chk.disabled=true;sel.disabled=true;note.textContent="Precio por m²: capa lista, todavía sin datos.";return;}
+    cell=D.cell||500;minN=D.min_n||3;use=uses[0];note.textContent="";
+    layer=new Grid({pane:"price",tileSize:256,minZoom:-6,maxZoom:3,updateWhenIdle:true});
+    chk.addEventListener("change",()=>{if(chk.checked)layer.addTo(map);else map.removeLayer(layer);legend();});
+    sel.addEventListener("change",()=>{use=sel.value;rebuild();if(cur)show(cur.E,cur.N);});rebuild();}
+  function at(E,N){if(!D)return null;const k=Math.floor(E/cell)+","+Math.floor(N/cell),c=D.cells.find(c=>Math.floor(c.e/cell)+","+Math.floor(c.n/cell)===k);return c||null;}
+  function show(E,N){const box=$("r-price"),c=at(E,N);if(!c||!c.v){box.hidden=true;return;}
+    const rows=Object.entries(c.v).filter(([,v])=>v[1]>=minN);if(!rows.length){box.hidden=true;return;}
+    box.innerHTML=`<p class="eyebrow" style="margin:0 0 4px">Precio de referencia en la zona</p>`+rows.map(([u,v])=>`<div style="display:flex;justify-content:space-between;gap:8px;align-items:baseline"><span>${esc((D.uses[u]||{}).label||u)}</span><span><span class="pv">${fmt(v[0])}</span> <span class="muted">/m²</span></span></div><div class="help" style="margin:0 0 6px">${isFinite(v[2])?"Rango típico "+fmt(v[2])+" – "+fmt(v[3])+" · ":""}${v[1]} datos</div>`).join("")+`<p class="help" style="margin:0">Referencia de mercado por zona (celda de ${cell} m), no es avalúo.</p>`;box.hidden=false;}
+  map.createPane("price");map.getPane("price").style.zIndex=430;
+  fetch("data/precios.json",{cache:"no-cache"}).then(x=>x.ok?x.json():null).then(init).catch(()=>init(null));
+  return{show};})();
+
+/* ---------- capas: planos y calles ---------- */
+$("l-plan").addEventListener("change",e=>{const on=e.target.checked;map.getPane("overlayPane").style.display=on?"":"none";map.getPane("hi").style.display=on?"":"none";});
+$("l-base").addEventListener("change",e=>{if(!window.BASEMAP)return;if(e.target.checked)window.BASEMAP.addTo(map);else map.removeLayer(window.BASEMAP);});
+/* ---------- liga compartible: #lat,lon abre la consulta ---------- */
+(()=>{const m=location.hash.match(/^#(-?\d+\.\d+),(-?\d+\.\d+)/);if(!m)return;const p=norm(+m[1],+m[2]);if(p&&!p.bad){$("q").value=`${m[1]}, ${m[2]}`;query(p.E,p.N,p.lat,p.lon);}})();
+
+/* ---------- regresar: a la página anterior del sitio si se llegó desde ahí; si no, al inicio ---------- */
+$("back").addEventListener("click",e=>{
+  let same=false;try{same=!!document.referrer&&new URL(document.referrer).origin===location.origin;}catch(_){}
+  if(same&&history.length>1){e.preventDefault();history.back();}
+});
+
+/* ---------- verificación con Claude ---------- */
+let sampleFn=null;
+(async()=>{try{const s=await window.claude?.use?.("sample");if(s){const lim=await s.limits().catch(()=>null);if(lim&&lim.images)sampleFn=s;}}catch(e){}
+  if(cur&&cur.hit)$("claude").hidden=!sampleFn;})();
+const imgCache={};
+function loadImg(src){return imgCache[src]||(imgCache[src]=new Promise((res,rej)=>{const i=new Image();i.onload=()=>res(i);i.onerror=rej;i.src=src;}));}
+async function crop(s,E,N,half,outSize){
+  const px=(E-s.E0)/s.mE,py=(s.N0-N)/s.mN;const x0=px-half,y0=py-half,sz=half*2;
+  const c=document.createElement("canvas");c.width=c.height=outSize;const g=c.getContext("2d");g.fillStyle="#fff";g.fillRect(0,0,outSize,outSize);
+  const sc=outSize/sz;
+  for(const k of s.k){const[f,x,y,w,h]=k;if(x+w<x0||x>x0+sz||y+h<y0||y>y0+sz)continue;const im=await loadImg(s.base+f);g.drawImage(im,(x-x0)*sc,(y-y0)*sc,w*sc,h*sc);}
+  const m=outSize/2;g.lineWidth=4;g.strokeStyle="#fff";g.beginPath();g.arc(m,m,15,0,7);g.stroke();g.lineWidth=2.5;g.strokeStyle="#e0001b";g.beginPath();g.arc(m,m,15,0,7);g.stroke();
+  g.fillStyle="#e0001b";g.beginPath();g.arc(m,m,3,0,7);g.fill();
+  return await new Promise(r=>c.toBlob(r,"image/png"));}
+$("read").addEventListener("click",async()=>{
+  if(!cur||!cur.hit||!sampleFn)return;const btn=$("read");btn.disabled=true;btn.textContent="Leyendo el plano…";const out=$("read-out");out.hidden=true;
+  try{const s=cur.hit.s;const close=await crop(s,cur.E,cur.N,280,560),ctx=await crop(s,cur.E,cur.N,800,800);
+    const nom=s.muni==="Naucalpan"?"Las claves tienen forma H-250-A, CU-300-B, CRU-200-A, E-EC-M, AV, N-BAR-P, IF.":"Las claves tienen forma HP300, HU200MX, CU2000MX, CRU200, SUA, E-EC, AV, NAT-PE, F-8 (fraccionamiento) o C-18 (conjunto urbano).";
+    const prompt=`Te doy dos recortes del plano oficial de usos del suelo de ${s.muni} (${s.n}). Imagen 1: acercamiento (~420 m por lado). Imagen 2: contexto (~1.2 km por lado). El punto consultado está al centro, marcado con un círculo rojo con borde blanco.
+Identifica la clave de uso de suelo del polígono de color que contiene el centro del círculo. ${nom} La clave está escrita dentro del polígono, a veces lejos del punto o girada. Ignora nombres de calles y colonias y las líneas de la cuadrícula. Si el punto cae en una calle, da la clave del polígono más cercano y dilo. Si no la puedes leer con certeza, dilo.
+Responde SOLO JSON: {"clave":"texto exacto o null","sobre_vialidad":true/false,"confianza":"alta"|"media"|"baja","explicacion":"1 o 2 frases"}`;
+    const r=await sampleFn.json(prompt,{images:[close,ctx]});
+    out.innerHTML=`<b>Claude lee: ${esc(r.clave||"no legible")}</b> (confianza ${esc(r.confianza||"—")}). ${esc(r.explicacion||"")}`;out.hidden=false;
+  }catch(e){out.textContent={not_granted:"No se autorizó a Claude en esta página.",rate_limited:"Demasiadas consultas seguidas. Espera un momento.",images_unavailable:"Esta vista no puede enviar imágenes a Claude."}[e&&e.code]||"No se pudo leer el plano. Acércate al marcador y lee la etiqueta.";out.hidden=false;}
+  finally{btn.disabled=false;btn.textContent="Verificar la clave con Claude";}});
+</script>
+
+</body>
+</html>

@@ -117,6 +117,11 @@ details p,details li{font-size:12.5px;color:var(--muted)}
 .seo details p{margin-top:6px}
 .seo a{color:var(--navy)}
 .foot a{color:var(--navy)}
+.nonoff{font-size:12px;margin:8px 0 0;padding:7px 10px;border-radius:6px;background:var(--warn-bg);color:var(--warn)}
+.nonoff b{font-weight:700}
+.cta{border:1px solid var(--navy);border-radius:8px;padding:12px;display:flex;flex-direction:column;gap:8px;align-items:flex-start;background:var(--navy-soft)}
+.cta p{margin:0;font-size:12.5px;color:var(--ink)}
+.cta b{font-weight:700}
 .hint{position:absolute;left:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:500;background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:6px 10px;font-size:12px;box-shadow:0 1px 4px rgba(0,0,0,.12)}
 .scale{position:absolute;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:500;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:4px 8px;font:12px var(--f-mono);color:var(--ink)}
 .pinicon{width:26px;height:26px;border-radius:50%;border:3px solid var(--pin);box-shadow:0 0 0 2px #fff,0 0 0 3px rgba(0,0,0,.4);position:relative}
@@ -164,7 +169,7 @@ input[type=number]:focus-visible,select:focus-visible{outline:2px solid var(--na
 .osm a{color:inherit}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .basemap{filter:grayscale(1) invert(1) brightness(.8)}}
 @media print{
-  .tools,.mbox,.hint,.seo,.sheets,details,.back,#f,#tip,.acts,#claude,.foot,.osm,section:has(#sheets){display:none!important}
+  .tools,.mbox,.hint,.seo,.sheets,details,.back,#f,#tip,.acts,#claude,.osm,.cta,section:has(#sheets){display:none!important}
   .app{display:block;height:auto}.panel{overflow:visible;border:0}
   .mapwrap{height:340px;page-break-inside:avoid}
 }
@@ -193,6 +198,7 @@ input[type=number]:focus-visible,select:focus-visible{outline:2px solid var(--na
       </div>
       <p class="eyebrow" style="margin-top:14px">Planes municipales de desarrollo urbano</p>
       <h1>Uso de suelo por predio: Naucalpan y Huixquilucan</h1>
+      <p class="nonoff" role="note"><b>No oficial.</b> Consulta informativa que puede tener fallas: confirma siempre con la cédula o licencia de uso de suelo del Ayuntamiento.</p>
       <p class="sub">Naucalpan: modificación del PMDU (planos E-2, 2023–2025). Huixquilucan: PMDU 2017 (planos E-02B) con fe de erratas 2020. Incluye Tecamachalco, Lomas Anáhuac e Interlomas.</p>
     </header>
 
@@ -245,6 +251,10 @@ input[type=number]:focus-visible,select:focus-visible{outline:2px solid var(--na
         <dt>Lat, Lon</dt><dd id="r-ll"></dd>
         <dt>UTM 14N</dt><dd id="r-utm"></dd>
       </dl>
+      <div class="cta" id="cta">
+        <p><b>¿Tienes un terreno o un negocio en esta zona?</b> Si quieres desarrollarlo, venderlo o asociarte, escríbenos y lo revisamos contigo.</p>
+        <a class="btn" id="cta-mail" href="mailto:asteriacapitalpartners@gmail.com">Escríbenos</a>
+      </div>
       <div class="acts">
         <button type="button" class="ghost" id="a-copy">Copiar liga</button>
         <a class="btn ghost" id="a-gmaps" href="#" target="_blank" rel="noopener">Google Maps ↗</a>
@@ -309,7 +319,12 @@ input[type=number]:focus-visible,select:focus-visible{outline:2px solid var(--na
       <p class="help">¿Tienes un terreno y quieres desarrollarlo? <a href="/#contacto">Escríbenos</a>.</p>
     </section>
 
-    <p class="foot">Fuentes: <a href="https://sedui.edomex.gob.mx/naucalpan" target="_blank" rel="noopener">SEDUI Edomex · Naucalpan</a> y <a href="https://sedui.edomex.gob.mx/huixquilucan" target="_blank" rel="noopener">SEDUI Edomex · Huixquilucan</a> (planos E-2/E-02B, tablas de usos del suelo y PMDU). Consulta informativa: el documento oficial es la cédula o licencia de uso de suelo del Ayuntamiento. Búsqueda de direcciones: © colaboradores de <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>.</p>
+    <section class="cta cta--panel">
+      <p><b>¿Tienes un negocio, un terreno o un proyecto inmobiliario?</b> En Asteria desarrollamos vivienda y nos asociamos con dueños de tierra. Cuéntanos qué tienes.</p>
+      <a class="btn" href="mailto:asteriacapitalpartners@gmail.com?subject=Tengo%20un%20negocio%20o%20terreno%20(SIG%20Edomex)">Escríbenos</a>
+    </section>
+
+    <p class="foot">Fuentes: <a href="https://sedui.edomex.gob.mx/naucalpan" target="_blank" rel="noopener">SEDUI Edomex · Naucalpan</a> y <a href="https://sedui.edomex.gob.mx/huixquilucan" target="_blank" rel="noopener">SEDUI Edomex · Huixquilucan</a> (planos E-2/E-02B, tablas de usos del suelo y PMDU). Consulta informativa: el documento oficial es la cédula o licencia de uso de suelo del Ayuntamiento. Búsqueda de direcciones: © colaboradores de <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>. <br><a href="mailto:asteriacapitalpartners@gmail.com?subject=Falla%20en%20SIG%20Edomex" id="report">Reportar una falla</a> · Este sitio no es del Gobierno del Estado de México ni de los Ayuntamientos.</p>
   </aside>
 
   <div class="mapwrap">
@@ -551,6 +566,12 @@ function calc(){
   out.innerHTML=h;}
 ["c-area","c-frente","c-costo","c-row"].forEach(id=>$(id).addEventListener("input",calc));
 $("c-measure").addEventListener("click",()=>{M.start("area");$("map").scrollIntoView({behavior:"smooth",block:"center"});});
+
+/* ---------- correos: contacto con contexto y reporte de fallas ---------- */
+const MAIL="asteriacapitalpartners@gmail.com";
+$("cta-mail").addEventListener("click",e=>{const h=cur&&cur.hit,cl=$("r-clave").textContent||"",sh=$("r-sheet").textContent||"";
+  e.currentTarget.href=`mailto:${MAIL}?subject=${encodeURIComponent("Terreno o negocio en "+(sh||"Edomex")+(cl?" ("+cl+")":""))}&body=${encodeURIComponent("Hola, vi este predio en el SIG Edomex:\n"+location.href+"\n\nSuperficie aproximada: "+($("c-area").value?$("c-area").value+" m²":"")+"\n\nLes cuento:\n")}`;});
+$("report").addEventListener("click",e=>{e.currentTarget.href=`mailto:${MAIL}?subject=${encodeURIComponent("Falla en SIG Edomex")}&body=${encodeURIComponent("Liga de la consulta: "+location.href+"\nClave mostrada: "+($("r-clave").textContent||"—")+"\n\n¿Qué está mal? \n")}`;});
 
 /* ---------- acciones de la ficha ---------- */
 $("a-copy").addEventListener("click",async()=>{const b=$("a-copy");try{await navigator.clipboard.writeText(location.href);b.textContent="Liga copiada";}catch(_){b.textContent="No se pudo copiar";}setTimeout(()=>b.textContent="Copiar liga",1800);});

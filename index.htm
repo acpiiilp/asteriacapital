@@ -25,9 +25,10 @@
 <script>try{if(localStorage.getItem("asteria-theme")==="cyan")document.documentElement.classList.add("cyan")}catch(e){}</script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Geist+Mono:wght@400;500&family=Spectral:ital,wght@0,300;1,300&display=swap">
 <link rel="stylesheet" href="assets/css/chrome.css?v=20261018c" />
-<link rel="stylesheet" href="assets/css/home.css?v=20261023" />
-<script defer src="assets/js/home.js?v=20261023"></script>
-<script defer src="assets/js/obra.js?v=20261023c"></script>
+<link rel="stylesheet" href="assets/css/home.css?v=20261025" />
+<script defer src="assets/js/home.js?v=20261025"></script>
+<script defer src="assets/js/obra.js?v=20261025"></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoGame","name":"La Obra","url":"https://asteriacapital.org/#obra","description":"Juego gratis de construir una torre en el navegador con reglas de las Normas Generales de Ordenación de la CDMX: área libre (Norma 4), COS y CUS (Norma 1), alturas y remetimientos (Norma 7) e instalaciones en azotea (Norma 8).","genre":["Puzzle","Arcade"],"gamePlatform":"Navegador web","applicationCategory":"Game","operatingSystem":"Cualquiera","inLanguage":"es-MX","isAccessibleForFree":true,"publisher":{"@type":"Organization","name":"Asteria Capital","url":"https://asteriacapital.org/"}}</script>
 </head>
 <body>
 <a class="skip" href="#main">Ir al contenido</a>
@@ -2679,12 +2680,20 @@
   <div class="play__l">
     <span class="small">Para la pausa del café</span>
     <h2 id="pl-h" class="h2">Mientras tanto, construye.</h2>
-    <p class="lead">La grúa balancea cada piso; suéltalo justo encima del anterior. Como manda la Norma 7, la torre se remete conforme sube, y el predio deja su 20% de área libre. Entre más alta, más se tambalea: si te pasas, llega Protección Civil. Tu presupuesto sirve una sola vez: para reestructurar (pierdes el 30% de los niveles) o para levantar una huelga de vecinos, que a veces aparece y a veces no.</p>
+    <p class="lead">La Obra es un juego de construir torres: la grúa balancea cada piso y tú lo sueltas justo encima del anterior. Las reglas vienen de las Normas Generales de Ordenación de la Ciudad de México.</p>
     <div class="play__keys small"><span><kbd>Espacio</kbd>o <kbd>↑</kbd> soltar el piso</span><span>En celular: toca el dibujo</span></div>
+    <ul class="play__rules">
+      <li><b>Norma 4 · Área libre.</b> Un 20% del predio se queda sin construir desde la planta baja. En el juego, si desplantas encima del área libre, te multan. En la vida real, hasta 30% del área libre puede pavimentarse con material permeable y el resto va jardinado.</li>
+      <li><b>Norma 1 · COS y CUS.</b> El desplante (COS) es el predio menos el área libre. Lo construible (CUS) es el desplante por el número de niveles.</li>
+      <li><b>Norma 7 · Alturas.</b> Ningún punto del edificio puede rebasar dos veces su distancia al alineamiento de enfrente; si lo rebasa, se remete. Arriba de 6 niveles se deja al fondo una separación de 15% de la altura, mínimo 4 m.</li>
+      <li><b>Norma 8 · Azotea.</b> Celdas solares, tanques, antenas y azoteas verdes pueden ir arriba del último nivel sin contar como nivel. En el juego, cada 10 niveles suben celdas solares y te dan presupuesto.</li>
+      <li><b>De nuestra cosecha:</b> pisos perfectos que suman presupuesto, Protección Civil cuando la torre se tambalea y huelgas de vecinos.</li>
+    </ul>
+    <p class="small">¿Quieres saber cuánto se puede construir en un terreno real? Usa la <a href="calculadoraterrenos.htm">calculadora de terrenos</a> (CDMX) o el <a href="/sig-edomex/">SIG Edomex</a> (Naucalpan y Huixquilucan).</p>
   </div>
   <div class="play__r">
     <div class="obra" data-obra></div>
-    <div class="play__cap small"><span>La Obra · v1</span><span>Tu récord se guarda solo en este navegador</span></div>
+    <div class="play__cap small"><span>La Obra · v4</span><span>Tu récord se guarda solo en este navegador</span></div>
   </div>
 </section>
 

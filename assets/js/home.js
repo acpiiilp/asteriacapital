@@ -102,7 +102,7 @@
   function paint(on){
     root.classList.toggle('cyan',on); tbtn.setAttribute('aria-pressed',String(on));
     var label=on?'Volver al plano en papel':'Ver como plano azul'; tbtn.setAttribute('aria-label',label); tbtn.title=label;
-    if(meta) meta.setAttribute('content',on?'#E3ECF5':'#ECE9E2');
+    if(meta) meta.setAttribute('content',on?'#1D4F91':'#ECE9E2');
     d.dispatchEvent(new Event('asteria:theme'));
   }
   paint(root.classList.contains('cyan'));

@@ -1,0 +1,1 @@
+Datos del SIG general: edomex.js (hojas y normas de Naucalpan y Huixquilucan), cdmx.js (inventario de programas de la CDMX y hojas integradas), precios.json (capa de precio por m2; se arma con tools/precios).

@@ -123,7 +123,58 @@ details p,details li{font-size:12.5px;color:var(--muted)}
 .pinicon::after{content:"";position:absolute;left:50%;top:50%;width:5px;height:5px;margin:-2.5px 0 0 -2.5px;border-radius:50%;background:var(--pin)}
 .leaflet-container{font-family:var(--f-ui)}
 .leaflet-control-zoom a{color:#152238}
+/* v2: calculadora de potencial, medición, mapa base */
+input[type=number],select{font:inherit;font-size:14px;padding:8px 10px;border:1px solid var(--line);border-radius:6px;background:var(--paper);color:var(--ink);width:100%;min-width:0;font-variant-numeric:tabular-nums}
+input[type=number]:focus-visible,select:focus-visible{outline:2px solid var(--navy);outline-offset:2px}
+.calc{border-top:1px solid var(--line);padding-top:12px;display:flex;flex-direction:column;gap:10px}
+.calc__in{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.calc__in label{font-size:12px;font-weight:600;margin:0;display:flex;flex-direction:column;gap:4px}
+.calc__in label .u{font-weight:400;color:var(--muted)}
+.calc__in .wide{grid-column:1/-1}
+.calc table td.v{white-space:nowrap}
+@media (max-width:520px){
+  .calc table thead{display:none}
+  .calc table tr{display:grid;grid-template-columns:1fr auto;column-gap:10px;border-bottom:1px solid var(--line);padding:5px 0}
+  .calc table td{border:0;padding:0 2px}
+  .calc table td:nth-child(3){grid-column:2;font-size:11px;color:var(--muted)}
+  .calc table td:nth-child(3)::before{content:"por 100 m²: "}
+  .calc table td.na{display:none}
+  .calc table tr.big td:nth-child(3){font-size:11px;color:var(--muted);font-weight:500}
+}
+.calc .big td{font-weight:700;color:var(--ink)} .calc .big td.v{color:var(--navy);font-size:13.5px}
+.linkbtn{background:none;border:0;padding:0;color:var(--navy);font-weight:600;font-size:12.5px;text-decoration:underline;text-underline-offset:2px;cursor:pointer}
+.warn{font-size:12px;color:var(--warn);margin:0;padding-left:16px}
+.acts{display:flex;flex-wrap:wrap;gap:6px}
+.acts button,.acts .btn{font-size:12px;padding:6px 10px}
+.tools{position:absolute;top:12px;right:12px;z-index:600;display:flex;flex-direction:column;gap:6px}
+.tools button{background:var(--panel);color:var(--ink);border:1px solid var(--line);box-shadow:0 1px 4px rgba(0,0,0,.12);font-weight:600;font-size:12px;padding:7px 10px;justify-content:flex-start}
+.tools button svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.tools button[aria-pressed="true"]{background:var(--navy);color:var(--panel);border-color:var(--navy)}
+.mbox{position:absolute;top:12px;left:56px;right:150px;max-width:420px;z-index:600;background:var(--panel);border:1px solid var(--line);border-radius:8px;box-shadow:0 2px 10px rgba(0,0,0,.15);padding:10px 12px;display:flex;flex-direction:column;gap:8px}
+.mbox .read{font:500 15px var(--f-mono);color:var(--navy);font-variant-numeric:tabular-nums}
+.mbox .read small{display:block;font:12px var(--f-ui);color:var(--muted);margin-top:2px}
+.mbox .help{margin:0}
+.measuring .leaflet-container,.measuring #map{cursor:crosshair}
+.vtx{width:14px;height:14px;border-radius:50%;background:var(--panel);border:2.5px solid var(--navy);box-shadow:0 0 0 1px rgba(0,0,0,.25);cursor:move}
+.vtx.first{background:var(--navy)}
+.seglbl{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:1px 5px;font:11px var(--f-mono);color:var(--ink);white-space:nowrap;transform:translate(-50%,-50%);display:inline-block;box-shadow:0 1px 2px rgba(0,0,0,.12)}
+.seglbl.tot{background:var(--navy);color:var(--panel);border-color:var(--navy);font-weight:500}
+.basemap{filter:grayscale(1) contrast(.95)}
+.osm{position:absolute;right:12px;bottom:calc(46px + env(safe-area-inset-bottom,0px));z-index:500;font-size:10px;color:var(--muted);background:var(--panel);opacity:.85;padding:1px 5px;border-radius:3px}
+.osm a{color:inherit}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .basemap{filter:grayscale(1) invert(1) brightness(.8)}}
+@media print{
+  .tools,.mbox,.hint,.seo,.sheets,details,.back,#f,#tip,.acts,#claude,.foot,.osm,section:has(#sheets){display:none!important}
+  .app{display:block;height:auto}.panel{overflow:visible;border:0}
+  .mapwrap{height:340px;page-break-inside:avoid}
+}
 @media (max-width:760px){
+  .mbox{left:10px;right:10px;top:auto;bottom:10px;max-width:none;padding:8px 10px;gap:6px}
+  .mbox .help{display:none}
+  .mbox .acts button{padding:5px 8px;font-size:11.5px}
+  .measuring .scale,.measuring .osm{display:none}
+  .tools{top:10px;right:10px}
+  .tools button span{display:none}
   .app{grid-template-columns:1fr;grid-template-rows:52vh auto;height:auto}
   .mapwrap{order:-1;height:52vh}
   .panel{border-right:0;border-top:1px solid var(--line);overflow:visible;padding-right:max(16px,env(safe-area-inset-right,0px))}
@@ -174,6 +225,17 @@ details p,details li{font-size:12.5px;color:var(--muted)}
       </div>
       <div id="r-note" class="note" hidden></div>
       <div id="r-norm" class="tbl" hidden></div>
+      <div id="calc" class="calc" hidden>
+        <p class="eyebrow" style="margin:0">Potencial del predio</p>
+        <div class="calc__in">
+          <label>Superficie del terreno <span class="u">m²</span><input type="number" id="c-area" inputmode="decimal" min="1" step="any" placeholder="Ej. 450"></label>
+          <label>Frente <span class="u">m · opcional</span><input type="number" id="c-frente" inputmode="decimal" min="0" step="any" placeholder="Ej. 15"></label>
+          <label class="wide" id="c-rowwrap" hidden>Uso dentro del fraccionamiento<select id="c-row"></select></label>
+          <label class="wide">Costo de construcción con acabados <span class="u">$ por m² construido</span><input type="number" id="c-costo" inputmode="numeric" min="0" step="500" value="20000"></label>
+        </div>
+        <p class="help" style="margin:0">¿No sabes la superficie? <button type="button" class="linkbtn" id="c-measure">Mídela sobre el plano</button></p>
+        <div id="c-out"></div>
+      </div>
       <div id="claude" hidden>
         <button id="read" type="button" class="ghost">Verificar la clave con Claude</button>
         <p class="help" id="read-help">Claude lee la etiqueta del polígono en un recorte del plano oficial alrededor del punto.</p>
@@ -183,6 +245,11 @@ details p,details li{font-size:12.5px;color:var(--muted)}
         <dt>Lat, Lon</dt><dd id="r-ll"></dd>
         <dt>UTM 14N</dt><dd id="r-utm"></dd>
       </dl>
+      <div class="acts">
+        <button type="button" class="ghost" id="a-copy">Copiar liga</button>
+        <a class="btn ghost" id="a-gmaps" href="#" target="_blank" rel="noopener">Google Maps ↗</a>
+        <button type="button" class="ghost" id="a-print">Imprimir ficha</button>
+      </div>
     </section>
 
     <section>
@@ -220,6 +287,14 @@ details p,details li{font-size:12.5px;color:var(--muted)}
         <p>En Naucalpan, la H indica uso habitacional y el número son los metros cuadrados de terreno bruto por vivienda. H-200-A permite una vivienda por cada 200 m² de terreno. La letra final distingue variantes de la misma densidad.</p>
       </details>
       <details>
+        <summary>¿Cuántos metros y departamentos puedo construir en mi terreno?</summary>
+        <p>Consulta el predio, escribe la superficie del terreno y la calculadora aplica la norma de la zona: desplante, área libre, niveles, metros construibles, departamentos permitidos y una estimación del costo de obra. Todo se muestra también por cada 100 m² de terreno. Si no conoces la superficie, mídela sobre el plano con la herramienta "Medir área".</p>
+      </details>
+      <details>
+        <summary>¿Cómo mido un terreno en el plano?</summary>
+        <p>Usa "Medir área" y toca cada esquina del terreno: verás el área en m² y el perímetro, con la medida de cada lado. "Medir distancia" sirve para frentes, fondos o distancias a una vialidad. El plano está en coordenadas UTM, así que las medidas son en metros reales, con error de pocos metros por la precisión del plano.</p>
+      </details>
+      <details>
         <summary>¿Qué son el COS y el CUS?</summary>
         <p>El COS (coeficiente de ocupación del suelo) es la parte del terreno que puede ocupar la construcción en planta baja. El CUS (coeficiente de utilización del suelo) es cuántas veces la superficie del terreno se puede construir en total, sumando todos los niveles.</p>
       </details>
@@ -240,6 +315,22 @@ details p,details li{font-size:12.5px;color:var(--muted)}
   <div class="mapwrap">
     <div id="map" role="application" aria-label="Plano de uso de suelo"></div>
     <div class="hint" id="hint">Clic en el plano para consultar un punto</div>
+    <div class="tools" role="toolbar" aria-label="Herramientas del plano">
+      <button type="button" id="t-line" aria-pressed="false" title="Medir distancias"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17 17 3l4 4L7 21z"/><path d="m7 13 2 2m1-5 2 2m1-5 2 2"/></svg><span>Medir distancia</span></button>
+      <button type="button" id="t-area" aria-pressed="false" title="Medir área y perímetro"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7 12 3l8 5-2 11H7z"/></svg><span>Medir área</span></button>
+      <button type="button" id="t-loc" title="Ir a mi ubicación"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3"/></svg><span>Mi ubicación</span></button>
+    </div>
+    <div class="mbox" id="mbox" hidden>
+      <div class="read" id="m-read"></div>
+      <p class="help" id="m-help"></p>
+      <div class="acts">
+        <button type="button" class="ghost" id="m-undo">Deshacer punto</button>
+        <button type="button" id="m-use" hidden>Usar en la calculadora</button>
+        <button type="button" class="ghost" id="m-clear">Borrar</button>
+        <button type="button" class="ghost" id="m-close">Salir</button>
+      </div>
+    </div>
+    <div class="osm">Calles © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a></div>
     <div class="scale" id="scale"></div>
   </div>
 </div>
@@ -296,8 +387,8 @@ async function lookup(E,N){
     if(!v||!fl)continue;const r=(RANK[fl]||9)+(s.g?10:0);
     if(!best||r<best.r)best={s,v,fl,r};}
   if(!best){ // hueco: zona más cercana a menos de ~60 m
-    for(const s of S){if(E<s.E0-80||E>s.E1+80||N<s.N1-80||N>s.N0+80)continue;const g=await getCls(s);
-      const cs=(s.E1-s.E0)/s.cw,cx=Math.floor((E-s.E0)/cs),cy=Math.floor((s.N0-N)/cs),R=Math.ceil(60/cs);let bd=1e9,bb=null;
+    for(const s of S){if(E<s.E0-170||E>s.E1+170||N<s.N1-170||N>s.N0+170)continue;const g=await getCls(s);
+      const cs=(s.E1-s.E0)/s.cw,cx=Math.floor((E-s.E0)/cs),cy=Math.floor((s.N0-N)/cs),R=Math.ceil(150/cs);let bd=1e9,bb=null;
       for(let dy=-R;dy<=R;dy++)for(let dx=-R;dx<=R;dx++){const X=cx+dx,Y=cy+dy;if(X<0||Y<0||X>=g.w||Y>=g.h)continue;const i=(Y*g.w+X)*4;const v=g.d[i]+256*g.d[i+1],fl=g.d[i+2];
         if(!v||!fl)continue;const d=dx*dx+dy*dy+(s.g?1e5:0);if(d<bd){bd=d;bb={s,v,fl:fl>=5?6:4,r:20,near:Math.round(Math.sqrt(dx*dx+dy*dy)*cs)};}}
       if(bb&&(!best||bd<best.bd)){best=bb;best.bd=bd;}}}
@@ -359,13 +450,15 @@ async function query(E,N,lat,lon){
   if(pin)pin.setLatLng(ll(E,N));else pin=L.marker(ll(E,N),{icon,keyboard:false}).addTo(map);
   map.setView(ll(E,N),Math.max(map.getZoom(),.25));
   $("hint").hidden=true;$("res").hidden=false;$("read-out").hidden=true;
-  $("r-ll").textContent=`${lat.toFixed(6)}, ${lon.toFixed(6)}`;$("r-utm").textContent=`E ${E.toFixed(0)}  N ${N.toFixed(0)}`;
+  $("r-ll").textContent=`${lat.toFixed(6)}, ${lon.toFixed(6)}`;
+  try{history.replaceState(null,"","#"+lat.toFixed(6)+","+lon.toFixed(6));}catch(_){}
+  $("a-gmaps").href=`https://www.google.com/maps/search/?api=1&query=${lat.toFixed(6)},${lon.toFixed(6)}`;$("r-utm").textContent=`E ${E.toFixed(0)}  N ${N.toFixed(0)}`;
   const r=await lookup(E,N);cur.hit=r;
   const note=$("r-note");note.hidden=true;$("r-norm").hidden=true;
   if(!r){$("r-sheet").textContent="Fuera de cobertura";$("r-clave").textContent="Sin dato";$("r-desc").textContent="";$("r-conf").textContent="";$("r-conf").className="chip";$("r-conftxt").textContent="";
-    note.hidden=false;note.textContent="El punto no cae en una zona con uso asignado en los planos de Naucalpan o Huixquilucan.";$("claude").hidden=!sampleFn;return;}
+    note.hidden=false;note.textContent="El punto no cae en una zona con uso asignado en los planos de Naucalpan o Huixquilucan.";$("claude").hidden=!sampleFn;calcSet(null);return;}
   const s=r.s;$("r-sheet").textContent=`${s.muni} · ${s.n}`;
-  if(r.near){note.hidden=false;note.textContent=`El punto no tiene uso asignado en el plano; se muestra la zona más cercana (a ~${r.near} m).`;}
+  if(r.near){note.hidden=false;note.textContent=`El punto no tiene uso asignado en el plano; se muestra la zona más cercana (a ~${r.near} m).`+(r.near>60?" Verifica en el plano: la distancia es grande.":"");}
   else if(s.g){note.hidden=false;note.textContent="Dato del plano general (menor detalle): no hay plano de distrito para este punto.";}
   let clave="",desc="",nh="";
   if(r.fl>=5){clave=GROUPS[r.v]||"Zona";desc="Clave exacta no disponible en este plano";}
@@ -375,6 +468,8 @@ async function query(E,N,lat,lon){
   if(nh){$("r-norm").innerHTML=nh;$("r-norm").hidden=false;}
   if(/^CRU/.test(clave)&&note.hidden){note.hidden=false;note.textContent="Corredor urbano: aplica a los predios con frente a la vialidad marcada.";}
   $("claude").hidden=!sampleFn;
+  if(r.near>60){$("r-conf").textContent="Confianza baja";$("r-conf").className="chip mid";}
+  calcSet(r.fl>=5?null:clave,s.muni);
 }
 $("f").addEventListener("submit",e=>{e.preventDefault();const p=parse($("q").value);const er=$("qerr");er.hidden=true;$("addrhelp").hidden=true;
   if(!p)return;
@@ -395,7 +490,138 @@ async function geocode(q){
   }catch(e){box.hidden=true;$("addrhelp").hidden=false;}
 }
 $("q").addEventListener("paste",()=>setTimeout(()=>{const p=parse($("q").value);if(p&&!p.address&&!p.bad)$("f").requestSubmit();},0));
-map.on("click",e=>query(e.latlng.lng+OE,e.latlng.lat+ON));
+map.on("click",e=>{if(M.mode){M.add(e.latlng);return;}query(e.latlng.lng+OE,e.latlng.lat+ON);});
+
+
+/* ---------- potencial del predio ---------- */
+const nf=(x,d=0)=>Number(x).toLocaleString("es-MX",{minimumFractionDigits:d,maximumFractionDigits:d});
+const money=x=>"$"+nf(Math.round(x));
+const num=x=>{if(x==null)return NaN;const v=parseFloat(String(x).replace(/[%*,\s]/g,""));return isFinite(v)?v:NaN;};
+let CK=null; // {clave, muni}
+function normRows(clave,muni){
+  if(!clave)return null;
+  if(muni==="Naucalpan"){const v=NORM_N[clave];if(!v)return null;
+    return{src:"Tabla de usos del suelo 2025",byLote:true,rows:v.map(c=>({label:`Lote de ${c.lote} m² o más`,lote:num(c.lote),frente:num(c.frente),m2viv:num(c.m2_bruto),np:c.m2_bruto==="NP",
+      cos:num(c.cos)/100,cus:num(c.cus),niv:num(c.niv),alt:num(c.alt),libre:num(c.libre)/100}))};}
+  if(/^F-/.test(clave)){const f=FRAC.F[clave];if(!f)return null;
+    const rows=f.r.filter(r=>isFinite(num(r[3]))||isFinite(num(r[8]))).map(r=>{const m=String(r[1]).match(/1\s*\/\s*([\d.]+)/);
+      return{label:r[0],m2viv:m?+m[1]:NaN,np:!m,frente:num(r[2]),lote:num(r[3]),libre:num(r[4])/100,cos:num(r[5]),niv:num(r[6]),alt:num(r[7]),cus:num(r[8])};});
+    return rows.length?{src:"Tabla 98 del PMDU · "+f.n,pick:true,rows}:null;}
+  if(/^C-/.test(clave))return null;
+  const v=NORM_H[clave];if(!v)return null;const d=num(v.dens);
+  return{src:"Tabla general de usos 2017",rows:[{label:clave,m2viv:d>0?10000/d:NaN,np:!(d>0),frente:num(v.frente),lote:num(v.lote),libre:num(v.libre)/100,cos:num(v.cos),niv:num(v.niv),alt:NaN,cus:num(v.cus)}]};}
+function calcSet(clave,muni){
+  const n=normRows(clave,muni);CK=n?{clave,muni,n}:null;$("calc").hidden=!n;if(!n)return;
+  const sel=$("c-row"),wrap=$("c-rowwrap");
+  if(n.pick&&n.rows.length>1){sel.innerHTML=n.rows.map((r,i)=>`<option value="${i}">${esc(r.label)}</option>`).join("");wrap.hidden=false;}else{wrap.hidden=true;sel.innerHTML="";}
+  calc();}
+function calc(){
+  const out=$("c-out");if(!CK){out.innerHTML="";return;}
+  const n=CK.n,T=num($("c-area").value),F=num($("c-frente").value),P=num($("c-costo").value);
+  if(!(T>0)){out.innerHTML='<p class="help" style="margin:0">Escribe la superficie del terreno para ver cuánto se puede construir, cuántos departamentos caben y el costo estimado de obra.</p>';return;}
+  let r;
+  if(n.byLote){const ok=n.rows.filter(x=>!(x.lote>T));r=(ok.length?ok:n.rows).reduce((a,b)=>(b.lote>a.lote&&!(b.lote>T))?b:a,ok[0]||n.rows[0]);}
+  else r=n.rows[+($("c-row").value||0)]||n.rows[0];
+  const des=isFinite(r.cos)?T*r.cos:NaN, lib=isFinite(r.libre)?T*r.libre:(isFinite(r.cos)?T*(1-r.cos):NaN);
+  const byCus=isFinite(r.cus)?T*r.cus:NaN, byNiv=isFinite(des)&&isFinite(r.niv)?des*r.niv:NaN;
+  const con=isFinite(byCus)&&isFinite(byNiv)?Math.min(byCus,byNiv):(isFinite(byCus)?byCus:byNiv);
+  let viv=NaN,small=false;if(isFinite(r.m2viv)&&r.m2viv>0){viv=Math.floor(T/r.m2viv+1e-9);if(viv<1){if(!(r.lote>T))viv=1;else small=true;}}else if(r.np)viv=0;
+  const cost=isFinite(con)&&P>0?con*P:NaN;
+  const per=(x,d=0)=>isFinite(x)?nf(x*100/T,d):"—";
+  const row=(l,a,b,cls="")=>`<tr class="${cls}"><td>${l}</td><td class="v">${a}</td><td class="v${b==="—"||b==="100 m²"?" na":""}">${b}</td></tr>`;
+  const m2=x=>isFinite(x)?nf(x)+" m²":"—";
+  let h=`<div class="tbl"><table><thead><tr><th></th><th>Tu terreno</th><th>Por cada 100 m²</th></tr></thead><tbody>`;
+  h+=row("Terreno",m2(T),"100 m²");
+  h+=row(`Desplante máximo${isFinite(r.cos)?" (COS "+nf(r.cos*100)+"%)":""}`,m2(des),isFinite(des)?per(des)+" m²":"—");
+  h+=row(`Área libre mínima${isFinite(r.libre)?" ("+nf(r.libre*100)+"%)":""}`,m2(lib),isFinite(lib)?per(lib)+" m²":"—");
+  h+=row(`Niveles máximos${isFinite(r.alt)?" · "+nf(r.alt)+" m":""}`,isFinite(r.niv)?nf(r.niv):"—","—");
+  h+=row(`Metros construibles${isFinite(r.cus)?" (CUS "+nf(r.cus,2)+")":""}`,m2(con),isFinite(con)?per(con)+" m²":"—","big");
+  h+=row("Departamentos permitidos",isFinite(viv)?(small?"0 · terreno insuficiente":viv===0?"No permite vivienda":nf(viv)):"Sin dato",isFinite(viv)&&viv>0?per(viv,2):"—","big");
+  if(isFinite(viv)&&viv>0&&isFinite(con))h+=row("m² mínimos por depto (para usar todo lo construible)",nf(con/viv)+" m²","—");
+  if(isFinite(r.m2viv))h+=row("Terreno por vivienda que pide la norma",nf(r.m2viv)+" m²","—");
+  h+=row(`Costo de construcción${P>0?" ($"+nf(P)+"/m²)":""}`,isFinite(cost)?money(cost):"—",isFinite(cost)?money(cost*100/T):"—","big");
+  h+="</tbody></table></div>";
+  const w=[];
+  if(isFinite(r.lote)&&T<r.lote)w.push(`El terreno es menor al lote mínimo de ${nf(r.lote)} m²: el Ayuntamiento puede limitar lo que se autoriza.`);
+  if(isFinite(r.frente)&&F>0&&F<r.frente)w.push(`El frente es menor al mínimo de ${nf(r.frente)} m.`);
+  if(n.byLote&&n.rows.length>1)w.push(`Esta clave tiene normas distintas según el tamaño del lote; se usó la de ${esc(r.label.toLowerCase())}.`);
+  if(isFinite(byCus)&&isFinite(byNiv)&&byNiv<byCus-1)w.push("Lo construible queda limitado por desplante × niveles, no por el CUS.");
+  if(w.length)h+=`<ul class="warn">${w.map(x=>`<li>${x}</li>`).join("")}</ul>`;
+  h+=`<p class="help" style="margin:0">Estimación informativa con ${esc(n.src)}. El costo es solo obra con acabados: no incluye terreno, proyecto, licencias, IVA ni financiamiento. Restricciones, estacionamiento y derechos de vía pueden reducir el potencial.</p>`;
+  out.innerHTML=h;}
+["c-area","c-frente","c-costo","c-row"].forEach(id=>$(id).addEventListener("input",calc));
+$("c-measure").addEventListener("click",()=>{M.start("area");$("map").scrollIntoView({behavior:"smooth",block:"center"});});
+
+/* ---------- acciones de la ficha ---------- */
+$("a-copy").addEventListener("click",async()=>{const b=$("a-copy");try{await navigator.clipboard.writeText(location.href);b.textContent="Liga copiada";}catch(_){b.textContent="No se pudo copiar";}setTimeout(()=>b.textContent="Copiar liga",1800);});
+$("a-print").addEventListener("click",()=>window.print());
+$("t-loc").addEventListener("click",()=>{const b=$("t-loc");if(!navigator.geolocation)return;b.disabled=true;
+  navigator.geolocation.getCurrentPosition(p=>{b.disabled=false;const{latitude:la,longitude:lo}=p.coords;const[E,N]=TM.fwd(la,lo);query(E,N,la,lo);map.setView(ll(E,N),.75);},
+    ()=>{b.disabled=false;$("hint").hidden=false;$("hint").textContent="No se pudo obtener tu ubicación.";},{enableHighAccuracy:true,timeout:10000});});
+
+/* ---------- medir distancias y áreas (el plano está en metros UTM: la distancia es directa) ---------- */
+const M=(()=>{
+  map.createPane("meas");map.getPane("meas").style.zIndex=450;const rend=L.svg({pane:"meas"});
+  const g=L.layerGroup().addTo(map),vg=L.layerGroup().addTo(map);let mode=null,pts=[],vtx=[];
+  const fmtL=d=>d<1000?nf(d,d<100?2:1)+" m":nf(d/1000,2)+" km";
+  const fmtA=a=>nf(a,a<1000?1:0)+" m²"+(a>=10000?" ("+nf(a/10000,2)+" ha)":"");
+  const dist=(a,b)=>Math.hypot(a.lat-b.lat,a.lng-b.lng);
+  function area(p){let s=0;for(let i=0;i<p.length;i++){const a=p[i],b=p[(i+1)%p.length];s+=a.lng*b.lat-b.lng*a.lat;}return Math.abs(s)/2;}
+  function lbl(at,t,cls="seglbl"){return L.marker(at,{interactive:false,keyboard:false,icon:L.divIcon({className:"",html:`<span class="${cls}">${t}</span>`,iconSize:[0,0]})});}
+  function draw(){g.clearLayers();const n=pts.length,poly=mode==="area"&&n>=3;
+    if(n>=2)(poly?L.polygon(pts,{renderer:rend,color:"#0F5A46",weight:3,fillColor:"#0F5A46",fillOpacity:.22}):L.polyline(pts,{renderer:rend,color:"#0F5A46",weight:3,dashArray:mode==="area"?"6 5":null})).addTo(g);
+    let per=0;const segs=poly?n:n-1;
+    for(let i=0;i<segs;i++){const a=pts[i],b=pts[(i+1)%n],d=dist(a,b);per+=d;if(map.getZoom()>-1.5||segs<6)lbl(L.latLng((a.lat+b.lat)/2,(a.lng+b.lng)/2),fmtL(d)).addTo(g);}
+    let txt="",sub="";
+    if(mode==="line"){txt=n<2?"Toca el plano para empezar":"Distancia: "+fmtL(per);sub=n>=2?`${n-1} ${n===2?"tramo":"tramos"}`:"";}
+    else{if(n<3){txt=n?`${n} de 3 puntos mínimo`:"Toca las esquinas del terreno";}else{const A=area(pts);txt="Área: "+fmtA(A);sub="Perímetro: "+fmtL(per)+` · ${n} lados`;
+      const c=pts.reduce((s,p)=>[s[0]+p.lat/n,s[1]+p.lng/n],[0,0]);lbl(L.latLng(c[0],c[1]),fmtA(A),"seglbl tot").addTo(g);}}
+    $("m-read").innerHTML=esc(txt)+(sub?`<small>${esc(sub)}</small>`:"");
+    $("m-use").hidden=!(mode==="area"&&n>=3);$("m-undo").disabled=!n;}
+  function vtxs(){vg.clearLayers();vtx=pts.map((p,i)=>{const m=L.marker(p,{draggable:true,keyboard:false,icon:L.divIcon({className:"",html:`<div class="vtx${i===0?" first":""}"></div>`,iconSize:[14,14],iconAnchor:[7,7]})}).addTo(vg);
+    m.on("drag",e=>{pts[i]=e.target.getLatLng();draw();});
+    if(i===0)m.on("click",()=>{if(mode==="area"&&pts.length>=3)finish();});return m;});}
+  function add(p){pts.push(p);vtxs();draw();}
+  function finish(){$("m-help").textContent="Listo. Arrastra los puntos para ajustar, o usa el área en la calculadora.";}
+  function start(m){if(mode===m){stop();return;}mode=m;pts=[];vtxs();g.clearLayers();
+    $("t-line").setAttribute("aria-pressed",String(m==="line"));$("t-area").setAttribute("aria-pressed",String(m==="area"));
+    $("mbox").hidden=false;$("hint").hidden=true;document.body.classList.add("measuring");map.doubleClickZoom.disable();
+    $("m-help").textContent=m==="area"?"Toca cada esquina del terreno en orden. Arrastra un punto para ajustarlo; el área se cierra sola.":"Toca el plano para marcar cada punto. Arrastra un punto para ajustarlo.";draw();}
+  function stop(){mode=null;pts=[];g.clearLayers();vg.clearLayers();$("mbox").hidden=true;document.body.classList.remove("measuring");map.doubleClickZoom.enable();
+    $("t-line").setAttribute("aria-pressed","false");$("t-area").setAttribute("aria-pressed","false");}
+  $("t-line").addEventListener("click",()=>start("line"));$("t-area").addEventListener("click",()=>start("area"));
+  $("m-undo").addEventListener("click",()=>{pts.pop();vtxs();draw();});
+  $("m-clear").addEventListener("click",()=>{pts=[];vtxs();draw();});
+  $("m-close").addEventListener("click",stop);
+  $("m-use").addEventListener("click",async()=>{if(pts.length<3)return;const A=area(pts);
+    const n=pts.length,c=pts.reduce((s,p)=>[s[0]+p.lat/n,s[1]+p.lng/n],[0,0]);
+    if(!cur||!cur.hit||Math.hypot(cur.E-(c[1]+OE),cur.N-(c[0]+ON))>80)await query(c[1]+OE,c[0]+ON);
+    $("c-area").value=Math.round(A);calc();$("calc").scrollIntoView({behavior:"smooth",block:"start"});});
+  map.on("zoomend",()=>{if(mode)draw();});
+  return{get mode(){return mode;},add,start,stop};})();
+
+/* ---------- mapa base de calles bajo los planos: llena los huecos entre hojas y fuera de cobertura ---------- */
+(()=>{const R=6378137,lim=all.pad(.6);
+  const tx=(lon,z)=>(lon+180)/360*2**z, ty=(lat,z)=>{const p=lat*Math.PI/180;return(1-Math.log(Math.tan(p)+1/Math.cos(p))/Math.PI)/2*2**z;};
+  const lon2=(x,z)=>x/2**z*360-180, lat2=(y,z)=>{const n=Math.PI-2*Math.PI*y/2**z;return 180/Math.PI*Math.atan(.5*(Math.exp(n)-Math.exp(-n)));};
+  const Base=L.GridLayer.extend({createTile(c,done){
+    const t=document.createElement("canvas");t.width=t.height=256;const sc=2**c.z,g=t.getContext("2d");
+    const E0=c.x*256/sc+OE,E1=(c.x+1)*256/sc+OE,Nt=-(c.y*256)/sc+ON,Nb=-((c.y+1)*256)/sc+ON;
+    const[la0,lo0]=TM.inv(E0,Nt),[la1,lo1]=TM.inv(E1,Nb);
+    let Z=Math.round(Math.log2(2*Math.PI*R*Math.cos(la0*Math.PI/180)/256*sc));Z=Math.max(9,Math.min(19,Z));
+    let x0=Math.floor(tx(lo0,Z)),x1=Math.floor(tx(lo1,Z)),y0=Math.floor(ty(la0,Z)),y1=Math.floor(ty(la1,Z));
+    while((x1-x0+1)*(y1-y0+1)>16&&Z>9){Z--;x0=Math.floor(tx(lo0,Z));x1=Math.floor(tx(lo1,Z));y0=Math.floor(ty(la0,Z));y1=Math.floor(ty(la1,Z));}
+    let left=(x1-x0+1)*(y1-y0+1);const fin=()=>{if(--left<=0)done(null,t);};
+    const px=(E,N)=>[(E-OE)*sc-c.x*256,-(N-ON)*sc-c.y*256];
+    for(let X=x0;X<=x1;X++)for(let Y=y0;Y<=y1;Y++){const im=new Image();
+      im.onload=()=>{const[eA,nA]=TM.fwd(lat2(Y,Z),lon2(X,Z)),[eB,nB]=TM.fwd(lat2(Y+1,Z),lon2(X+1,Z));const a=px(eA,nA),b=px(eB,nB);
+        try{g.drawImage(im,a[0],a[1],b[0]-a[0],b[1]-a[1]);}catch(_){}fin();};
+      im.onerror=fin;im.src=`https://tile.openstreetmap.org/${Z}/${X}/${Y}.png`;}
+    return t;}});
+  new Base({bounds:lim,tileSize:256,minZoom:-6,maxZoom:3,opacity:.55,className:"basemap",keepBuffer:1,updateWhenIdle:true}).addTo(map);})();
+
+/* ---------- liga compartible: #lat,lon abre la consulta ---------- */
+(()=>{const m=location.hash.match(/^#(-?\d+\.\d+),(-?\d+\.\d+)/);if(!m)return;const p=norm(+m[1],+m[2]);if(p&&!p.bad){$("q").value=`${m[1]}, ${m[2]}`;query(p.E,p.N,p.lat,p.lon);}})();
 
 /* ---------- regresar: a la página anterior del sitio si se llegó desde ahí; si no, al inicio ---------- */
 $("back").addEventListener("click",e=>{

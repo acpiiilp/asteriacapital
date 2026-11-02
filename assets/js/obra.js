@@ -7,7 +7,7 @@
    Some games (random) bring a neighbours' strike: pay it off with the same one-off budget, or wait it
    out (work stops and the tower ends up swaying more).
    v4: the budget is money ($M). Perfect drops add to it; Norma 4 fines a ground floor that invades the
-   20% área libre; Norma 8: every 10 levels the crane brings rooftop solar cells (not a level, +$1 M).
+   20% área libre. v5: rooftop bonus removed; harder (faster crane, tighter landing, less money, PC earlier).
    First visit shows the rules card.
    Colors come from CSS tokens (follows the site theme). No network; best score kept in localStorage. */
 (function(){
@@ -27,7 +27,7 @@
     var W = 0, H = 0, DPR = 1, GY = 0, BW = 80, BH = 26, ROPE = 90;
     var state = "idle", t = 0, last = 0, raf = 0, visible = true, active = false;
     var best = store(true), C = {};
-    var tower, hang, fall, debris, lives, cam, camT, phase, swing, com, combo, msg, msgT, shake, collapse, budget, pcT, m2, strikeAt, strikeT, bonus, choice, side, nextSolar, roof, intro = !seen();
+    var tower, hang, fall, debris, lives, cam, camT, phase, swing, com, combo, msg, msgT, shake, collapse, budget, pcT, m2, strikeAt, strikeT, bonus, choice, side, intro = !seen();
 
     function colors(){ C.ink = css("--ink", root); C.ink2 = css("--ink-2", root); C.pencil = css("--pencil", root);
       C.line = css("--line", root); C.paper = css("--paper", root); C.vellum = css("--vellum", root); C.acc = css("--terra", root); }
@@ -41,37 +41,30 @@
     }
 
     function reset(){ tower = []; hang = true; fall = null; debris = []; lives = 3; cam = 0; camT = 0; phase = 0; swing = 0;
-      com = 0; combo = 0; msg = ""; msgT = 0; shake = 0; collapse = null; budget = 3; pcT = 0; side = Math.random() < .5 ? 1 : -1; nextSolar = false; roof = false; m2 = 0; strikeT = 0; bonus = 0; choice = null;
-      strikeAt = Math.random() < .55 ? 6 + Math.floor(Math.random() * 12) : -1; }
+      com = 0; combo = 0; msg = ""; msgT = 0; shake = 0; collapse = null; budget = 2; pcT = 0; side = Math.random() < .5 ? 1 : -1; m2 = 0; strikeT = 0; bonus = 0; choice = null;
+      strikeAt = Math.random() < .75 ? 5 + Math.floor(Math.random() * 10) : -1; }
 
     // ---------- geometry
-    function amp(){ var n = tower.length; return n < 2 ? 0 : Math.min(44, (bonus + n * .6 + Math.abs(com) * .2 + (n > 8 ? (n - 8) * .4 : 0)) * Math.min(1, n / 6)); }
+    function amp(){ var n = tower.length; return n < 2 ? 0 : Math.min(48, (bonus + n * .8 + Math.abs(com) * .25 + (n > 6 ? (n - 6) * .55 : 0)) * Math.min(1, n / 5)); }
     function swayAt(i){ var n = tower.length; if(n < 2) return 0; var k = i / (n - 1); return Math.sin(swing) * amp() * k * k; }
     // Norma 7: the plate steps in 10% every 5 levels (never below 50% of the base)
     function wOf(i){ return Math.round(BW * Math.max(.5, 1 - Math.floor(i / 5) * .1)); }
     function blockX(i){ return W / 2 + tower[i].x + swayAt(i); }            // screen x of floor i (centre)
     function blockY(i){ return GY - (i + 1) * BH + cam; }                   // screen y of floor i (top)
-    function hook(){ var th = Math.sin(phase) * (.62 + Math.min(.25, tower.length * .012));
+    function hook(){ var th = Math.sin(phase) * (.7 + Math.min(.3, tower.length * .015));
       return { x: W / 2 + Math.sin(th) * ROPE * 1.9, y: 34 + Math.cos(th) * ROPE, th: th }; }
 
     function drop(){
       if(state === "idle" || state === "over"){ if(intro){ intro = false; seen(true); } reset(); state = "run"; hud.textContent = ""; start(); return; }
       if(state === "strike"){ return; }
       if(state !== "run" || !hang) return;
-      var h = hook(); fall = { x: h.x, y: h.y, vy: 0, vx: Math.cos(phase) * .9, solar: nextSolar }; hang = false; nextSolar = false;
+      var h = hook(); fall = { x: h.x, y: h.y, vy: 0, vx: Math.cos(phase) * 1.1 }; hang = false;
     }
 
     function money(v){ return v >= 1 || v === 0 ? "$" + (Math.round(v * 10) / 10) + " M" : "$" + Math.round(v * 1000) + " mil"; }
     function DW(){ return Math.round(BW * 1.3); }                         // desplante (80% of the lot)
     function land(){
-      if(fall.solar){                                             // Norma 8: rooftop installations are not a level
-        var tx = tower.length ? blockX(tower.length - 1) : W / 2, ok = Math.abs(fall.x - tx) < wOf(Math.max(0, tower.length - 1)) * .6;
-        if(ok){ budget = Math.min(9, budget + 1); bonus = Math.max(0, bonus - 2); com *= .8; roof = true;
-          flash("Norma 8: celdas solares, no cuentan como nivel · +$1 M", 90); shake = 2; }
-        else { debris.push({ x: fall.x, y: fall.y, vy: fall.vy * .4, vx: 2, r: 0, vr: .05, w: BW * .7, solar: true }); flash("Se cayeron las celdas solares", 50); }
-        fall = null; hang = true; return;
-      }
-      var n = tower.length, topX = n ? blockX(n - 1) : W / 2, wNew = wOf(n), limit = n ? (wNew + wOf(n - 1)) / 2 * .82 : DW() / 2 + DW() * .25;
+      var n = tower.length, topX = n ? blockX(n - 1) : W / 2, wNew = wOf(n), limit = n ? (wNew + wOf(n - 1)) / 2 * .72 : DW() / 2 + DW() * .25;
       var dx = fall.x - topX;
       if(Math.abs(dx) > limit){                                   // missed: the floor tumbles off
         debris.push({ x: fall.x, y: fall.y, vy: fall.vy * .4, vx: dx > 0 ? 2.2 : -2.2, r: 0, vr: dx > 0 ? .06 : -.06, w: wNew });
@@ -80,7 +73,7 @@
         if(lives <= 0){ over("Se acabaron los pisos"); return; }
         hang = true; return;
       }
-      var perfect = Math.abs(dx) < Math.max(4, wNew * .06);
+      var perfect = Math.abs(dx) < Math.max(3, wNew * .04);
       if(perfect){ dx = 0; combo++; com *= .55; var gain = combo >= 3 ? 1 : .5; budget = Math.min(9, budget + gain);
         flash((combo > 1 ? "¡Perfecto! ×" + combo : "¡Perfecto!") + " +" + money(gain), 55); }
       else { combo = 0; }
@@ -94,16 +87,14 @@
           shake = 8;
         }
       }
-      roof = false;
       var baseRel = n ? tower[n - 1].x : 0;
       tower.push({ x: baseRel + dx, p: perfect });
       settle();
       shake = perfect ? 2 : 4; fall = null; hang = true;
       // Protección Civil: a tower swaying too much gets inspected
-      if(tower.length >= 3 && (Math.abs(com) > BW * .5 || amp() > 30)){ civil(); return; }
+      if(tower.length >= 3 && (Math.abs(com) > BW * .42 || amp() > 26)){ civil(); return; }
       if(tower.length === strikeAt){ strike(); return; }
-      if(tower.length % 10 === 0){ nextSolar = true; if(!perfect) flash("Norma 8: sube celdas solares a la azotea", 70); }
-      else if(tower.length % 5 === 0 && !perfect) flash("Norma 7: remetimiento en N" + tower.length, 60);
+      if(tower.length % 5 === 0 && !perfect) flash("Norma 7: remetimiento en N" + tower.length, 60);
     }
 
     function settle(){
@@ -149,8 +140,8 @@
         if(strikeT <= 0){ state = "run"; hang = true; choice = null; flash("Fin de la huelga: más balanceo", 80); } }
       if(state === "pc"){ pcT -= dt; if(pcT <= 0){ state = "run"; hang = true; flash("Torre reestructurada", 60); } }
       if(running || collapse){
-        phase += (.034 + Math.min(.03, tower.length * .0011)) * dt;
-        swing += (.022 + Math.min(.02, tower.length * .0007)) * dt;
+        phase += (.042 + Math.min(.04, tower.length * .0016)) * dt;
+        swing += (.026 + Math.min(.025, tower.length * .0009)) * dt;
       }
       if(fall){ fall.vy += .55 * dt; fall.y += fall.vy * dt; fall.x += fall.vx * dt;
         var surf = tower.length ? blockY(tower.length - 1) : GY;
@@ -175,14 +166,6 @@
       for(var k = 0; k < nw; k++) ctx.strokeRect(x0 + k * gw + 4, y0 + 5, gw - 8, h - 11);
       line(x0, y0 + h - 3, x0 + w, y0 + h - 3);
       if(idx % 5 === 4){ ctx.strokeStyle = C.acc; ctx.lineWidth = 2; line(x0 + 1, y0 + 1.5, x0 + w - 1, y0 + 1.5); }
-      ctx.restore();
-    }
-    function solar(x, y, rot){                                      // rooftop solar cells (Norma 8)
-      ctx.save(); ctx.translate(x, y + BH - 7); if(rot) ctx.rotate(rot);
-      var w = Math.round(BW * .7);
-      ctx.strokeStyle = C.ink; ctx.lineWidth = 1; line(-w / 2 + 6, 0, -w / 2 + 6, 7); line(w / 2 - 6, 0, w / 2 - 6, 7);
-      ctx.fillStyle = C.vellum; ctx.beginPath(); ctx.moveTo(-w / 2, 0); ctx.lineTo(w / 2, -9); ctx.lineTo(w / 2, -4); ctx.lineTo(-w / 2, 5); ctx.closePath(); ctx.fill(); ctx.stroke();
-      ctx.strokeStyle = C.acc; ctx.lineWidth = .8; for(var k = 1; k < 5; k++){ var xx = -w / 2 + k * w / 5; line(xx, -9 * k / 5 + 0, xx, -9 * k / 5 + 5); }
       ctx.restore();
     }
     function draw(){
@@ -229,7 +212,6 @@
       ctx.save();
       if(rot){ ctx.translate(W / 2, g); ctx.rotate(rot); ctx.translate(-W / 2, -g); }
       for(var i = 0; i < tower.length; i++){ var y = blockY(i); if(y > H + BH || y < -BH * 2) continue; floor(blockX(i), y, tower.length > 1 ? Math.sin(swing) * amp() * .003 * (i / (tower.length - 1)) : 0, i); }
-      if(roof && tower.length && !collapse){ var tn = tower.length - 1; solar(blockX(tn), blockY(tn) - BH, 0); }
       ctx.restore();
 
       // crane jib, trolley, rope, hanging floor
@@ -239,10 +221,10 @@
       ctx.fillStyle = C.ink; ctx.fillRect(W / 2 - 9, 15, 18, 8);
       if(state === "run" && hang){
         ctx.strokeStyle = C.ink; ctx.lineWidth = 1; line(W / 2, 23, hk.x, hk.y);
-        if(nextSolar) solar(hk.x, hk.y, hk.th * .35); else floor(hk.x, hk.y, hk.th * .35, tower.length);
+        floor(hk.x, hk.y, hk.th * .35, tower.length);
       } else if(state !== "run" || !hang){ ctx.strokeStyle = C.ink; ctx.lineWidth = 1; line(W / 2, 23, W / 2, 34); }
-      if(fall){ if(fall.solar) solar(fall.x, fall.y, 0); else floor(fall.x, fall.y, 0, tower.length); }
-      for(i = 0; i < debris.length; i++){ if(debris[i].solar) solar(debris[i].x, debris[i].y, debris[i].r); else floor(debris[i].x, debris[i].y, debris[i].r, 1, debris[i].w); }
+      if(fall) floor(fall.x, fall.y, 0, tower.length);
+      for(i = 0; i < debris.length; i++) floor(debris[i].x, debris[i].y, debris[i].r, 1, debris[i].w);
       ctx.restore();
 
       // HUD: two compact lines under the crane jib
@@ -266,12 +248,11 @@
     }
     var RULES = [
       "Toca o presiona espacio para soltar el piso.",
+      "Arrancas con $2 M de presupuesto.",
       "Desplanta en el 80% del predio: el otro 20%",
       "es área libre (Norma 4). Si la invades: multa.",
       "Cada 5 niveles la torre se remete (Norma 7).",
       "Piso perfecto: +$500 mil de presupuesto.",
-      "Cada 10 niveles suben celdas solares a la",
-      "azotea (Norma 8): no son nivel y dan +$1 M.",
       "Si se tambalea de más llega Protección Civil:",
       "reestructura con $3 M o te clausura.",
       "A veces hay huelga de vecinos: paga $2 M o espera."

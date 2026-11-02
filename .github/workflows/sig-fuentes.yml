@@ -1,0 +1,37 @@
+name: sig-fuentes
+on:
+  push:
+    branches: [sig-fuentes]
+    paths: [fuentes/lista.tsv]
+permissions:
+  contents: write
+jobs:
+  bajar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Descargar planos (despacio, una vez)
+        run: |
+          mkdir -p fuentes/pdf
+          : > fuentes/log.txt
+          while IFS=$'\t' read -r src name url; do
+            [ -z "$name" ] && continue
+            enc=$(python3 -c "import sys,urllib.parse as u;print(u.quote(sys.argv[1],safe=':/%'))" "$url")
+            code=$(curl -sSL -A "Mozilla/5.0" --retry 2 -m 300 -o "fuentes/pdf/$name" -w '%{http_code}' "$enc" || echo ERR)
+            sz=$(stat -c %s "fuentes/pdf/$name" 2>/dev/null || echo 0)
+            echo -e "$name\t$code\t$sz" >> fuentes/log.txt
+            sleep 4
+          done < fuentes/lista.tsv
+          cat fuentes/log.txt
+      - name: Partir archivos grandes
+        run: |
+          cd fuentes/pdf
+          for f in *.pdf; do
+            s=$(stat -c %s "$f"); if [ "$s" -gt 90000000 ]; then split -b 80m "$f" "$f.part-"; rm "$f"; fi
+          done
+          ls -la
+      - name: Guardar en la rama
+        run: |
+          git config user.name "sig-bot"; git config user.email "salo@asteriacapital.org"
+          git add fuentes; git commit -m "Planos fuente CDMX (PAOT/SEDUVI)" || true
+          git push

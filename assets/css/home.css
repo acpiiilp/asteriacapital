@@ -109,6 +109,11 @@ svg .north text{fill:currentColor;font:500 11px var(--mono)}
 .proc__grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(24px,5vw,80px)}
 .proc__fig{position:sticky;top:110px;align-self:start;margin:0;border:1px solid var(--line);background:var(--vellum);padding:20px 20px 0}
 .sect{width:100%;height:auto;display:block}
+.p3d{position:relative;width:100%;aspect-ratio:600/540;overflow:hidden}
+.p3d canvas{position:absolute;inset:0;width:100%!important;height:100%!important;display:block}
+.p3d__tag{position:absolute;left:0;top:0;pointer-events:none;white-space:nowrap;font:500 11.5px var(--mono);letter-spacing:.02em;color:var(--ink);
+  background:var(--vellum);border:1px solid var(--line);padding:4px 8px;transform:translate(-50%,calc(-100% - 14px));transition:opacity .4s;max-width:92%;overflow:hidden;text-overflow:ellipsis}
+.proc__fig.is3d .sect{display:none}
 .proc__fig figcaption{display:flex;align-items:center;gap:14px;padding:14px 0;border-top:1px solid var(--line);margin-top:8px;color:var(--ink-2)}
 .bar{flex:1;height:1px;background:var(--line);position:relative}
 .bar i{position:absolute;left:0;top:-1px;height:3px;width:20%;background:var(--terra);transition:width .15s linear}
@@ -219,6 +224,8 @@ svg .north text{fill:currentColor;font:500 11px var(--mono)}
   .proc__grid{grid-template-columns:1fr}
   .proc__fig{top:72px;z-index:2;padding:10px 10px 0}
   .proc__fig svg{max-height:34vh}
+  .proc__fig .p3d{aspect-ratio:auto;height:34vh}
+  .p3d__tag{font-size:10.5px}
   .step{min-height:46vh}
   .notes__l,.dna__l{border-right:0;border-bottom:1px solid var(--line)}
   .notes__list div{grid-template-columns:64px 1fr}

@@ -43,8 +43,10 @@ def plan_streets(rgb):
     """street mask: light, unsaturated pixels inside the colored zoning area."""
     hsv = cv2.cvtColor(rgb, cv2.COLOR_RGB2HSV)
     v, s = hsv[..., 2].astype(int), hsv[..., 1].astype(int)
-    colored = (s > 40) & (v > 90)
-    light = (v > 215) & (s < 28)
+    import os
+    smin = int(os.environ.get("SIG_SMIN", 40))                  # pale scans (cream fills) need ~25
+    colored = (s > smin) & (v > 90)
+    light = (v > 215) & (s < min(28, smin - 8))
     k = max(5, int(min(rgb.shape[:2]) / 60)) | 1
     area = cv2.morphologyEx(colored.astype(np.uint8) * 255, cv2.MORPH_CLOSE, cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (k, k)))
     area = cv2.erode(area, cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5)))

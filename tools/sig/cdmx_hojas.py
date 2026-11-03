@@ -23,7 +23,7 @@ for i in ids:
     x0, y0, x1, y1 = CROPS.get(i, [0, 0, W, H])
     crop = im[y0:y1, x0:x1]
     hsv = cv2.cvtColor(crop, cv2.COLOR_RGB2HSV)
-    ST = {"PPDU-BJ-Napoles": 75}.get(i, 40)          # scanned beige paper needs a stricter saturation cut
+    ST = {"PPDU-BJ-Napoles": 75, "PPDU-MH-LomasAltasW": 22}.get(i, 40)          # scanned beige paper needs a stricter saturation cut
     col = ((hsv[..., 1] > ST) & (hsv[..., 2] > 90)).astype(np.uint8)
     k = max(9, int(min(crop.shape[:2]) / 50)) | 1
     col = cv2.morphologyEx(col, cv2.MORPH_CLOSE, cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (k, k)))

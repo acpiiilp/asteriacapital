@@ -196,7 +196,7 @@ input[type=number]:focus-visible,select:focus-visible{outline:2px solid var(--na
       <p class="eyebrow" style="margin-top:14px">Planes municipales de desarrollo urbano</p>
       <h1>Uso de suelo: Ciudad de México y Estado de México</h1>
       <p class="nonoff" role="note"><b>No oficial.</b> Consulta informativa que puede tener fallas: confirma siempre con la cédula o licencia de uso de suelo del Ayuntamiento.</p>
-      <p class="sub">Planos de los programas de desarrollo urbano. Estado de México: Naucalpan (PMDU 2023–2025) y Huixquilucan (PMDU 2017). Ciudad de México: programas delegacionales y parciales, en integración.</p>
+      <p class="sub">Planos de los programas de desarrollo urbano. Estado de México: Naucalpan (PMDU 2023–2025) y Huixquilucan (PMDU 2017). Ciudad de México: programas delegacionales y parciales de Benito Juárez, Cuauhtémoc y Miguel Hidalgo, en avance.</p>
     </header>
 
     <section>
@@ -365,8 +365,8 @@ input[type=number]:focus-visible,select:focus-visible{outline:2px solid var(--na
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
-<script src="data/edomex.js"></script>
-<script src="data/cdmx.js"></script>
+<script src="data/edomex.js?v=20261102b"></script>
+<script src="data/cdmx.js?v=20261102b"></script>
 <script>
 "use strict";
 const{NORM_N,NORM_H,FRAC}=window.SIG_EDOMEX;
@@ -394,7 +394,7 @@ let all=null;
 S.forEach(s=>{const b=L.latLngBounds(ll(s.E0,s.N1),ll(s.E1,s.N0));all=all?all.extend(b):L.latLngBounds(b.getSouthWest(),b.getNorthEast());});
 /* planos: una sola pirámide de teselas para toda la cobertura (tools/sig/teselas.py). Solo se pide lo que se ve,
    a la resolución del zoom; index.json dice qué teselas existen para no pedir huecos. */
-const TV="20261102";const TIDX={};
+const TV="20261102b";const TIDX={};
 const Planos=L.GridLayer.extend({createTile(c,done){const im=document.createElement("img");im.alt="";im.decoding="async";
   const row=(TIDX[c.z]||{})[c.y];let hit=false;if(row)for(let i=0;i<row.length;i+=2)if(c.x>=row[i]&&c.x<=row[i+1]){hit=true;break;}
   if(!hit){setTimeout(()=>done(null,im),0);return im;}
@@ -495,7 +495,7 @@ async function query(E,N,lat,lon){
   const r=await lookup(E,N);cur.hit=r;
   const note=$("r-note");note.hidden=true;$("r-norm").hidden=true;
   if(!r){$("r-sheet").textContent="Fuera de cobertura";$("r-clave").textContent="Sin dato";$("r-desc").textContent="";$("r-conf").textContent="";$("r-conf").className="chip";$("r-conftxt").textContent="";
-    note.hidden=false;note.textContent=inCDMX(lat,lon)?"Ciudad de México: estamos integrando los planos de los programas de desarrollo urbano de esta zona. Mientras, consulta el uso de suelo oficial en ciudadmx.cdmx.gob.mx.":"El punto no cae en una zona con planos integrados.";$("claude").hidden=!sampleFn;calcSet(null);return;}
+    note.hidden=false;note.textContent=inCDMX(lat,lon)?"Ciudad de México: si esta zona ya tiene plano en el mapa, la clave se lee directamente sobre él (acerca el mapa). La consulta automática de la clave en la CDMX viene después. Para el dato oficial: ciudadmx.cdmx.gob.mx.":"El punto no cae en una zona con planos integrados.";$("claude").hidden=!sampleFn;calcSet(null);return;}
   const s=r.s;$("r-sheet").textContent=`${s.muni} · ${s.n}`;
   if(r.near){note.hidden=false;note.textContent=`El punto no tiene uso asignado en el plano; se muestra la zona más cercana (a ~${r.near} m).`+(r.near>60?" Verifica en el plano: la distancia es grande.":"");}
   else if(s.g){note.hidden=false;note.textContent="Dato del plano general (menor detalle): no hay plano de distrito para este punto.";}
@@ -682,9 +682,9 @@ function normC(k){const z=parseC(k);if(!isFinite(z.niv))return"";const cos=1-z.l
 function inCDMX(lat,lon){return lat>19.04&&lat<19.6&&lon>-99.37&&lon<-98.94;}
 
 /* ---------- cobertura de la CDMX ---------- */
-(()=>{const C=window.SIG_CDMX;if(!C)return;const P=C.PROGRAMS,done=new Set((C.DATA.s||[]).map(x=>x.prog));
+(()=>{const C=window.SIG_CDMX;if(!C)return;const P=C.PROGRAMS,done=new Set([...(C.DATA.s||[]).map(x=>x.prog),...(C.VISIBLE||[])]);
   const f1=P.filter(p=>p.fase===1),ok=P.filter(p=>done.has(p.id));
-  $("cov-cdmx").textContent=ok.length?`${ok.length} de ${P.length} programas integrados.`:`en integración. Primero el poniente: Miguel Hidalgo, Cuajimalpa, Álvaro Obregón, Benito Juárez, Cuauhtémoc y Coyoacán (${f1.length} programas).`;
+  $("cov-cdmx").textContent=ok.length?`${ok.length} de ${P.length} programas en el mapa (Benito Juárez completo; Cuauhtémoc y Miguel Hidalgo en avance). En la CDMX la clave se lee en el plano; la consulta automática viene después.`:`en integración. Primero el poniente: Miguel Hidalgo, Cuajimalpa, Álvaro Obregón, Benito Juárez, Cuauhtémoc y Coyoacán (${f1.length} programas).`;
   $("cov-ul").innerHTML=P.slice().sort((a,b)=>a.fase-b.fase||a.alc.localeCompare(b.alc)).map(p=>`<li>${esc(C.ALC[p.alc]||p.alc)} · ${esc(p.n.replace(/^Programa (Delegacional|Parcial) · /,p.tipo==="PDDU"?"Delegacional":"Parcial: "))} ${done.has(p.id)?"✓":`<span>${p.fase===1?"siguiente":"después"}</span>`}</li>`).join("");})();
 
 /* ---------- capa de precio por m² ----------

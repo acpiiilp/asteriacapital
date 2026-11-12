@@ -1,0 +1,26 @@
+name: sig-datos
+on:
+  push:
+    branches: [sig-fuentes]
+    paths: [fuentes/datos.txt]
+permissions:
+  contents: write
+jobs:
+  bajar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Descargar uso de suelo (datos abiertos CDMX, una sola descarga)
+        run: |
+          set -x
+          rid=8c90327e-78ba-4a77-992c-c6054e2f5bdf
+          f="alcaldia,uso_descripcion,densidad_descripcion,niveles,altura,area_libre,minimo_vivienda,latitud,longitud"
+          code=$(curl -sSL -A "Mozilla/5.0" -m 1500 -o us.csv -w '%{http_code}' "https://datos.cdmx.gob.mx/datastore/dump/$rid?format=csv&fields=$f" || echo ERR)
+          echo "codigo $code"; ls -la us.csv; head -3 us.csv; wc -l us.csv
+          gzip -9 -c us.csv > fuentes/datos/uso_suelo_cdmx.csv.gz
+          ls -la fuentes/datos
+      - name: Guardar
+        run: |
+          git config user.name "sig-bot"; git config user.email "salo@asteriacapital.org"
+          git add fuentes/datos; git commit -m "Uso de suelo CDMX (datos abiertos)" || true
+          git push

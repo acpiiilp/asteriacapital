@@ -1,4 +1,1 @@
-# una consulta por línea: nombre<TAB>query overpass
-alcaldias	[out:json][timeout:120];area["name"="Ciudad de México"]["admin_level"="4"]->.a;rel(area.a)["boundary"="administrative"]["admin_level"~"5|6"];out geom;
-calles	[out:json][timeout:300];area["name"="Ciudad de México"]["admin_level"="4"]->.a;rel(area.a)["boundary"="administrative"]["name"~"^(Miguel Hidalgo|Cuauhtémoc|Benito Juárez)$"];map_to_area->.b;way(area.b)["highway"~"^(motorway|trunk|primary|secondary|tertiary|residential|unclassified|living_street|motorway_link|trunk_link|primary_link|secondary_link)$"];out geom;
-calles_edomex	[out:json][timeout:300];way(19.36,-99.33,19.43,-99.22)["highway"~"^(motorway|trunk|primary|secondary|tertiary|residential|unclassified)$"];out geom;
+calles_cdmx	[out:json][timeout:600];area["name"="Ciudad de México"]["admin_level"="4"]->.a;way["highway"~"^(motorway|trunk|primary|secondary|tertiary|unclassified|residential|living_street|motorway_link|trunk_link|primary_link|secondary_link|tertiary_link|pedestrian)$"](area.a);out tags geom;

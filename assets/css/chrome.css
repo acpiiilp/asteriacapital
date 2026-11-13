@@ -64,3 +64,5 @@ html{scroll-padding-top:96px}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 .tb a,.mnav a,.foot a{color:inherit}
+
+@media (min-width:1024px) and (max-width:1320px){.tb__nav a{min-width:0;padding:0 12px 12px;font-size:13px}.tb__nav a small{left:12px}}

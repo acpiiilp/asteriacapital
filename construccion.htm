@@ -171,7 +171,7 @@
     <a class="mail" href="mailto:asteriacapitalpartners@gmail.com?subject=Cotizaci%C3%B3n%20de%20obra">asteriacapitalpartners@gmail.com</a>
     <p class="addr">Ciudad de México</p>
   </div>
-  <form class="form" method="POST" action="https://formsubmit.co/asteriacapitalpartners@gmail.com">
+  <form class="form" id="f-obra" method="POST" action="https://formsubmit.co/asteriacapitalpartners@gmail.com">
     <input type="hidden" name="_subject" value="Cotización de obra · asteriacapital.org">
     <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
     <label for="f-name"><span>Nombre</span><input id="f-name" type="text" name="nombre" required autocomplete="name" placeholder="Tu nombre"></label>
@@ -189,6 +189,19 @@
     <button type="submit" class="btn btn--ink btn--full">Pedir cotización</button>
   </form>
 </section>
+<script>
+/* Conversión de Google Ads al enviar el formulario de obra. Espera a que Google confirme (máx. 1.2 s) y luego envía. */
+(function(){
+  var f=document.getElementById("f-obra"); if(!f) return;
+  f.addEventListener("submit",function(e){
+    if(f.dataset.sent||typeof window.gtag!=="function") return;
+    e.preventDefault(); f.dataset.sent="1";
+    var done=false; function go(){ if(done) return; done=true; f.submit(); }
+    try{ gtag("event","conversion",{send_to:"AW-16906201019/pnw0CIPK_LcdELvPwP0-",event_callback:go}); }catch(err){}
+    setTimeout(go,1200);
+  });
+})();
+</script>
 </main>
 <footer class="foot">
   <svg class="foot__word" viewBox="0 0 1000 150" aria-hidden="true"><text x="500" y="128" text-anchor="middle">ASTERIA</text></svg>

@@ -67,6 +67,23 @@
 .faq summary::after{content:"+";position:absolute;right:4px;top:18px;font:300 26px var(--display);color:var(--terra)}
 .faq details[open] summary::after{content:"\2212"}
 .faq details p{color:var(--ink-2);max-width:68ch;padding:0 0 24px}
+.dz{padding:clamp(56px,8vw,104px) var(--pad);border-bottom:1px solid var(--line)}
+.dz__head{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:end;margin-bottom:clamp(28px,4vw,48px)}
+.dz__grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.dz__card{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;background:var(--paper)}
+.dz__card:focus-visible{outline:2px solid var(--terra);outline-offset:-2px}
+.dz__img{position:relative;display:block;aspect-ratio:4/3;overflow:hidden;background:#e4e0d7}
+.dz__img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease}
+.dz__card:hover .dz__img img{transform:scale(1.04)}
+.dz__badge{position:absolute;left:14px;top:14px;font:600 11px var(--mono);letter-spacing:.08em;background:#0B0E0D;color:#8FD1B4;padding:6px 9px}
+.dz__meta{display:flex;flex-direction:column;gap:8px;padding:20px 22px 26px}
+.dz__d{color:var(--ink-2);font-size:15px;max-width:48ch}
+.dz__meta .link{align-self:flex-start;margin-top:4px}
+.dz__modal{position:fixed;inset:0;z-index:200;background:rgba(11,14,13,.92);display:flex;align-items:center;justify-content:center;padding:min(4vw,40px)}
+.dz__modal[hidden]{display:none}
+.dz__modal iframe{width:100%;height:100%;border:0;background:#e9e6e1}
+.dz__x{position:absolute;right:10px;top:8px;z-index:2;width:44px;height:44px;border:0;background:#F4F2EC;color:#1E211F;font:300 28px/1 var(--display);cursor:pointer}
+@media (max-width:899px){.dz__head{grid-template-columns:1fr}.dz__grid{grid-template-columns:1fr}.dz__modal{padding:0}.dz__x{top:auto;bottom:14px;right:14px}}
 </style>
 </head>
 <body>
@@ -104,11 +121,53 @@
     <p class="lead">Construcción y remodelación de locales comerciales, restaurantes, oficinas y bodegas en la CDMX. Obra pequeña y mediana, y obra civil en general, con un solo responsable de principio a fin.</p>
     <div class="ctas">
       <a class="btn btn--light" href="#cotizar">Cotizar mi obra</a>
-      <a class="btn btn--ghost" href="mailto:asteriacapitalpartners@gmail.com?subject=Cotizaci%C3%B3n%20de%20obra">Escríbenos</a>
+      <a class="btn btn--ghost" href="#disenos">Ver diseños en 3D</a>
     </div>
   </div>
   <div class="chero__hud" aria-hidden="true"><span>Avance de obra</span><span class="chero__stage">Trazo del terreno</span><span class="chero__pct">00%</span><i class="chero__bar"><b></b></i></div>
 </section>
+
+<section class="dz" id="disenos" aria-labelledby="dz-h">
+  <div class="dz__head">
+    <h2 id="dz-h" class="h2">Diseños en 3D.</h2>
+    <p class="lead">Conceptos de interiorismo para locales comerciales en la Ciudad de México. Ábrelos, gíralos y recórrelos por dentro.</p>
+  </div>
+  <div class="dz__grid">
+    <button class="dz__card" type="button" data-3d="/obras/restaurante-juarez.html" aria-label="Explorar en 3D: Restaurante, Juárez · 300 m²">
+      <span class="dz__img"><img src="/assets/img/obras/restaurante-juarez.webp" alt="Restaurante en Juárez, concepto de interiorismo en 3D" width="800" height="600" loading="lazy"><span class="dz__badge">3D</span></span>
+      <span class="dz__meta"><span class="small">Restaurante · Juárez · 300 m²</span><span class="dz__d">Restaurante en casona porfiriana: comedor con banca de terciopelo y bar con barra de zellige.</span><span class="link">Explorar en 3D</span></span>
+    </button>
+    <button class="dz__card" type="button" data-3d="/obras/clinica-polanco.html" aria-label="Explorar en 3D: Clínica, Polanco · 158 m²">
+      <span class="dz__img"><img src="/assets/img/obras/clinica-polanco.webp" alt="Clínica en Polanco, concepto de interiorismo en 3D" width="800" height="600" loading="lazy"><span class="dz__badge">3D</span></span>
+      <span class="dz__meta"><span class="small">Clínica · Polanco · 158 m²</span><span class="dz__d">Clínica dermatológica en local a pie de calle: recepción, 3 consultorios y 3 cabinas.</span><span class="link">Explorar en 3D</span></span>
+    </button>
+    <button class="dz__card" type="button" data-3d="/obras/boutique-cuauhtemoc.html" aria-label="Explorar en 3D: Boutique, Cuauhtémoc · 66 m²">
+      <span class="dz__img"><img src="/assets/img/obras/boutique-cuauhtemoc.webp" alt="Boutique en Cuauhtémoc, concepto de interiorismo en 3D" width="800" height="600" loading="lazy"><span class="dz__badge">3D</span></span>
+      <span class="dz__meta"><span class="small">Boutique · Cuauhtémoc · 66 m²</span><span class="dz__d">Concept store de moda en una antigua sucursal bancaria, con plataforma y rampa.</span><span class="link">Explorar en 3D</span></span>
+    </button>
+    <button class="dz__card" type="button" data-3d="/obras/boutique-polanco.html" aria-label="Explorar en 3D: Boutique, Polanco · 119 m² + terraza">
+      <span class="dz__img"><img src="/assets/img/obras/boutique-polanco.webp" alt="Boutique en Polanco, concepto de interiorismo en 3D" width="800" height="600" loading="lazy"><span class="dz__badge">3D</span></span>
+      <span class="dz__meta"><span class="small">Boutique · Polanco · 119 m² + terraza</span><span class="dz__d">Boutique de moda y joyería por cita, con galería de nichos en arco y salón privado.</span><span class="link">Explorar en 3D</span></span>
+    </button>
+  </div>
+</section>
+
+<div class="dz__modal" id="dz-modal" hidden role="dialog" aria-modal="true" aria-label="Diseño en 3D">
+  <button class="dz__x" type="button" aria-label="Cerrar">×</button>
+  <iframe title="Diseño en 3D" allow="fullscreen" loading="lazy"></iframe>
+</div>
+<script>
+(function(){
+  var m=document.getElementById("dz-modal"), fr=m.querySelector("iframe");
+  function close(){ m.hidden=true; fr.src="about:blank"; document.documentElement.style.overflow=""; }
+  document.querySelectorAll("[data-3d]").forEach(function(b){
+    b.addEventListener("click",function(){ fr.src=b.getAttribute("data-3d"); m.hidden=false; document.documentElement.style.overflow="hidden";
+      if(typeof gtag==="function") gtag("event","ver_3d",{diseno:b.getAttribute("data-3d")}); });
+  });
+  m.querySelector(".dz__x").addEventListener("click",close);
+  document.addEventListener("keydown",function(e){ if(e.key==="Escape"&&!m.hidden) close(); });
+})();
+</script>
 
 <section class="seq" aria-labelledby="que-h">
   <h2 id="que-h" class="h2">Qué construimos.</h2>
